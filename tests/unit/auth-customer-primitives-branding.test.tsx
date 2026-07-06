@@ -1,4 +1,10 @@
 import { vi } from "vitest";
+import { renderToStaticMarkup } from "react-dom/server";
+
+import { PasswordLoginForm } from "@/components/auth/login/PasswordLoginForm";
+import { RegisterForm } from "@/components/auth/register/RegisterForm";
+import { QRDisplay } from "@/components/auth/2fa/QRDisplay";
+import { AuthHeader } from "@/components/auth/ui/AuthHeader";
 
 vi.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -8,13 +14,6 @@ vi.mock("next/navigation", () => ({
     get: () => null,
   }),
 }));
-
-import { renderToStaticMarkup } from "react-dom/server";
-
-import { PasswordLoginForm } from "@/components/auth/login/PasswordLoginForm";
-import { RegisterForm } from "@/components/auth/register/RegisterForm";
-import { QRDisplay } from "@/components/auth/2fa/QRDisplay";
-import { AuthHeader } from "@/components/auth/ui/AuthHeader";
 
 describe("auth customer primitives", () => {
   it("renders brand-forward login primitives without legacy zinc or red action links", () => {

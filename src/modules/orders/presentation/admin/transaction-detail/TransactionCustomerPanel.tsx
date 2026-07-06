@@ -1,5 +1,7 @@
-import { DetailRow, SectionCard } from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailShared";
-
+import {
+  DetailRow,
+  SectionCard,
+} from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailShared";
 import type {
   OrderShipping,
   PaymentTransaction,

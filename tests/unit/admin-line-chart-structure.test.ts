@@ -11,9 +11,7 @@ describe("admin line chart structure", () => {
       "utf8",
     );
 
-    expect(source).toContain(
-      "@/modules/dashboard/presentation/admin/adminLineChartData",
-    );
+    expect(source).toContain("@/modules/dashboard/presentation/admin/adminLineChartData");
     expect(source).toContain("normalizeLineChartData(");
     expect(source).toContain("getLineChartYAxis(");
   });

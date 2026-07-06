@@ -1,7 +1,6 @@
 "use client";
 
 import type { ShippingDefault, ShippingOrigin, TabKey } from "@/types/domain/shipping";
-
 import type { ShippingOrder } from "@/modules/orders/presentation/admin/shipping/shippingTypes";
 
 type ShippingTab = {

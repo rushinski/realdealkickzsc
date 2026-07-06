@@ -1,5 +1,4 @@
 import type { AdminOrderItem } from "@/modules/orders/presentation/admin/order-item-details";
-
 import type {
   PickupOrder,
   PickupOrderItem,

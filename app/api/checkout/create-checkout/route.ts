@@ -98,7 +98,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { items, fulfillment, idempotencyKey, guestEmail, shippingAddress } = parsed.data;
+    const { items, fulfillment, idempotencyKey, guestEmail, shippingAddress } =
+      parsed.data;
     const adminSupabase = createSupabaseAdminClient();
     const ordersRepo = new OrdersRepository(userId ? supabase : adminSupabase);
     const orderAccessTokens = new OrderAccessTokenService(adminSupabase);
@@ -239,7 +240,12 @@ export async function POST(request: NextRequest) {
     }
 
     await sendOrderCompletionEmailsIfNeeded({
-      order: { ...order, status: "processing", total: pricing.total, subtotal: pricing.subtotal },
+      order: {
+        ...order,
+        status: "processing",
+        total: pricing.total,
+        subtotal: pricing.subtotal,
+      },
       orderId: order.id,
       orderItems,
       fulfillment,

@@ -55,4 +55,3 @@ export function PickupsSummaryCards({ summary }: PickupsSummaryCardsProps) {
     </div>
   );
 }
-

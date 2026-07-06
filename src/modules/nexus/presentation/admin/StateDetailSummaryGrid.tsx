@@ -15,7 +15,9 @@ export function StateDetailSummaryGrid({
     <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
       <div>
         <div className="mb-1 text-sm text-brand-muted">Nexus Threshold</div>
-        <div className="text-xl font-bold text-brand-text">{formatCurrency(state.threshold)}</div>
+        <div className="text-xl font-bold text-brand-text">
+          {formatCurrency(state.threshold)}
+        </div>
         <div className="text-xs text-brand-muted">
           {state.thresholdType} sales / {state.window}
         </div>
@@ -60,7 +62,9 @@ export function StateDetailSummaryGrid({
 
       <div>
         <div className="mb-1 text-sm text-brand-muted">Taxable Sales</div>
-        <div className="text-lg text-brand-text">{formatCurrency(state.taxableSales)}</div>
+        <div className="text-lg text-brand-text">
+          {formatCurrency(state.taxableSales)}
+        </div>
       </div>
 
       <div>

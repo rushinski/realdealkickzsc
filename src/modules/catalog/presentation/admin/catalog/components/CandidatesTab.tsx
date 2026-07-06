@@ -47,7 +47,9 @@ export function CandidatesTab({
             <thead>
               <tr className={catalogStyles.tableHeadRow}>
                 <th className={catalogStyles.tableHeadCell}>Candidate</th>
-                <th className={`${catalogStyles.tableHeadCell} hidden sm:table-cell`}>Brand</th>
+                <th className={`${catalogStyles.tableHeadCell} hidden sm:table-cell`}>
+                  Brand
+                </th>
                 <th className={`${catalogStyles.tableHeadCell} text-right`}>Actions</th>
               </tr>
             </thead>
@@ -56,7 +58,9 @@ export function CandidatesTab({
                 <tr key={candidate.id} className={catalogStyles.tableRow}>
                   <td className={catalogStyles.tableCell}>
                     <div className="flex flex-wrap items-center gap-2">
-                      <div className="font-semibold text-brand-text">{candidate.raw_text}</div>
+                      <div className="font-semibold text-brand-text">
+                        {candidate.raw_text}
+                      </div>
                       <AdminStatusBadge
                         tone={candidate.entity_type === "brand" ? "neutral" : "warning"}
                       >
@@ -103,4 +107,3 @@ export function CandidatesTab({
     </AdminSectionCard>
   );
 }
-

@@ -26,6 +26,8 @@ describe("nexus tracker top-level module migration structure", () => {
     expect(source).toContain("@/modules/nexus/presentation/admin/nexusTrackerView");
     expect(source).toContain("@/modules/nexus/presentation/admin/NexusTrackerFilters");
     expect(source).toContain("@/modules/nexus/presentation/admin/NexusMap");
-    expect(source).toContain("@/modules/nexus/presentation/admin/NexusStateCoverageTable");
+    expect(source).toContain(
+      "@/modules/nexus/presentation/admin/NexusStateCoverageTable",
+    );
   });
 });

@@ -60,7 +60,7 @@ export function CheckoutStart() {
   const [subtotal, setSubtotal] = useState(0);
   const [shipping, setShipping] = useState(0);
   const [tax, setTax] = useState(0);
-  const [total, setTotal] = useState(0);
+  const [, setTotal] = useState(0);
 
   const [fulfillment, setFulfillment] = useState<"ship" | "pickup">("ship");
   const [shippingAddress, setShippingAddress] = useState<ShippingAddress | null>(null);
@@ -251,9 +251,9 @@ export function CheckoutStart() {
         setTotal(Number(data.total ?? 0));
         setFulfillment(data.fulfillment ?? fulfillment);
         lastPricingKeyRef.current = null;
-      } catch (error: unknown) {
+      } catch (err: unknown) {
         if (active) {
-          setError(error instanceof Error ? error.message : "Failed to start checkout");
+          setError(err instanceof Error ? err.message : "Failed to start checkout");
         }
       } finally {
         if (active) {
@@ -345,12 +345,12 @@ export function CheckoutStart() {
         if (dedupeKey) {
           lastPricingKeyRef.current = dedupeKey;
         }
-      } catch (error: unknown) {
+      } catch (err: unknown) {
         if (dedupeKey) {
           lastPricingKeyRef.current = null;
         }
-        if (!(error instanceof DOMException && error.name === "AbortError")) {
-          setError(error instanceof Error ? error.message : "Failed to update fulfillment");
+        if (!(err instanceof DOMException && err.name === "AbortError")) {
+          setError(err instanceof Error ? err.message : "Failed to update fulfillment");
         }
       } finally {
         inFlightRef.current = false;

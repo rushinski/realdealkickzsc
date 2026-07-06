@@ -8,7 +8,9 @@ import {
 
 describe("inventory client request helpers", () => {
   it("builds item action urls for default and named actions", () => {
-    expect(buildInventoryItemActionUrl("product-1")).toBe("/api/admin/products/product-1");
+    expect(buildInventoryItemActionUrl("product-1")).toBe(
+      "/api/admin/products/product-1",
+    );
     expect(buildInventoryItemActionUrl("product-1", "archive")).toBe(
       "/api/admin/products/product-1?action=archive",
     );

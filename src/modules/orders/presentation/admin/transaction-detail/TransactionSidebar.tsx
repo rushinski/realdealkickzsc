@@ -1,6 +1,5 @@
 import { TransactionCustomerPanel } from "@/modules/orders/presentation/admin/transaction-detail/TransactionCustomerPanel";
 import { TransactionOrderDetailsPanel } from "@/modules/orders/presentation/admin/transaction-detail/TransactionOrderDetailsPanel";
-
 import type {
   Order,
   OrderShipping,

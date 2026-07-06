@@ -68,7 +68,9 @@ export function CartPageContent() {
                     <h3 className="text-white font-bold text-base sm:text-lg truncate">
                       {item.titleDisplay}
                     </h3>
-                    <p className="text-gray-400 text-xs sm:text-sm">Size: {item.sizeLabel}</p>
+                    <p className="text-gray-400 text-xs sm:text-sm">
+                      Size: {item.sizeLabel}
+                    </p>
                     <p className="text-white font-bold text-sm sm:text-base mt-2">
                       ${(item.priceCents / 100).toFixed(2)}
                     </p>

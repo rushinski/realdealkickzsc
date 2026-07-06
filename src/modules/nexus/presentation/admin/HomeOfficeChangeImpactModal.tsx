@@ -85,11 +85,7 @@ export function HomeOfficeChangeImpactModal({
                   type="button"
                   onClick={() =>
                     onOldHomeActionChange(
-                      updateOldHomeOfficeAction(
-                        oldHomeAction,
-                        "hasPhysicalNexus",
-                        true,
-                      ),
+                      updateOldHomeOfficeAction(oldHomeAction, "hasPhysicalNexus", true),
                     )
                   }
                   className={getHomeOfficeActionButtonClassName(
@@ -102,11 +98,7 @@ export function HomeOfficeChangeImpactModal({
                   type="button"
                   onClick={() =>
                     onOldHomeActionChange(
-                      updateOldHomeOfficeAction(
-                        oldHomeAction,
-                        "hasPhysicalNexus",
-                        false,
-                      ),
+                      updateOldHomeOfficeAction(oldHomeAction, "hasPhysicalNexus", false),
                     )
                   }
                   className={getHomeOfficeActionButtonClassName(
@@ -193,4 +185,3 @@ export function HomeOfficeChangeImpactModal({
     </ModalPortal>
   );
 }
-

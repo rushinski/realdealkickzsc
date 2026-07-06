@@ -1,8 +1,6 @@
 import { describe, expect, it, vi, type Mock } from "vitest";
 
-import {
-  StoreAccessSettingsRepository,
-} from "@/repositories/store-access-settings-repo";
+import { StoreAccessSettingsRepository } from "@/repositories/store-access-settings-repo";
 import { DEFAULT_CHECKOUT_LOCK_MESSAGE } from "@/modules/settings/shared/storeAccessSettings";
 import { StoreAccessSettingsService } from "@/services/store-access-settings-service";
 

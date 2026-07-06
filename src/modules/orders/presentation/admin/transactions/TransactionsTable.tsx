@@ -127,4 +127,3 @@ export function TransactionsTable({ isLoading, orders }: TransactionsTableProps)
     </div>
   );
 }
-

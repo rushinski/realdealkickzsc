@@ -124,4 +124,3 @@ export function StateSalesHistorySection({
     </div>
   );
 }
-

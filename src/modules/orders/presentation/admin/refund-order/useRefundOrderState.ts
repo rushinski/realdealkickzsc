@@ -18,17 +18,16 @@ type UseRefundOrderStateArgs = {
   onConfirm: (payload: RefundRequestPayload) => Promise<void>;
 };
 
-export function useRefundOrderState({
-  open,
-  order,
-  onConfirm,
-}: UseRefundOrderStateArgs) {
+export function useRefundOrderState({ open, order, onConfirm }: UseRefundOrderStateArgs) {
   const [mode, setMode] = useState<RefundOrderMode>("full");
   const [selectedItemIds, setSelectedItemIds] = useState<string[]>([]);
   const [customAmount, setCustomAmount] = useState("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const totalCents = useMemo(() => toRefundCents(Number(order?.total ?? 0)), [order?.total]);
+  const totalCents = useMemo(
+    () => toRefundCents(Number(order?.total ?? 0)),
+    [order?.total],
+  );
   const refundedCents = useMemo(
     () => Math.max(0, Math.round(Number(order?.refund_amount ?? 0))),
     [order?.refund_amount],
@@ -37,7 +36,10 @@ export function useRefundOrderState({
   const remainingDollars = fromRefundCents(remainingCents);
 
   const items = order?.items ?? [];
-  const refundableItems = useMemo(() => items.filter((item) => !item.refunded_at), [items]);
+  const refundableItems = useMemo(
+    () => items.filter((item) => !item.refunded_at),
+    [items],
+  );
 
   const selectedProductRefundCents = useMemo(
     () =>

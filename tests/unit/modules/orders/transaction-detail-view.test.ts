@@ -11,19 +11,25 @@ vi.mock("@/lib/orders/metrics", () => ({
   shouldShowOrderProfit: vi.fn(() => true),
 }));
 
-vi.mock("@/modules/orders/presentation/admin/transaction-detail/transactionEmailView", () => ({
-  getEmailTypeMeta: vi.fn(() => ({ label: "Email", tone: "default" })),
-  getRelatedCheckoutLogs: vi.fn(() => []),
-}));
+vi.mock(
+  "@/modules/orders/presentation/admin/transaction-detail/transactionEmailView",
+  () => ({
+    getEmailTypeMeta: vi.fn(() => ({ label: "Email", tone: "default" })),
+    getRelatedCheckoutLogs: vi.fn(() => []),
+  }),
+);
 
-vi.mock("@/modules/orders/presentation/admin/transaction-detail/transactionPaymentView", () => ({
-  fmtDate: vi.fn((value: string) => value),
-  getAvsLabel: vi.fn(() => "AVS"),
-  getCvvLabel: vi.fn(() => "CVV"),
-  getEventMeta: vi.fn(() => ({ label: "Event", tone: "default" })),
-  getRiskBadge: vi.fn(() => ({ label: "Low", tone: "success" })),
-  getOrderStatusMeta: vi.fn(() => ({ label: "Paid", tone: "success" })),
-}));
+vi.mock(
+  "@/modules/orders/presentation/admin/transaction-detail/transactionPaymentView",
+  () => ({
+    fmtDate: vi.fn((value: string) => value),
+    getAvsLabel: vi.fn(() => "AVS"),
+    getCvvLabel: vi.fn(() => "CVV"),
+    getEventMeta: vi.fn(() => ({ label: "Event", tone: "default" })),
+    getRiskBadge: vi.fn(() => ({ label: "Low", tone: "success" })),
+    getOrderStatusMeta: vi.fn(() => ({ label: "Paid", tone: "success" })),
+  }),
+);
 
 import { buildTransactionDetailViewModel } from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailView";
 

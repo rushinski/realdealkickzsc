@@ -2,18 +2,20 @@
 export default function PrivacyPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 pt-8 pb-16">
-      <h1 className="mb-4 text-4xl font-bold text-white">Privacy Policy - solesneakers</h1>
+      <h1 className="mb-4 text-4xl font-bold text-white">
+        Privacy Policy - solesneakers
+      </h1>
 
       <div className="prose prose-invert max-w-none">
         <div className="text-zinc-400 space-y-6">
           <p className="text-sm">Last updated: December 30, 2025</p>
 
           <p>
-            This Privacy Policy describes how solesneakers (&quot;we,&quot; &quot;us,&quot;
-            or &quot;our&quot;) collects, uses, and discloses personal information when
-            you visit, use our services, create an account, or make a purchase through
-            our site (the &quot;Site&quot;) or otherwise interact with us (collectively,
-            the &quot;Services&quot;).
+            This Privacy Policy describes how solesneakers (&quot;we,&quot;
+            &quot;us,&quot; or &quot;our&quot;) collects, uses, and discloses personal
+            information when you visit, use our services, create an account, or make a
+            purchase through our site (the &quot;Site&quot;) or otherwise interact with us
+            (collectively, the &quot;Services&quot;).
           </p>
 
           <section>

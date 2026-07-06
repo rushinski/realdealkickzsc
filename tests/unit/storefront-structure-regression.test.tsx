@@ -8,7 +8,7 @@ describe("storefront route structure", () => {
       "utf8",
     );
 
-    expect(source).toContain('@/modules/storefront');
+    expect(source).toContain("@/modules/storefront");
     expect(source).toContain("<StoreCatalogPageContent");
   });
 });

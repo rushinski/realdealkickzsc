@@ -11,7 +11,9 @@ describe("admin pickups structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/useAdminPickupsData");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/useAdminPickupsData",
+    );
     expect(source).toContain("useAdminPickupsData()");
   });
 

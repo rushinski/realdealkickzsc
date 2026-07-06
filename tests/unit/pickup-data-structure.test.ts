@@ -11,7 +11,9 @@ describe("pickup data structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/pickupDataRequests");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/pickupDataRequests",
+    );
     expect(source).toContain("loadPickupCountsRequest(");
     expect(source).toContain("loadPickupOrdersRequest(");
     expect(source).toContain("markPickupCompleteRequest(");

@@ -1,6 +1,6 @@
 import { EmailConfirmPageContent } from "@/modules/marketing/presentation/public";
 
-export default async function EmailConfirmPage({
+export default function EmailConfirmPage({
   searchParams,
 }: {
   searchParams?: Promise<{ status?: string | string[] }>;

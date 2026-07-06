@@ -79,7 +79,11 @@ export function InventoryProductTableRow({
         <td className="px-4 py-3">
           <div className="flex h-12 w-12 items-center justify-center overflow-hidden border border-brand-border bg-brand-page">
             {primaryImageUrl ? (
-              <img src={primaryImageUrl} alt={rawTitle} className="h-full w-full object-cover" />
+              <img
+                src={primaryImageUrl}
+                alt={rawTitle}
+                className="h-full w-full object-cover"
+              />
             ) : (
               <span className="text-[10px] text-brand-muted">No image</span>
             )}

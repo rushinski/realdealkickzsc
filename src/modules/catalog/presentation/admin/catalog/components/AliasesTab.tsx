@@ -115,7 +115,11 @@ export function AliasesTab({
             placeholder="Priority"
             className={adminFormStyles.input}
           />
-          <button type="button" onClick={onCreateAlias} className={adminButtonStyles.primary}>
+          <button
+            type="button"
+            onClick={onCreateAlias}
+            className={adminButtonStyles.primary}
+          >
             Add Alias
           </button>
         </div>
@@ -137,7 +141,9 @@ export function AliasesTab({
             <thead>
               <tr className={catalogStyles.tableHeadRow}>
                 <th className={catalogStyles.tableHeadCell}>Alias</th>
-                <th className={`${catalogStyles.tableHeadCell} hidden sm:table-cell`}>Type</th>
+                <th className={`${catalogStyles.tableHeadCell} hidden sm:table-cell`}>
+                  Type
+                </th>
                 <th className={`${catalogStyles.tableHeadCell} hidden sm:table-cell`}>
                   Priority
                 </th>
@@ -149,7 +155,9 @@ export function AliasesTab({
                 <tr key={alias.id} className={catalogStyles.tableRow}>
                   <td className={catalogStyles.tableCell}>
                     <div className="flex flex-wrap items-center gap-2">
-                      <div className="font-semibold text-brand-text">{alias.alias_label}</div>
+                      <div className="font-semibold text-brand-text">
+                        {alias.alias_label}
+                      </div>
                       <AdminStatusBadge tone={alias.is_active ? "success" : "neutral"}>
                         {alias.is_active ? "Active" : "Inactive"}
                       </AdminStatusBadge>
@@ -193,4 +201,3 @@ export function AliasesTab({
     </AdminSectionCard>
   );
 }
-

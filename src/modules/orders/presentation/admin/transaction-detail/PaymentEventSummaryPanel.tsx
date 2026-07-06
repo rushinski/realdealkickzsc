@@ -1,5 +1,4 @@
 import { PayloadBlock } from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailShared";
-
 import type { PaymentEvent } from "@/modules/orders/presentation/admin/transaction-detail/types";
 
 type PaymentEventSummaryPanelProps = {

@@ -45,15 +45,17 @@ export function InventoryBulkActionsBar({
             ? `All ${selectedCount} matching products selected`
             : `${selectedCount} selected`}
         </span>
-        {!selectAllMatching && currentPageAllSelected && totalCount > selectedIdsCount && (
-          <button
-            type="button"
-            onClick={onSelectAllMatching}
-            className="text-brand-text transition hover:text-black"
-          >
-            Select all {totalCount} products
-          </button>
-        )}
+        {!selectAllMatching &&
+          currentPageAllSelected &&
+          totalCount > selectedIdsCount && (
+            <button
+              type="button"
+              onClick={onSelectAllMatching}
+              className="text-brand-text transition hover:text-black"
+            >
+              Select all {totalCount} products
+            </button>
+          )}
         <button
           type="button"
           onClick={onClearSelection}
@@ -91,4 +93,3 @@ export function InventoryBulkActionsBar({
     </div>
   );
 }
-

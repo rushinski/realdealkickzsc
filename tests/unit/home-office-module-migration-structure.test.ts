@@ -11,9 +11,7 @@ describe("home office module migration structure", () => {
       "utf8",
     );
 
-    expect(source).toContain(
-      "@/modules/nexus/presentation/admin/HomeOfficeAddressForm",
-    );
+    expect(source).toContain("@/modules/nexus/presentation/admin/HomeOfficeAddressForm");
     expect(source).toContain(
       "@/modules/nexus/presentation/admin/HomeOfficeChangeImpactModal",
     );

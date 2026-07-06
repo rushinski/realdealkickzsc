@@ -14,7 +14,10 @@ describe("admin dashboard screen structure", () => {
 
   it("delegates dashboard loading and stat mapping to focused modules", () => {
     const screenSource = fs.readFileSync(
-      path.join(process.cwd(), "src/modules/dashboard/presentation/admin/AdminDashboardScreen.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/dashboard/presentation/admin/AdminDashboardScreen.tsx",
+      ),
       "utf8",
     );
 
@@ -24,9 +27,7 @@ describe("admin dashboard screen structure", () => {
     expect(screenSource).toContain(
       "@/modules/dashboard/presentation/admin/adminDashboardView",
     );
-    expect(screenSource).toContain(
-      "@/modules/dashboard/presentation/admin/SalesChart",
-    );
+    expect(screenSource).toContain("@/modules/dashboard/presentation/admin/SalesChart");
     expect(screenSource).toContain("buildAdminDashboardStats(");
   });
 });

@@ -9,8 +9,8 @@ const FALLBACK_ORDER_ITEM_IMAGE: AdminOrderItemImage = {
 export function getOrderItemImages(
   images: AdminOrderItemImage[] | null | undefined,
 ): AdminOrderItemImage[] {
-  const normalizedImages = (images ?? []).filter(
-    (entry): entry is AdminOrderItemImage => Boolean(entry?.url),
+  const normalizedImages = (images ?? []).filter((entry): entry is AdminOrderItemImage =>
+    Boolean(entry?.url),
   );
 
   if (!normalizedImages.length) {

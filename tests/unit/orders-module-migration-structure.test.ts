@@ -4,24 +4,15 @@ import path from "node:path";
 describe("orders module migration structure", () => {
   it("makes module application and infrastructure files the source of truth", () => {
     const ordersServiceSource = fs.readFileSync(
-      path.join(
-        process.cwd(),
-        "src/modules/orders/application/orders-service.ts",
-      ),
+      path.join(process.cwd(), "src/modules/orders/application/orders-service.ts"),
       "utf8",
     );
     const orderStatusHelperSource = fs.readFileSync(
-      path.join(
-        process.cwd(),
-        "src/modules/orders/application/order-status-helpers.ts",
-      ),
+      path.join(process.cwd(), "src/modules/orders/application/order-status-helpers.ts"),
       "utf8",
     );
     const ordersRepoSource = fs.readFileSync(
-      path.join(
-        process.cwd(),
-        "src/modules/orders/infrastructure/orders-repo.ts",
-      ),
+      path.join(process.cwd(), "src/modules/orders/infrastructure/orders-repo.ts"),
       "utf8",
     );
     const ordersRepoHelperSource = fs.readFileSync(
@@ -55,10 +46,10 @@ describe("orders module migration structure", () => {
       fs.existsSync(path.join(process.cwd(), "src/services/order-status-helpers.ts")),
     ).toBe(false);
     expect(legacyOrdersRepoSource).toContain(
-      '@/modules/orders/infrastructure/orders-repo',
+      "@/modules/orders/infrastructure/orders-repo",
     );
     expect(legacyOrdersRepoHelperSource).toContain(
-      '@/modules/orders/infrastructure/orders-repo-helpers',
+      "@/modules/orders/infrastructure/orders-repo-helpers",
     );
   });
 });

@@ -10,7 +10,10 @@ describe("storefront route structure", () => {
   });
 
   it("routes the store catalog page through the storefront module boundary", () => {
-    const source = fs.readFileSync(path.join(process.cwd(), "app/store/page.tsx"), "utf8");
+    const source = fs.readFileSync(
+      path.join(process.cwd(), "app/store/page.tsx"),
+      "utf8",
+    );
 
     expect(source).toContain("@/modules/storefront");
     expect(source).toContain("<StoreCatalogPageContent");
@@ -28,7 +31,10 @@ describe("storefront route structure", () => {
   });
 
   it("routes the brands page through the storefront module boundary", () => {
-    const source = fs.readFileSync(path.join(process.cwd(), "app/brands/page.tsx"), "utf8");
+    const source = fs.readFileSync(
+      path.join(process.cwd(), "app/brands/page.tsx"),
+      "utf8",
+    );
 
     expect(source).toContain("@/modules/storefront");
     expect(source).toContain("<BrandsPageContent");

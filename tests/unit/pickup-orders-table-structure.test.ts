@@ -25,7 +25,9 @@ describe("pickup orders table structure", () => {
       "utf8",
     );
 
-    expect(rowSource).toContain("@/modules/orders/presentation/admin/pickups/pickupOrdersTableView");
+    expect(rowSource).toContain(
+      "@/modules/orders/presentation/admin/pickups/pickupOrdersTableView",
+    );
     expect(rowSource).toContain("buildPickupOrderRowModel(");
     expect(desktopSource).toContain("buildPickupOrderItemModel(");
     expect(mobileSource).toContain("buildPickupOrderItemModel(");
@@ -40,7 +42,9 @@ describe("pickup orders table structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/PickupOrderExpansionPanels");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/PickupOrderExpansionPanels",
+    );
     expect(source).toContain("<PickupOrderExpansionPanels");
   });
 
@@ -53,8 +57,14 @@ describe("pickup orders table structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/PickupOrdersTableHeader");
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/PickupOrdersTableRow");
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/pickupOrdersTableTypes");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/PickupOrdersTableHeader",
+    );
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/PickupOrdersTableRow",
+    );
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/pickupOrdersTableTypes",
+    );
   });
 });

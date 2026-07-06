@@ -11,7 +11,9 @@ describe("admin pickups screen ui structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/useAdminPickupsScreenUi");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/useAdminPickupsScreenUi",
+    );
     expect(source).toContain("useAdminPickupsScreenUi()");
   });
 

@@ -1,5 +1,4 @@
 import { buildTransactionPriceBreakdownItemModel } from "@/modules/orders/presentation/admin/transaction-detail/transactionPriceBreakdownView";
-
 import type { OrderItem } from "@/modules/orders/presentation/admin/transaction-detail/types";
 
 type TransactionPriceBreakdownItemListProps = {

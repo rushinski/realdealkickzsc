@@ -112,7 +112,9 @@ describe("inventory client structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/catalog/presentation/admin/inventory/inventoryClientView");
+    expect(source).toContain(
+      "@/modules/catalog/presentation/admin/inventory/inventoryClientView",
+    );
   });
 
   it("delegates inventory request url and response normalization to focused helpers", () => {

@@ -3,6 +3,6 @@ import { CheckoutGatePageContent } from "@/modules/checkout";
 
 export const dynamic = "force-dynamic";
 
-export default async function CheckoutGatePage() {
+export default function CheckoutGatePage() {
   return <CheckoutGatePageContent />;
 }

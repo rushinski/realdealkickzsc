@@ -4,11 +4,16 @@ import path from "node:path";
 describe("state detail modal structure", () => {
   it("delegates sales history and registration setup sections to focused components", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/modules/nexus/presentation/admin/StateDetailModal.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/nexus/presentation/admin/StateDetailModal.tsx",
+      ),
       "utf8",
     );
 
-    expect(source).toContain("@/modules/nexus/presentation/admin/StateSalesHistorySection");
+    expect(source).toContain(
+      "@/modules/nexus/presentation/admin/StateSalesHistorySection",
+    );
     expect(source).toContain(
       "@/modules/nexus/presentation/admin/StateRegistrationSetupSection",
     );
@@ -25,7 +30,10 @@ describe("state detail modal structure", () => {
       "utf8",
     );
     const typesSource = fs.readFileSync(
-      path.join(process.cwd(), "src/modules/nexus/presentation/admin/stateDetailTypes.ts"),
+      path.join(
+        process.cwd(),
+        "src/modules/nexus/presentation/admin/stateDetailTypes.ts",
+      ),
       "utf8",
     );
 

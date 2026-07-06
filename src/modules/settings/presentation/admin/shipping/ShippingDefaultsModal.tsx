@@ -125,4 +125,3 @@ export function ShippingDefaultsModal({
     </ShippingSettingsModalShell>
   );
 }
-

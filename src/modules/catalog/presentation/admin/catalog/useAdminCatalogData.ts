@@ -4,7 +4,6 @@ import { useCallback, useState } from "react";
 
 import { logError } from "@/lib/utils/log";
 import { loadAdminCatalogDataRequest } from "@/modules/catalog/presentation/admin/catalog/catalogDataRequests";
-
 import type {
   Alias,
   Brand,

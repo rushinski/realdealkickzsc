@@ -51,4 +51,3 @@ export function PayloadBlock({ label, payload }: { label: string; payload: unkno
     </div>
   );
 }
-

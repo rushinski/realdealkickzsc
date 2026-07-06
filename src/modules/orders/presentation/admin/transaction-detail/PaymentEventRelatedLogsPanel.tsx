@@ -1,7 +1,6 @@
 import { Terminal } from "lucide-react";
 
 import { PayloadBlock } from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailShared";
-
 import type { CheckoutLog } from "@/modules/orders/presentation/admin/transaction-detail/types";
 
 type PaymentEventRelatedLogsPanelProps = {

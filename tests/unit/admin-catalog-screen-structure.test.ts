@@ -14,7 +14,10 @@ describe("admin catalog screen structure", () => {
 
   it("delegates tab-surface rendering and edit-draft bootstrap logic to focused catalog helpers", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/modules/catalog/presentation/admin/catalog/AdminCatalogScreen.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/catalog/presentation/admin/catalog/AdminCatalogScreen.tsx",
+      ),
       "utf8",
     );
 

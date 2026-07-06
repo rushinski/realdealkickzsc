@@ -15,17 +15,13 @@ describe("state detail module migration structure", () => {
     expect(source).toContain(
       "@/modules/nexus/presentation/admin/StateDetailStatusBadges",
     );
-    expect(source).toContain(
-      "@/modules/nexus/presentation/admin/StateDetailSummaryGrid",
-    );
+    expect(source).toContain("@/modules/nexus/presentation/admin/StateDetailSummaryGrid");
     expect(source).toContain(
       "@/modules/nexus/presentation/admin/StateRegistrationSetupSection",
     );
     expect(source).toContain(
       "@/modules/nexus/presentation/admin/StateSalesHistorySection",
     );
-    expect(source).toContain(
-      "@/modules/nexus/presentation/admin/useStateDetailSalesLog",
-    );
+    expect(source).toContain("@/modules/nexus/presentation/admin/useStateDetailSalesLog");
   });
 });

@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-import type { PickupOrder, PickupTabKey } from "@/modules/orders/presentation/admin/pickups/pickupTypes";
+import type {
+  PickupOrder,
+  PickupTabKey,
+} from "@/modules/orders/presentation/admin/pickups/pickupTypes";
 import { logError } from "@/lib/utils/log";
 import {
   loadPickupCountsRequest,

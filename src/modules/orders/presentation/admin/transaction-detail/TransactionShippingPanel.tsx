@@ -1,7 +1,9 @@
 import { ExternalLink, Truck } from "lucide-react";
 
-import { DetailRow, SectionCard } from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailShared";
-
+import {
+  DetailRow,
+  SectionCard,
+} from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailShared";
 import type {
   Order,
   OrderShipping,

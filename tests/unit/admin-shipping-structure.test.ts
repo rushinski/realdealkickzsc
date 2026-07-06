@@ -11,7 +11,9 @@ describe("admin shipping structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/shipping/useAdminShippingData");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/shipping/useAdminShippingData",
+    );
     expect(source).toContain("useAdminShippingData({");
   });
 
@@ -24,7 +26,9 @@ describe("admin shipping structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/shipping/useAdminShippingMutations");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/shipping/useAdminShippingMutations",
+    );
     expect(source).toContain("useAdminShippingMutations({");
   });
 

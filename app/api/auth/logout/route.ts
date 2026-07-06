@@ -15,10 +15,7 @@ export async function POST(request: Request) {
 
     await authService.signOut();
 
-    return NextResponse.json(
-      { ok: true },
-      { headers: { "Cache-Control": "no-store" } },
-    );
+    return NextResponse.json({ ok: true }, { headers: { "Cache-Control": "no-store" } });
   } catch (error: unknown) {
     logError(error, {
       layer: "auth",

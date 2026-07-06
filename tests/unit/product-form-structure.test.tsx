@@ -8,7 +8,10 @@ import { ProductForm } from "@/modules/catalog/presentation/admin/inventory/Prod
 describe("product form structure", () => {
   it("delegates major sections to focused product-form components", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/modules/catalog/presentation/admin/inventory/ProductForm.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/catalog/presentation/admin/inventory/ProductForm.tsx",
+      ),
       "utf8",
     );
 

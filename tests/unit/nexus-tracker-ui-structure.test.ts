@@ -4,7 +4,10 @@ import path from "node:path";
 describe("nexus tracker ui structure", () => {
   it("delegates tracker ui filter and sorting state to a focused hook", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/modules/nexus/presentation/admin/NexusTrackerClient.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/nexus/presentation/admin/NexusTrackerClient.tsx",
+      ),
       "utf8",
     );
 
@@ -14,7 +17,10 @@ describe("nexus tracker ui structure", () => {
 
   it("keeps nexus tracker filter and sort helpers inside the focused ui hook", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/modules/nexus/presentation/admin/useNexusTrackerUi.ts"),
+      path.join(
+        process.cwd(),
+        "src/modules/nexus/presentation/admin/useNexusTrackerUi.ts",
+      ),
       "utf8",
     );
 

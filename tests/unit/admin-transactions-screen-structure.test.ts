@@ -21,10 +21,18 @@ describe("admin transactions screen structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/transactions/TransactionsTabBar");
-    expect(source).toContain("@/modules/orders/presentation/admin/transactions/TransactionsSearchBar");
-    expect(source).toContain("@/modules/orders/presentation/admin/transactions/TransactionsTable");
-    expect(source).toContain("@/modules/orders/presentation/admin/transactions/TransactionsPagination");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/transactions/TransactionsTabBar",
+    );
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/transactions/TransactionsSearchBar",
+    );
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/transactions/TransactionsTable",
+    );
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/transactions/TransactionsPagination",
+    );
   });
 
   it("keeps transaction filtering in the focused transactions view helper", () => {
@@ -43,7 +51,9 @@ describe("admin transactions screen structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/transactions/transactionsView");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/transactions/transactionsView",
+    );
     expect(tableSource).toContain("buildTransactionRowModel");
   });
 });

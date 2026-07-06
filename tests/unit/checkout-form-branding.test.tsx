@@ -1,4 +1,7 @@
 import { vi } from "vitest";
+import { renderToStaticMarkup } from "react-dom/server";
+
+import { CheckoutForm } from "@/components/checkout/CheckoutForm";
 
 vi.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -9,10 +12,6 @@ vi.mock("next/navigation", () => ({
 vi.mock("@/components/checkout/SavedAddresses", () => ({
   SavedAddresses: () => "saved-addresses",
 }));
-
-import { renderToStaticMarkup } from "react-dom/server";
-
-import { CheckoutForm } from "@/components/checkout/CheckoutForm";
 
 describe("CheckoutForm", () => {
   it("renders the solesneakers checkout section without legacy red checkout chrome", () => {

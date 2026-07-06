@@ -23,7 +23,9 @@ export function ShippingCarriersSettingsCard({
     <AdminSectionCard>
       <div className={cardStyles}>
         <div>
-          <h2 className="mb-2 text-base font-semibold text-brand-text">Enabled Carriers</h2>
+          <h2 className="mb-2 text-base font-semibold text-brand-text">
+            Enabled Carriers
+          </h2>
           <p className="mb-4 text-sm text-brand-muted">
             Select which carriers to offer for label creation.
           </p>
@@ -56,10 +58,11 @@ export function ShippingCarriersSettingsCard({
           >
             {isSavingCarriers ? "Saving..." : "Save carriers"}
           </button>
-          {carriersMessage && <div className="mt-2 text-sm text-brand-muted">{carriersMessage}</div>}
+          {carriersMessage && (
+            <div className="mt-2 text-sm text-brand-muted">{carriersMessage}</div>
+          )}
         </div>
       </div>
     </AdminSectionCard>
   );
 }
-

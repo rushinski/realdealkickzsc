@@ -3,7 +3,6 @@
 import { adminButtonStyles } from "@/modules/shared/presentation/admin/ui/adminButtonStyles";
 import { ModalPortal } from "@/components/ui/ModalPortal";
 import type { ShippingOrigin } from "@/types/domain/shipping";
-
 import { OriginAddressFields } from "@/modules/orders/presentation/admin/shipping/OriginAddressFields";
 
 type OriginErrors = Partial<Record<keyof ShippingOrigin, string>>;
@@ -88,4 +87,3 @@ export function OriginModal({
     </ModalPortal>
   );
 }
-

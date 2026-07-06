@@ -76,10 +76,7 @@ type PaymentRow = {
   updated_at?: string | null;
 };
 
-type ProfileRow = Pick<
-  Tables<"profiles">,
-  "id" | "created_at" | "full_name" | "email"
->;
+type ProfileRow = Pick<Tables<"profiles">, "id" | "created_at" | "full_name" | "email">;
 
 type AddressRow = Pick<
   Tables<"user_addresses">,

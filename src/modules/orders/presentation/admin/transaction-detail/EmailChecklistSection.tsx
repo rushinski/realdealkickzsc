@@ -1,7 +1,6 @@
 import { CheckCircle, Clock, RefreshCw, XCircle } from "lucide-react";
 
 import { SectionCard } from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailShared";
-
 import type { EmailLog } from "@/modules/orders/presentation/admin/transaction-detail/types";
 
 type EmailChecklistSectionProps = {

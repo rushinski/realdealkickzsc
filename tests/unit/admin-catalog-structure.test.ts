@@ -4,7 +4,10 @@ import path from "node:path";
 describe("admin catalog structure", () => {
   it("delegates catalog data loading and persistence orchestration to a focused hook", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/modules/catalog/presentation/admin/catalog/AdminCatalogScreen.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/catalog/presentation/admin/catalog/AdminCatalogScreen.tsx",
+      ),
       "utf8",
     );
 
@@ -16,7 +19,10 @@ describe("admin catalog structure", () => {
 
   it("delegates catalog mutation workflows to a focused hook", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/modules/catalog/presentation/admin/catalog/AdminCatalogScreen.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/catalog/presentation/admin/catalog/AdminCatalogScreen.tsx",
+      ),
       "utf8",
     );
 
@@ -28,7 +34,10 @@ describe("admin catalog structure", () => {
 
   it("delegates catalog derived filtering and lookup state to a focused hook", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/modules/catalog/presentation/admin/catalog/AdminCatalogScreen.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/catalog/presentation/admin/catalog/AdminCatalogScreen.tsx",
+      ),
       "utf8",
     );
 

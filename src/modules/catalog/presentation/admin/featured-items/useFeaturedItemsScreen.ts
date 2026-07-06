@@ -20,16 +20,11 @@ export function useFeaturedItemsScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [toast, setToast] = useState<FeaturedItemsToastState>(null);
-  const {
-    filteredSearchResults,
-    isSearching,
-    resetSearch,
-    searchQuery,
-    setSearchQuery,
-  } = useFeaturedItemsSearch({
-    featuredItems,
-    setToast,
-  });
+  const { filteredSearchResults, isSearching, resetSearch, searchQuery, setSearchQuery } =
+    useFeaturedItemsSearch({
+      featuredItems,
+      setToast,
+    });
 
   const loadFeaturedItems = async () => {
     setIsLoading(true);

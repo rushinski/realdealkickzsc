@@ -26,10 +26,7 @@ export function useShippingOriginModalState(initialOrigin: ShippingOriginAddress
     setOriginErrors({});
   };
 
-  const handleOriginDraftChange = (
-    field: keyof ShippingOriginAddress,
-    value: string,
-  ) => {
+  const handleOriginDraftChange = (field: keyof ShippingOriginAddress, value: string) => {
     setOriginDraft((prev) => updateOriginDraftField(prev, field, value));
     setOriginErrors((prev) => clearOriginFieldError(prev, field));
     setOriginError("");

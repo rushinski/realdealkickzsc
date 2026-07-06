@@ -1,6 +1,7 @@
-import { loadEnvConfig } from "@next/env";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
+
+import { loadEnvConfig } from "@next/env";
 
 loadEnvConfig(process.cwd());
 
@@ -173,9 +174,7 @@ async function main() {
 
   const outPath =
     args.outPath ??
-    (args.json
-      ? "tmp/products-without-images.json"
-      : "tmp/products-without-images.txt");
+    (args.json ? "tmp/products-without-images.json" : "tmp/products-without-images.txt");
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(outPath, outputPayload ? `${outputPayload}\n` : "", "utf8");
 
@@ -195,7 +194,8 @@ async function main() {
 
 if (process.env.NODE_ENV !== "test") {
   main().catch((error) => {
-    const message = error instanceof Error ? (error.stack ?? error.message) : String(error);
+    const message =
+      error instanceof Error ? (error.stack ?? error.message) : String(error);
     console.error(message);
     process.exitCode = 1;
   });

@@ -58,8 +58,7 @@ export function RefundOrderModal({
     !order ||
     remainingCents <= 0 ||
     (mode === "product" && (selectedItemIds.length === 0 || !canSelectAnyItems)) ||
-    (mode === "custom" &&
-      (customAmountCents <= 0 || customAmountCents > remainingCents));
+    (mode === "custom" && (customAmountCents <= 0 || customAmountCents > remainingCents));
 
   return (
     <ModalPortal open={open} onClose={onClose} zIndexClassName="z-[10000]">
@@ -144,4 +143,3 @@ export function RefundOrderModal({
     </ModalPortal>
   );
 }
-

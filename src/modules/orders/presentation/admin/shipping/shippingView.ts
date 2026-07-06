@@ -3,7 +3,6 @@ import type {
   ShippingDefault,
   ShippingOrigin,
 } from "@/types/domain/shipping";
-
 import type {
   ShippingOrder,
   ShippingOrderItem,

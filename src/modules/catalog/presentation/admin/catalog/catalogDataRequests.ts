@@ -1,6 +1,12 @@
 "use client";
 
-import type { Alias, Brand, BrandGroup, Candidate, Model } from "@/modules/catalog/presentation/admin/catalog/types";
+import type {
+  Alias,
+  Brand,
+  BrandGroup,
+  Candidate,
+  Model,
+} from "@/modules/catalog/presentation/admin/catalog/types";
 
 type CatalogDataPayload = {
   aliases: Alias[];

@@ -45,7 +45,11 @@ export { PaymentEventRelatedLogsPanel } from "@/modules/orders/presentation/admi
 export { PaymentEventSummaryPanel } from "@/modules/orders/presentation/admin/transaction-detail/PaymentEventSummaryPanel";
 export { PaymentEventDrawer } from "@/modules/orders/presentation/admin/transaction-detail/PaymentEventDrawer";
 export { SessionActivitySection } from "@/modules/orders/presentation/admin/transaction-detail/SessionActivitySection";
-export { DetailRow, PayloadBlock, SectionCard } from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailShared";
+export {
+  DetailRow,
+  PayloadBlock,
+  SectionCard,
+} from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailShared";
 export { buildTransactionPriceBreakdownItemModel } from "@/modules/orders/presentation/admin/transaction-detail/transactionPriceBreakdownView";
 export { TransactionCustomerPanel } from "@/modules/orders/presentation/admin/transaction-detail/TransactionCustomerPanel";
 export { TransactionFulfillmentPanels } from "@/modules/orders/presentation/admin/transaction-detail/TransactionFulfillmentPanels";

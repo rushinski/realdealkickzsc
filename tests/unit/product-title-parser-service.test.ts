@@ -10,10 +10,10 @@ const mockListModelAliasesAll = vi.fn();
 vi.mock("@/repositories/catalog-repo", () => ({
   CatalogRepository: vi.fn(function CatalogRepositoryMock() {
     return {
-    listBrandsWithGroups: mockListBrandsWithGroups,
-    listBrandAliases: mockListBrandAliases,
-    listModels: mockListModels,
-    listModelAliasesAll: mockListModelAliasesAll,
+      listBrandsWithGroups: mockListBrandsWithGroups,
+      listBrandAliases: mockListBrandAliases,
+      listModels: mockListModels,
+      listModelAliasesAll: mockListModelAliasesAll,
     };
   }),
 }));

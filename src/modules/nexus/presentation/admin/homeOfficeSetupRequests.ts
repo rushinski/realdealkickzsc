@@ -59,9 +59,7 @@ export async function submitHomeOfficeSetupRequest({
       oldHomeState:
         isConfigured && oldHomeState !== formData.stateCode ? oldHomeState : undefined,
       oldHomeAction:
-        isConfigured && oldHomeState !== formData.stateCode
-          ? oldHomeAction
-          : undefined,
+        isConfigured && oldHomeState !== formData.stateCode ? oldHomeAction : undefined,
     }),
   });
 

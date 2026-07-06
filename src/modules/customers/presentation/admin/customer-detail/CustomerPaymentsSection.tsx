@@ -61,4 +61,3 @@ export function CustomerPaymentsSection({ payments }: CustomerPaymentsSectionPro
     </AdminSectionCard>
   );
 }
-

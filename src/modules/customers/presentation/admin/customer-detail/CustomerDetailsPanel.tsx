@@ -36,4 +36,3 @@ export function CustomerDetailsPanel({ customer }: CustomerDetailsPanelProps) {
     </AdminSectionCard>
   );
 }
-

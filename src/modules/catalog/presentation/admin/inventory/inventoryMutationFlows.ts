@@ -30,18 +30,16 @@ type InventoryMutationFlowBase = InventoryMutationSelectionArgs & {
 };
 
 type MutationHelpers = {
-  buildInventoryBulkSelectionArgs: (
-    args: {
-      action: "archive" | "delete" | "restore";
-      selectAllMatching: boolean;
-      selectedIds: string[];
-      searchQuery: string;
-      categoryFilter: InventoryFilters["category"];
-      conditionFilter: InventoryFilters["condition"];
-      stockStatusFilter: StockStatus;
-      stockStatusOverride?: StockStatus;
-    },
-  ) => InventoryBulkSelectionArgs;
+  buildInventoryBulkSelectionArgs: (args: {
+    action: "archive" | "delete" | "restore";
+    selectAllMatching: boolean;
+    selectedIds: string[];
+    searchQuery: string;
+    categoryFilter: InventoryFilters["category"];
+    conditionFilter: InventoryFilters["condition"];
+    stockStatusFilter: StockStatus;
+    stockStatusOverride?: StockStatus;
+  }) => InventoryBulkSelectionArgs;
   getInventoryMutationErrorMessage: (
     payload: Record<string, unknown> | null,
     fallbackMessage: string,
@@ -356,7 +354,9 @@ export async function confirmInventoryArchiveFlow({
 
   try {
     if (archiveTarget.mode === "single" && archiveTarget.id) {
-      const response = await mutationRequests.archiveInventoryItemRequest(archiveTarget.id);
+      const response = await mutationRequests.archiveInventoryItemRequest(
+        archiveTarget.id,
+      );
       const payload = await response.json().catch(() => null);
       if (!response.ok) {
         showToast(

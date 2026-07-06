@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import { logError } from "@/lib/utils/log";
 import type { ShippingOrigin, TabKey } from "@/types/domain/shipping";
-
 import type { ShippingOrder } from "@/modules/orders/presentation/admin/shipping/shippingTypes";
 
 type OriginErrors = Partial<Record<keyof ShippingOrigin, string>>;

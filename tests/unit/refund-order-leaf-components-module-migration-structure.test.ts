@@ -27,7 +27,9 @@ describe("refund order leaf components module migration structure", () => {
 
     expect(modeTabsSource).toContain("export function RefundModeTabs");
     expect(customAmountSource).toContain("export function RefundCustomAmountPanel");
-    expect(productSelectionSource).toContain("export function RefundProductSelectionPanel");
+    expect(productSelectionSource).toContain(
+      "export function RefundProductSelectionPanel",
+    );
   });
 
   it("removes legacy refund-order leaf component duplicates after module migration", () => {

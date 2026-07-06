@@ -29,11 +29,10 @@ export function AdminOrderItemDetailsModal({
   onClose,
   showProfit = true,
 }: AdminOrderItemDetailsModalProps) {
-  const { selectedImageIndex, setSelectedImageIndex } =
-    useOrderItemDetailsModalState({
-      open,
-      onClose,
-    });
+  const { selectedImageIndex, setSelectedImageIndex } = useOrderItemDetailsModalState({
+    open,
+    onClose,
+  });
 
   const images = useMemo(() => {
     return getOrderItemImages(item?.product?.images);

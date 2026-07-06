@@ -3,7 +3,10 @@ import { CatalogToolbar } from "@/components/storefront/catalog/CatalogToolbar";
 import { StorefrontControls } from "@/components/storefront/catalog/StorefrontControls";
 import { StorefrontFilterPanel } from "@/components/storefront/catalog/StorefrontFilterPanel";
 import { StorefrontProductGrid } from "@/components/storefront/catalog/StorefrontProductGrid";
-import { getStoreCatalogPageData, type StoreSearchParams } from "@/modules/storefront/application/storefront-catalog";
+import {
+  getStoreCatalogPageData,
+  type StoreSearchParams,
+} from "@/modules/storefront/application/storefront-catalog";
 
 export async function StoreCatalogPageContent({
   searchParams,

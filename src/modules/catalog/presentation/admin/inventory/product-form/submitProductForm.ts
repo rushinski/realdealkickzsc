@@ -1,4 +1,5 @@
 import type { LogEntry } from "@/lib/utils/log";
+
 import type { ProductFormSubmitInput } from "../productEditorTypes";
 
 interface SubmitProductFormArgs {

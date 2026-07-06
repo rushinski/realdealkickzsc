@@ -1,5 +1,4 @@
 import type { TablesInsert, TablesUpdate } from "@/types/db/database.types";
-
 import type { CreatePendingOrderInput } from "@/modules/orders/infrastructure/orders-repo";
 
 type OrderInsert = TablesInsert<"orders">;

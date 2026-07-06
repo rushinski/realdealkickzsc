@@ -1,8 +1,10 @@
 import { TransactionPriceBreakdownItemList } from "@/modules/orders/presentation/admin/transaction-detail/TransactionPriceBreakdownItemList";
 import { TransactionPriceBreakdownTotals } from "@/modules/orders/presentation/admin/transaction-detail/TransactionPriceBreakdownTotals";
 import { SectionCard } from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailShared";
-
-import type { Order, OrderItem } from "@/modules/orders/presentation/admin/transaction-detail/types";
+import type {
+  Order,
+  OrderItem,
+} from "@/modules/orders/presentation/admin/transaction-detail/types";
 
 type TransactionPriceBreakdownSectionProps = {
   order: Order;

@@ -11,9 +11,15 @@ describe("pickup order expansion panels structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/PickupExpandedItemsRow");
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/PickupMobileDetailsRow");
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/pickupOrderExpansionTypes");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/PickupExpandedItemsRow",
+    );
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/PickupMobileDetailsRow",
+    );
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/pickupOrderExpansionTypes",
+    );
   });
 
   it("keeps pickup item formatting in the shared pickup orders table view helper", () => {

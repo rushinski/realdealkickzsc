@@ -18,7 +18,9 @@ describe("admin transaction detail data source structure", () => {
       "utf8",
     );
 
-    expect(hookSource).toContain("@/modules/orders/presentation/admin/transaction-detail/transactionDetailDataSource");
+    expect(hookSource).toContain(
+      "@/modules/orders/presentation/admin/transaction-detail/transactionDetailDataSource",
+    );
     expect(dataSource).toContain("fetchTransactionDetailPayload");
     expect(dataSource).toContain("paymentEvents");
     expect(dataSource).toContain("checkoutLogs");

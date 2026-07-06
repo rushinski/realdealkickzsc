@@ -10,6 +10,6 @@ interface InventoryPageProps {
   }>;
 }
 
-export default async function InventoryPage({ searchParams }: InventoryPageProps) {
+export default function InventoryPage({ searchParams }: InventoryPageProps) {
   return <InventoryPageContent searchParams={searchParams} />;
 }

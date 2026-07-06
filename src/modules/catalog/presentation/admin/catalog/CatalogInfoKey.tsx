@@ -1,7 +1,10 @@
 import { AdminSectionCard } from "@/modules/shared/presentation/admin/ui/AdminSectionCard";
 
 const infoItems = [
-  { label: "Brands", description: "Canonical brand labels used for products, filters, and parsing." },
+  {
+    label: "Brands",
+    description: "Canonical brand labels used for products, filters, and parsing.",
+  },
   {
     label: "Models",
     description:
@@ -50,7 +53,10 @@ export function CatalogInfoKey() {
         </summary>
         <div className="mt-4 grid grid-cols-1 gap-3 lg:grid-cols-2">
           {infoItems.map((item) => (
-            <div key={item.label} className="border border-brand-border bg-brand-page p-3">
+            <div
+              key={item.label}
+              className="border border-brand-border bg-brand-page p-3"
+            >
               <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-brand-muted">
                 {item.label}
               </div>
@@ -62,4 +68,3 @@ export function CatalogInfoKey() {
     </AdminSectionCard>
   );
 }
-

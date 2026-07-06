@@ -4,7 +4,6 @@ import type {
   InventoryToolbarSelection,
   InventoryToolbarSummary,
 } from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
-
 import { InventoryBulkActionsBar } from "@/modules/catalog/presentation/admin/inventory/InventoryBulkActionsBar";
 import { InventoryFilterControls } from "@/modules/catalog/presentation/admin/inventory/InventoryFilterControls";
 import { InventoryStockStatusTabs } from "@/modules/catalog/presentation/admin/inventory/InventoryStockStatusTabs";

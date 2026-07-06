@@ -112,22 +112,19 @@ export function useInventoryClientMutations({
       archiveInventoryItemRequest(productId),
     archiveInventorySelectionRequest: (
       selectionArgs: Parameters<typeof archiveInventorySelectionRequest>[0],
-    ) =>
-      archiveInventorySelectionRequest(selectionArgs),
+    ) => archiveInventorySelectionRequest(selectionArgs),
     deleteInventoryItemRequest: (productId: string) =>
       deleteInventoryItemRequest(productId),
     deleteInventorySelectionRequest: (
       selectionArgs: Parameters<typeof deleteInventorySelectionRequest>[0],
-    ) =>
-      deleteInventorySelectionRequest(selectionArgs),
+    ) => deleteInventorySelectionRequest(selectionArgs),
     duplicateInventoryItemRequest: (productId: string) =>
       duplicateInventoryItemRequest(productId),
     restoreInventoryItemRequest: (productId: string) =>
       restoreInventoryItemRequest(productId),
     restoreInventorySelectionRequest: (
       selectionArgs: Parameters<typeof restoreInventorySelectionRequest>[0],
-    ) =>
-      restoreInventorySelectionRequest(selectionArgs),
+    ) => restoreInventorySelectionRequest(selectionArgs),
   };
 
   const clearSelection = () => {

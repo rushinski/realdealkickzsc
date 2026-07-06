@@ -21,10 +21,18 @@ describe("admin pickups screen structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/PickupsSummaryCards");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/PickupsSummaryCards",
+    );
     expect(source).toContain("@/modules/orders/presentation/admin/pickups/PickupsTabBar");
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/PickupsSearchBar");
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/PickupsPagination");
-    expect(source).toContain("@/modules/orders/presentation/admin/pickups/PickupsFeedback");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/PickupsSearchBar",
+    );
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/PickupsPagination",
+    );
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/pickups/PickupsFeedback",
+    );
   });
 });

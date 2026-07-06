@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 import { logError } from "@/lib/utils/log";
 import type { ShippingDefault, ShippingOrigin, TabKey } from "@/types/domain/shipping";
-
 import type { ShippingOrder } from "@/modules/orders/presentation/admin/shipping/shippingTypes";
 import {
   loadShippingCountsRequest,

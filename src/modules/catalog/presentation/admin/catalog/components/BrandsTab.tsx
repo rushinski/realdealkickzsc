@@ -47,7 +47,11 @@ export function BrandsTab({
             Canonical storefront taxonomy for brands and sneaker models.
           </p>
         </div>
-        <button type="button" onClick={onOpenAddBrand} className={adminButtonStyles.primary}>
+        <button
+          type="button"
+          onClick={onOpenAddBrand}
+          className={adminButtonStyles.primary}
+        >
           Add Brand
         </button>
       </div>
@@ -68,7 +72,9 @@ export function BrandsTab({
             <thead>
               <tr className={catalogStyles.tableHeadRow}>
                 <th className={catalogStyles.tableHeadCell}>Brand</th>
-                <th className={`${catalogStyles.tableHeadCell} hidden text-right sm:table-cell`}>
+                <th
+                  className={`${catalogStyles.tableHeadCell} hidden text-right sm:table-cell`}
+                >
                   Actions
                 </th>
               </tr>
@@ -102,4 +108,3 @@ export function BrandsTab({
     </AdminSectionCard>
   );
 }
-

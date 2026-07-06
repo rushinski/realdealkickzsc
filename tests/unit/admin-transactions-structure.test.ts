@@ -11,7 +11,9 @@ describe("admin transactions structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/transactions/useAdminTransactionsData");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/transactions/useAdminTransactionsData",
+    );
     expect(source).toContain("useAdminTransactionsData()");
   });
 
@@ -31,9 +33,13 @@ describe("admin transactions structure", () => {
       "utf8",
     );
 
-    expect(screenSource).toContain("@/modules/orders/presentation/admin/transactions/transactionsView");
+    expect(screenSource).toContain(
+      "@/modules/orders/presentation/admin/transactions/transactionsView",
+    );
     expect(screenSource).toContain("buildFilteredTransactions(");
-    expect(tableSource).toContain("@/modules/orders/presentation/admin/transactions/transactionsView");
+    expect(tableSource).toContain(
+      "@/modules/orders/presentation/admin/transactions/transactionsView",
+    );
     expect(tableSource).toContain("buildTransactionRowModel(");
   });
 });

@@ -24,7 +24,9 @@ describe("admin customers screen structure", () => {
     expect(screenSource).toContain(
       "@/modules/customers/presentation/admin/useAdminCustomersData",
     );
-    expect(screenSource).toContain("@/modules/customers/presentation/admin/customersView");
+    expect(screenSource).toContain(
+      "@/modules/customers/presentation/admin/customersView",
+    );
     expect(screenSource).toContain("buildFilteredCustomers(");
     expect(screenSource).toContain("getCustomerTypeMeta(");
   });

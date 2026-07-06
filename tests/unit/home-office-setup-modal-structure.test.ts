@@ -4,7 +4,10 @@ import path from "node:path";
 describe("home office setup modal structure", () => {
   it("delegates the main address editor and relocation impact flow to focused components", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/modules/nexus/presentation/admin/HomeOfficeSetupModal.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/nexus/presentation/admin/HomeOfficeSetupModal.tsx",
+      ),
       "utf8",
     );
 
@@ -32,7 +35,9 @@ describe("home office setup modal structure", () => {
       "utf8",
     );
 
-    expect(stateSource).toContain("@/modules/nexus/presentation/admin/homeOfficeSetupTypes");
+    expect(stateSource).toContain(
+      "@/modules/nexus/presentation/admin/homeOfficeSetupTypes",
+    );
     expect(typesSource).toContain("type HomeOfficeFormData");
     expect(typesSource).toContain("type OldHomeOfficeAction");
   });

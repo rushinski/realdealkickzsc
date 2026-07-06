@@ -3,8 +3,10 @@ import {
   type AdminOrderItem,
 } from "@/modules/orders/presentation/admin/order-item-details";
 import type { ShippingAddress, TabKey } from "@/types/domain/shipping";
-
-import type { ShippingOrder, ShippingOrderItem } from "@/modules/orders/presentation/admin/shipping/shippingTypes";
+import type {
+  ShippingOrder,
+  ShippingOrderItem,
+} from "@/modules/orders/presentation/admin/shipping/shippingTypes";
 
 type ActionNodeParams = {
   actionLinkStyles: string;

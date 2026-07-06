@@ -11,7 +11,9 @@ describe("admin shipping screen ui structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/shipping/useAdminShippingScreenUi");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/shipping/useAdminShippingScreenUi",
+    );
     expect(source).toContain("useAdminShippingScreenUi()");
   });
 

@@ -155,4 +155,3 @@ export function AdminProfilePageContent() {
     </div>
   );
 }
-

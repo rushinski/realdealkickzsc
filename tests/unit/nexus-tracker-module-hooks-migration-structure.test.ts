@@ -12,7 +12,9 @@ describe("nexus tracker module hooks migration structure", () => {
     );
 
     expect(source).toContain("@/modules/nexus/presentation/admin/useNexusTrackerLoading");
-    expect(source).toContain("@/modules/nexus/presentation/admin/useNexusTrackerMutations");
+    expect(source).toContain(
+      "@/modules/nexus/presentation/admin/useNexusTrackerMutations",
+    );
   });
 
   it("keeps the module mutations hook wired to module-owned request and state helpers", () => {

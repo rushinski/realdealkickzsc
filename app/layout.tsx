@@ -1,10 +1,13 @@
 // app/layout.tsx
 import {
   RootLayoutShell,
-  rootLayoutMetadata as metadata,
-  rootLayoutViewport as viewport,
+  rootLayoutMetadata,
+  rootLayoutViewport,
 } from "@/modules/app-shell/presentation";
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata = rootLayoutMetadata;
+export const viewport = rootLayoutViewport;
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return <RootLayoutShell>{children}</RootLayoutShell>;
 }

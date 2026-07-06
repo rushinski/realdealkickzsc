@@ -1,5 +1,5 @@
 import { LoginPageContent } from "@/modules/auth/presentation/public";
 
-export default async function LoginPage() {
+export default function LoginPage() {
   return <LoginPageContent />;
 }

@@ -1,5 +1,4 @@
 import { SectionCard } from "@/modules/orders/presentation/admin/transaction-detail/transactionDetailShared";
-
 import type {
   EmailLog,
   SessionEntry,

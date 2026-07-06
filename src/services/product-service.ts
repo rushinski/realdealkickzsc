@@ -666,7 +666,6 @@ export class ProductService {
     });
   }
 
-
   private async createCatalogCandidates(
     parsed: {
       candidates: {

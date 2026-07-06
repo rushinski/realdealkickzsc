@@ -8,10 +8,7 @@ describe("orders service structure", () => {
       "utf8",
     );
     const helperSource = fs.readFileSync(
-      path.join(
-        process.cwd(),
-        "src/modules/orders/application/order-status-helpers.ts",
-      ),
+      path.join(process.cwd(), "src/modules/orders/application/order-status-helpers.ts"),
       "utf8",
     );
 

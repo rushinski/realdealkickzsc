@@ -16,8 +16,9 @@ export function StateDetailStatusBadges({ state }: StateDetailStatusBadgesProps)
       <AdminStatusBadge tone={state.nexusType === "physical" ? "warning" : "neutral"}>
         {state.nexusType === "physical" ? "Physical nexus" : "Economic nexus"}
       </AdminStatusBadge>
-      {state.isHomeState && <AdminStatusBadge tone="warning">Home Office State</AdminStatusBadge>}
+      {state.isHomeState && (
+        <AdminStatusBadge tone="warning">Home Office State</AdminStatusBadge>
+      )}
     </div>
   );
 }
-

@@ -1,4 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { DynamicServerError } from "next/dist/client/components/hooks-server-context";
+
+import { getServerSession } from "@/lib/auth/session";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { logError } from "@/lib/utils/log";
+import { ProfileRepository } from "@/repositories/profile-repo";
 
 vi.mock("@/lib/supabase/server", () => ({
   createSupabaseServerClient: vi.fn(),
@@ -11,13 +17,6 @@ vi.mock("@/repositories/profile-repo", () => ({
 vi.mock("@/lib/utils/log", () => ({
   logError: vi.fn(),
 }));
-
-import { DynamicServerError } from "next/dist/client/components/hooks-server-context";
-
-import { getServerSession } from "@/lib/auth/session";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { logError } from "@/lib/utils/log";
-import { ProfileRepository } from "@/repositories/profile-repo";
 
 const mockCreateSupabaseServerClient = vi.mocked(createSupabaseServerClient);
 const mockProfileRepository = vi.mocked(ProfileRepository);
@@ -69,13 +68,11 @@ describe("getServerSession", () => {
         getUser: mockGetUser,
       },
     } as never);
-    mockProfileRepository.mockImplementation(
-      function mockProfileRepositoryConstructor() {
-        return {
-          getByUserId: mockGetByUserId,
-        } as never;
-      },
-    );
+    mockProfileRepository.mockImplementation(function mockProfileRepositoryConstructor() {
+      return {
+        getByUserId: mockGetByUserId,
+      } as never;
+    });
 
     await expect(getServerSession()).resolves.toEqual({
       user: {

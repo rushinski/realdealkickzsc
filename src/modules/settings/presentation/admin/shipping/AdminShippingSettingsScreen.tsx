@@ -89,7 +89,9 @@ export function AdminShippingSettingsScreen() {
         onDimensionInput={handleDimensionInput}
         onShippingCostChange={handleShippingCostChange}
         onShippingCostBlur={() =>
-          setShippingCostInput(centsToMoneyString(defaultsDraft?.shipping_cost_cents ?? 0))
+          setShippingCostInput(
+            centsToMoneyString(defaultsDraft?.shipping_cost_cents ?? 0),
+          )
         }
         onSave={() => {
           void saveDefaults();
@@ -112,4 +114,3 @@ export function AdminShippingSettingsScreen() {
     </div>
   );
 }
-

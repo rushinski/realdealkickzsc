@@ -15,9 +15,7 @@ interface InventoryPageContentProps {
   }>;
 }
 
-export async function InventoryPageContent({
-  searchParams,
-}: InventoryPageContentProps) {
+export async function InventoryPageContent({ searchParams }: InventoryPageContentProps) {
   const params = await searchParams;
 
   const filters = {

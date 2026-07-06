@@ -22,7 +22,9 @@ export type AdminDashboardRecentOrder = {
   created_at?: string | null;
 };
 
-const buildSalesTrend = (orders: AdminDashboardRecentOrder[]): AdminDashboardSalesTrendPoint[] => {
+const buildSalesTrend = (
+  orders: AdminDashboardRecentOrder[],
+): AdminDashboardSalesTrendPoint[] => {
   const today = new Date();
   const buckets = new Map<string, number>();
 
@@ -71,7 +73,10 @@ export function useAdminDashboardData() {
         const ordersData = await ordersResponse.json();
         const orders = (ordersData.orders || []) as AdminDashboardRecentOrder[];
         const paidOrders = orders.filter((order) => Number(order.total ?? 0) > 0);
-        const revenue = paidOrders.reduce((sum, order) => sum + Number(order.total ?? 0), 0);
+        const revenue = paidOrders.reduce(
+          (sum, order) => sum + Number(order.total ?? 0),
+          0,
+        );
 
         setSummary({
           revenue,

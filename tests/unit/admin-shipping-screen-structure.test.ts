@@ -28,7 +28,9 @@ describe("admin shipping screen structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders/presentation/admin/shipping/adminShippingScreenView");
+    expect(source).toContain(
+      "@/modules/orders/presentation/admin/shipping/adminShippingScreenView",
+    );
     expect(viewSource).toContain("SHIPPING_TABS");
     expect(viewSource).toContain("validateShippingOrigin");
     expect(viewSource).toContain("extractShippingOriginErrors");

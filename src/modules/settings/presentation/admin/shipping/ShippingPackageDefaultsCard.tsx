@@ -34,7 +34,10 @@ export function ShippingPackageDefaultsCard({
           {SHIPPING_CATEGORIES.map((category) => {
             const summary = buildShippingPackageSummary(shippingDefaults, category.key);
             return (
-              <div key={category.key} className="border border-brand-border bg-brand-page p-4">
+              <div
+                key={category.key}
+                className="border border-brand-border bg-brand-page p-4"
+              >
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="text-xs uppercase tracking-wide text-brand-muted">
@@ -44,7 +47,8 @@ export function ShippingPackageDefaultsCard({
                       ${summary.cost} shipping
                     </div>
                     <div className="mt-2 text-xs text-brand-muted">
-                      {summary.length} x {summary.width} x {summary.height} in · {summary.weight} oz
+                      {summary.length} x {summary.width} x {summary.height} in ·{" "}
+                      {summary.weight} oz
                     </div>
                   </div>
                   <button
@@ -63,4 +67,3 @@ export function ShippingPackageDefaultsCard({
     </AdminSectionCard>
   );
 }
-

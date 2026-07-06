@@ -89,7 +89,9 @@ export function NexusTrackerFilters({
           <input
             type="checkbox"
             checked={values.filterNeedsAction}
-            onChange={(event) => onFilterChange("filterNeedsAction", event.target.checked)}
+            onChange={(event) =>
+              onFilterChange("filterNeedsAction", event.target.checked)
+            }
             className="rdk-checkbox scale-90"
           />
           <span className="text-brand-text">Needs Action Only</span>
@@ -98,4 +100,3 @@ export function NexusTrackerFilters({
     </AdminSectionCard>
   );
 }
-

@@ -40,4 +40,3 @@ export async function EditProductPageContent({ productId }: { productId: string 
     </div>
   );
 }
-

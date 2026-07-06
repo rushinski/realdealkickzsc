@@ -19,7 +19,9 @@ export function ShippingOriginSettingsCard({
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2 className="text-base font-semibold text-brand-text">Origin address</h2>
-            <p className="text-sm text-brand-muted">Used for labels and rate estimates.</p>
+            <p className="text-sm text-brand-muted">
+              Used for labels and rate estimates.
+            </p>
           </div>
           <button type="button" onClick={onEdit} className={adminButtonStyles.secondary}>
             Edit origin
@@ -32,4 +34,3 @@ export function ShippingOriginSettingsCard({
     </AdminSectionCard>
   );
 }
-

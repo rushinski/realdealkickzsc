@@ -15,7 +15,15 @@ vi.mock("@/components/storefront/catalog/CatalogToolbar", () => ({
 }));
 
 vi.mock("@/components/storefront/catalog/StorefrontControls", () => ({
-  StorefrontControls: ({ total, page, pageCount }: { total: number; page: number; pageCount: number }) =>
+  StorefrontControls: ({
+    total,
+    page,
+    pageCount,
+  }: {
+    total: number;
+    page: number;
+    pageCount: number;
+  }) =>
     `<storefront-controls total="${total}" page="${page}" pageCount="${pageCount}" />`,
 }));
 
@@ -28,9 +36,7 @@ vi.mock("@/components/storefront/catalog/StorefrontProductGrid", () => ({
     `<storefront-product-grid href="${storeHref}" />`,
 }));
 
-import {
-  getStoreCatalogPageData,
-} from "@/modules/storefront/application/storefront-catalog";
+import { getStoreCatalogPageData } from "@/modules/storefront/application/storefront-catalog";
 import { StoreCatalogPageContent } from "@/modules/storefront/presentation/catalog/StoreCatalogPageContent";
 
 const mockGetStoreCatalogPageData = vi.mocked(getStoreCatalogPageData);

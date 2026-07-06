@@ -98,10 +98,7 @@ export function clearOriginFieldError(
   return next;
 }
 
-export function toggleShippingCarrierSelection(
-  carriers: string[],
-  carrierKey: string,
-) {
+export function toggleShippingCarrierSelection(carriers: string[], carrierKey: string) {
   if (carriers.includes(carrierKey)) {
     return carriers.filter((carrier) => carrier !== carrierKey);
   }

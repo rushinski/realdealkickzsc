@@ -69,7 +69,8 @@ export async function BrandsPageContent({
               </div>
 
               <div className="mt-2 text-xs text-brand-muted">
-                Showing <span className="font-medium text-brand-text">{filtered.length}</span> of{" "}
+                Showing{" "}
+                <span className="font-medium text-brand-text">{filtered.length}</span> of{" "}
                 <span className="font-medium text-brand-text">{uniqueLabels.length}</span>{" "}
                 brands
               </div>

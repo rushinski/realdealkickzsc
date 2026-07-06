@@ -36,7 +36,9 @@ export function useFeaturedItemsSearch({
     const searchProducts = async () => {
       setIsSearching(true);
       try {
-        setSearchResults(await searchFeaturedItemProductsRequest(query, controller.signal));
+        setSearchResults(
+          await searchFeaturedItemProductsRequest(query, controller.signal),
+        );
       } catch (error: unknown) {
         const isAbort =
           error instanceof DOMException

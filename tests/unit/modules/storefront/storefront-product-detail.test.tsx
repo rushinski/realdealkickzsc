@@ -1,4 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
+import { renderToStaticMarkup } from "react-dom/server";
+
+import { ProductDetail } from "@/components/store/ProductDetail";
 
 vi.mock("@/components/cart/CartProvider", () => ({
   useCart: () => ({
@@ -6,10 +9,6 @@ vi.mock("@/components/cart/CartProvider", () => ({
     items: [],
   }),
 }));
-
-import { renderToStaticMarkup } from "react-dom/server";
-
-import { ProductDetail } from "@/components/store/ProductDetail";
 
 const product = {
   id: "product-1",

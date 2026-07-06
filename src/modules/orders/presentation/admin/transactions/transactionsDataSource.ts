@@ -1,5 +1,4 @@
 import { logError } from "@/lib/utils/log";
-
 import {
   createEmptyTabCounts,
   PAGE_SIZE,
@@ -53,7 +52,9 @@ export async function fetchTransactionOrders(activeTab: TabKey, page: number) {
   return {
     orders: (data.orders ?? [])
       .map((order: unknown) => normalizeTransactionOrder(order))
-      .filter((order: TransactionOrder | null): order is TransactionOrder => Boolean(order)),
+      .filter((order: TransactionOrder | null): order is TransactionOrder =>
+        Boolean(order),
+      ),
     totalCount: Number(data.count ?? 0),
   };
 }

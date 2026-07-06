@@ -5,4 +5,7 @@ export { CreateProductPageContent } from "@/modules/catalog/presentation/admin/i
 export { EditProductClient } from "@/modules/catalog/presentation/admin/inventory/EditProductClient";
 export { EditProductPageContent } from "@/modules/catalog/presentation/admin/inventory/EditProductPageContent";
 export { ProductForm } from "@/modules/catalog/presentation/admin/inventory/ProductForm";
-export { TagInput, type TagChip } from "@/modules/catalog/presentation/admin/inventory/TagInput";
+export {
+  TagInput,
+  type TagChip,
+} from "@/modules/catalog/presentation/admin/inventory/TagInput";

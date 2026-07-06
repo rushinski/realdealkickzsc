@@ -1,4 +1,12 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { NextRequest } from "next/server";
+
+import { requireAdminApi } from "@/lib/auth/session";
+import { ensureTenantId } from "@/lib/auth/tenant";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+
+import { PATCH as itemPatch } from "../../app/api/admin/products/[id]/route";
+import { PATCH as bulkPatch } from "../../app/api/admin/products/route";
 
 vi.mock("next/cache", () => ({
   revalidateTag: vi.fn(),
@@ -28,28 +36,19 @@ const restoreProductMock = vi.fn();
 vi.mock("@/services/product-service", () => ({
   ProductService: vi.fn(function ProductServiceMock() {
     return {
-    archiveProductsByIds: archiveProductsByIdsMock,
-    archiveProductsByFilters: archiveProductsByFiltersMock,
-    restoreProductsByIds: restoreProductsByIdsMock,
-    restoreProductsByFilters: restoreProductsByFiltersMock,
-    deleteProductsByIds: deleteProductsByIdsMock,
-    deleteProductsByFilters: deleteProductsByFiltersMock,
-    archiveProduct: archiveProductMock,
-    restoreProduct: restoreProductMock,
-    getProductById: vi.fn(),
-    updateProduct: vi.fn(),
+      archiveProductsByIds: archiveProductsByIdsMock,
+      archiveProductsByFilters: archiveProductsByFiltersMock,
+      restoreProductsByIds: restoreProductsByIdsMock,
+      restoreProductsByFilters: restoreProductsByFiltersMock,
+      deleteProductsByIds: deleteProductsByIdsMock,
+      deleteProductsByFilters: deleteProductsByFiltersMock,
+      archiveProduct: archiveProductMock,
+      restoreProduct: restoreProductMock,
+      getProductById: vi.fn(),
+      updateProduct: vi.fn(),
     };
   }),
 }));
-
-import { NextRequest } from "next/server";
-
-import { requireAdminApi } from "@/lib/auth/session";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { ensureTenantId } from "@/lib/auth/tenant";
-
-import { PATCH as bulkPatch } from "../../app/api/admin/products/route";
-import { PATCH as itemPatch } from "../../app/api/admin/products/[id]/route";
 
 const mockRequireAdminApi = vi.mocked(requireAdminApi);
 const mockCreateSupabaseServerClient = vi.mocked(createSupabaseServerClient);

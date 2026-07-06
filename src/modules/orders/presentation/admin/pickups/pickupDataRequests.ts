@@ -1,6 +1,9 @@
 "use client";
 
-import type { PickupOrder, PickupTabKey } from "@/modules/orders/presentation/admin/pickups/pickupTypes";
+import type {
+  PickupOrder,
+  PickupTabKey,
+} from "@/modules/orders/presentation/admin/pickups/pickupTypes";
 
 type PickupTabDefinition = {
   fulfillmentStatus: string;

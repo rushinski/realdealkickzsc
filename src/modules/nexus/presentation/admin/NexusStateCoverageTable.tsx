@@ -157,4 +157,3 @@ export function NexusStateCoverageTable({
     </AdminSectionCard>
   );
 }
-

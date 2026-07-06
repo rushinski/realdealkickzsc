@@ -16,7 +16,7 @@ import { finalizeProxyResponse } from "@/proxy/finalize";
  */
 export async function proxy(request: NextRequest): Promise<NextResponse> {
   const requestId = generateRequestId();
-  const { pathname, hostname } = request.nextUrl;
+  const { pathname } = request.nextUrl;
   const canonicalizeResponse = canonicalizePath(request, requestId);
 
   if (canonicalizeResponse) {

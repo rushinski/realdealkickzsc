@@ -1,5 +1,4 @@
 import { PROCESSING_FEE_LABEL } from "@/lib/checkout/display-pricing";
-
 import type { Order } from "@/modules/orders/presentation/admin/transaction-detail/types";
 
 type TransactionPriceBreakdownTotalsProps = {

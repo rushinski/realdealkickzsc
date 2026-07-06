@@ -27,7 +27,8 @@ export function TaxCodeCategoryCard({
           <div className="text-xs text-brand-muted">Default: {category.defaultCode}</div>
         </div>
         <div className="text-xs text-brand-muted">
-          Effective: <span className="font-semibold text-brand-text">{category.effectiveCode}</span>
+          Effective:{" "}
+          <span className="font-semibold text-brand-text">{category.effectiveCode}</span>
         </div>
       </div>
 
@@ -56,4 +57,3 @@ export function TaxCodeCategoryCard({
     </div>
   );
 }
-

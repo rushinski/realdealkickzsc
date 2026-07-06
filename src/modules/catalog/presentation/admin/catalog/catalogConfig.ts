@@ -1,4 +1,7 @@
-import type { ActiveTab, NewAliasDraft } from "@/modules/catalog/presentation/admin/catalog/types";
+import type {
+  ActiveTab,
+  NewAliasDraft,
+} from "@/modules/catalog/presentation/admin/catalog/types";
 
 export const catalogTabs: Array<{ key: ActiveTab; label: string }> = [
   { key: "brands", label: "Tags" },

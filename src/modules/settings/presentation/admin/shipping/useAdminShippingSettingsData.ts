@@ -17,9 +17,7 @@ import {
   saveShippingDefaultsRequest,
   saveShippingOriginRequest,
 } from "@/modules/settings/presentation/admin/shipping/shippingSettingsRequests";
-import {
-  toggleShippingCarrierSelection,
-} from "@/modules/settings/presentation/admin/shipping/shippingSettingsState";
+import { toggleShippingCarrierSelection } from "@/modules/settings/presentation/admin/shipping/shippingSettingsState";
 import { useShippingDefaultsModalState } from "@/modules/settings/presentation/admin/shipping/useShippingDefaultsModalState";
 import { useShippingOriginModalState } from "@/modules/settings/presentation/admin/shipping/useShippingOriginModalState";
 
