@@ -1,4 +1,4 @@
-import { ContactForm } from "@/components/contact/ContactForm";
+import { ContactForm } from "@/modules/support/presentation/components/ContactForm";
 
 export function BugReportPageContent() {
   return (
