@@ -1,10 +1,10 @@
 import { vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { PasswordLoginForm } from "@/components/auth/login/PasswordLoginForm";
-import { RegisterForm } from "@/components/auth/register/RegisterForm";
-import { QRDisplay } from "@/components/auth/2fa/QRDisplay";
-import { AuthHeader } from "@/components/auth/ui/AuthHeader";
+import { PasswordLoginForm } from "@/modules/auth/presentation/components/login/PasswordLoginForm";
+import { RegisterForm } from "@/modules/auth/presentation/components/register/RegisterForm";
+import { QRDisplay } from "@/modules/auth/presentation/components/two-factor/QRDisplay";
+import { AuthHeader } from "@/modules/auth/presentation/components/ui/AuthHeader";
 
 vi.mock("next/navigation", () => ({
   useRouter: () => ({

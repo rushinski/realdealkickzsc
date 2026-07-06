@@ -1,5 +1,5 @@
-import AuthShell from "@/components/auth/ui/AuthShell";
-import { ChallengeForm } from "@/components/auth/2fa/ChallengeForm";
+import { ChallengeForm } from "@/modules/auth/presentation/components/two-factor/ChallengeForm";
+import AuthShell from "@/modules/auth/presentation/components/ui/AuthShell";
 
 export function TwoFactorChallengePageContent() {
   return (

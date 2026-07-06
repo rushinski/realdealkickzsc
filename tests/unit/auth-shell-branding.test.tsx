@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 
-import AuthShell from "@/components/auth/ui/AuthShell";
+import AuthShell from "@/modules/auth/presentation/components/ui/AuthShell";
 
 describe("AuthShell", () => {
   it("renders solesneakers branding", () => {

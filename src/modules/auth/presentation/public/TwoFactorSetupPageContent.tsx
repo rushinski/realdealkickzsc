@@ -1,5 +1,5 @@
-import AuthShell from "@/components/auth/ui/AuthShell";
-import { EnrollmentForm } from "@/components/auth/2fa/EnrollmentForm";
+import { EnrollmentForm } from "@/modules/auth/presentation/components/two-factor/EnrollmentForm";
+import AuthShell from "@/modules/auth/presentation/components/ui/AuthShell";
 
 export function TwoFactorSetupPageContent() {
   return (

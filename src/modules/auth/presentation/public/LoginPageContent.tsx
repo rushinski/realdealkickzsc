@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 
-import AuthShell from "@/components/auth/ui/AuthShell";
-import { LoginForm } from "@/components/auth/login/LoginFormRouter";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { LoginForm } from "@/modules/auth/presentation/components/login/LoginFormRouter";
+import AuthShell from "@/modules/auth/presentation/components/ui/AuthShell";
 
 export async function LoginPageContent() {
   const supabase = await createSupabaseServerClient();

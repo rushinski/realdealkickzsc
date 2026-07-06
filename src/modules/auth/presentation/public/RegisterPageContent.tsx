@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 
-import AuthShell from "@/components/auth/ui/AuthShell";
-import { RegisterForm } from "@/components/auth/register/RegisterForm";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { RegisterForm } from "@/modules/auth/presentation/components/register/RegisterForm";
+import AuthShell from "@/modules/auth/presentation/components/ui/AuthShell";
 
 export async function RegisterPageContent() {
   const supabase = await createSupabaseServerClient();
