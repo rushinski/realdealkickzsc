@@ -3,14 +3,16 @@
 ## Placement
 
 - `app/` contains route entrypoints, route layouts, and server composition.
-- `src/components/<domain>` contains renderable UI components.
-- `src/components/storefront/*` is the canonical storefront UI tree.
-- `src/components/admin/*` is the canonical admin UI tree.
+- `src/modules/<module>/presentation/*` is the canonical home for feature-owned screens, hooks, view models, and route-facing UI.
+- `src/modules/storefront/*` is the canonical customer-facing storefront feature tree.
+- `src/modules/shared/presentation/admin/*` is the canonical shared admin shell and shared admin UI tree.
+- `src/components/*` is reserved for generic reusable UI building blocks, not feature-owned admin or storefront surfaces.
 
 ## Imports
 
 - Use `@/` imports for application code.
 - Do not import from `../../../src/...` out of `app/`.
+- Feature modules may depend on `src/modules/shared/**` and `src/shared/**`, but not on another module's private internals.
 
 ## Route Shape
 
