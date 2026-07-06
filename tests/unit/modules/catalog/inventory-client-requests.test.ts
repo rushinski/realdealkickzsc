@@ -30,9 +30,9 @@ describe("inventory client request helpers", () => {
         selectAllMatching: false,
         selectedIds: ["product-1", "product-2"],
         searchQuery: "",
-        categoryFilter: null,
-        conditionFilter: null,
-        stockStatusFilter: "all",
+        categoryFilter: undefined,
+        conditionFilter: undefined,
+        stockStatusFilter: "in_stock",
       }),
     ).toEqual({
       action: "archive",
@@ -49,7 +49,7 @@ describe("inventory client request helpers", () => {
         categoryFilter: "sneakers",
         conditionFilter: "new",
         stockStatusFilter: "archived",
-        stockStatusOverride: "active",
+        stockStatusOverride: "archived",
       }),
     ).toEqual({
       action: "restore",
@@ -58,7 +58,7 @@ describe("inventory client request helpers", () => {
         q: "air max",
         category: "sneakers",
         condition: "new",
-        stockStatus: "active",
+        stockStatus: "archived",
       },
     });
   });

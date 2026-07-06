@@ -1,22 +1,26 @@
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
 import { ProductTitleParserService } from "@/services/product-title-parser-service";
 
-const mockListBrandsWithGroups = jest.fn();
-const mockListBrandAliases = jest.fn();
-const mockListModels = jest.fn();
-const mockListModelAliasesAll = jest.fn();
+const mockListBrandsWithGroups = vi.fn();
+const mockListBrandAliases = vi.fn();
+const mockListModels = vi.fn();
+const mockListModelAliasesAll = vi.fn();
 
-jest.mock("@/repositories/catalog-repo", () => ({
-  CatalogRepository: jest.fn().mockImplementation(() => ({
+vi.mock("@/repositories/catalog-repo", () => ({
+  CatalogRepository: vi.fn(function CatalogRepositoryMock() {
+    return {
     listBrandsWithGroups: mockListBrandsWithGroups,
     listBrandAliases: mockListBrandAliases,
     listModels: mockListModels,
     listModelAliasesAll: mockListModelAliasesAll,
-  })),
+    };
+  }),
 }));
 
 describe("ProductTitleParserService", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     mockListBrandsWithGroups.mockResolvedValue([
       {

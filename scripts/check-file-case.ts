@@ -8,7 +8,6 @@ const allowedExactNames = [
   /^LICENSE$/,
   /^LICENSE\.txt$/,
   /^database\.types\.ts$/,
-  /^jest\.config\.ts$/,
   /^next-env\.d\.ts$/,
   /^playwright\.config\.ts$/,
   /^\.env\.example$/,

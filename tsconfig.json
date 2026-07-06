@@ -39,7 +39,6 @@
     "**/*.tsx",
     "tailwind.config.ts",
     ".next/types/**/*.ts",
-    "jest.config.integration.ts",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [

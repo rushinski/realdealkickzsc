@@ -1,30 +1,33 @@
-jest.mock("next/cache", () => ({
-  revalidateTag: jest.fn(),
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+vi.mock("next/cache", () => ({
+  revalidateTag: vi.fn(),
 }));
 
-jest.mock("@/lib/auth/session", () => ({
-  requireAdminApi: jest.fn(),
+vi.mock("@/lib/auth/session", () => ({
+  requireAdminApi: vi.fn(),
 }));
 
-jest.mock("@/lib/supabase/server", () => ({
-  createSupabaseServerClient: jest.fn(),
+vi.mock("@/lib/supabase/server", () => ({
+  createSupabaseServerClient: vi.fn(),
 }));
 
-jest.mock("@/lib/auth/tenant", () => ({
-  ensureTenantId: jest.fn(),
+vi.mock("@/lib/auth/tenant", () => ({
+  ensureTenantId: vi.fn(),
 }));
 
-const archiveProductsByIdsMock = jest.fn();
-const archiveProductsByFiltersMock = jest.fn();
-const restoreProductsByIdsMock = jest.fn();
-const restoreProductsByFiltersMock = jest.fn();
-const deleteProductsByIdsMock = jest.fn();
-const deleteProductsByFiltersMock = jest.fn();
-const archiveProductMock = jest.fn();
-const restoreProductMock = jest.fn();
+const archiveProductsByIdsMock = vi.fn();
+const archiveProductsByFiltersMock = vi.fn();
+const restoreProductsByIdsMock = vi.fn();
+const restoreProductsByFiltersMock = vi.fn();
+const deleteProductsByIdsMock = vi.fn();
+const deleteProductsByFiltersMock = vi.fn();
+const archiveProductMock = vi.fn();
+const restoreProductMock = vi.fn();
 
-jest.mock("@/services/product-service", () => ({
-  ProductService: jest.fn().mockImplementation(() => ({
+vi.mock("@/services/product-service", () => ({
+  ProductService: vi.fn(function ProductServiceMock() {
+    return {
     archiveProductsByIds: archiveProductsByIdsMock,
     archiveProductsByFilters: archiveProductsByFiltersMock,
     restoreProductsByIds: restoreProductsByIdsMock,
@@ -33,9 +36,10 @@ jest.mock("@/services/product-service", () => ({
     deleteProductsByFilters: deleteProductsByFiltersMock,
     archiveProduct: archiveProductMock,
     restoreProduct: restoreProductMock,
-    getProductById: jest.fn(),
-    updateProduct: jest.fn(),
-  })),
+    getProductById: vi.fn(),
+    updateProduct: vi.fn(),
+    };
+  }),
 }));
 
 import { NextRequest } from "next/server";
@@ -47,19 +51,19 @@ import { ensureTenantId } from "@/lib/auth/tenant";
 import { PATCH as bulkPatch } from "../../app/api/admin/products/route";
 import { PATCH as itemPatch } from "../../app/api/admin/products/[id]/route";
 
-const mockRequireAdminApi = jest.mocked(requireAdminApi);
-const mockCreateSupabaseServerClient = jest.mocked(createSupabaseServerClient);
-const mockEnsureTenantId = jest.mocked(ensureTenantId);
+const mockRequireAdminApi = vi.mocked(requireAdminApi);
+const mockCreateSupabaseServerClient = vi.mocked(createSupabaseServerClient);
+const mockEnsureTenantId = vi.mocked(ensureTenantId);
 
 describe("product archive admin api", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     mockRequireAdminApi.mockResolvedValue({
       user: { id: "user-1", email: "admin@example.com" },
       profile: null,
       role: "admin",
     } as never);
-    mockCreateSupabaseServerClient.mockResolvedValue({ from: jest.fn() } as never);
+    mockCreateSupabaseServerClient.mockResolvedValue({ from: vi.fn() } as never);
     mockEnsureTenantId.mockResolvedValue("tenant-1");
   });
 

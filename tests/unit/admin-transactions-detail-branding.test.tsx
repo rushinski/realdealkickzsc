@@ -1,10 +1,11 @@
+import { vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import TransactionDetailPage from "../../app/admin/transactions/[orderId]/page";
 
-jest.mock("next/navigation", () => ({
+vi.mock("next/navigation", () => ({
   useParams: () => ({ orderId: "order-123" }),
-  useRouter: () => ({ push: jest.fn() }),
+  useRouter: () => ({ push: vi.fn() }),
 }));
 
 describe("admin transactions detail branding", () => {

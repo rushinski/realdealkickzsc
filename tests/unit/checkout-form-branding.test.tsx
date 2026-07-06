@@ -1,10 +1,12 @@
-jest.mock("next/navigation", () => ({
+import { vi } from "vitest";
+
+vi.mock("next/navigation", () => ({
   useRouter: () => ({
-    push: jest.fn(),
+    push: vi.fn(),
   }),
 }));
 
-jest.mock("@/components/checkout/SavedAddresses", () => ({
+vi.mock("@/components/checkout/SavedAddresses", () => ({
   SavedAddresses: () => "saved-addresses",
 }));
 

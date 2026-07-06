@@ -1,6 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from "next/font/google";
 
 import { isAdminRole } from "@/config/constants/roles";
@@ -67,8 +65,6 @@ export async function RootLayoutShell({ children }: { children: React.ReactNode 
             </ClientShell>
           </CartProvider>
         </SessionProvider>
-        <SpeedInsights />
-        <Analytics />
       </body>
     </html>
   );

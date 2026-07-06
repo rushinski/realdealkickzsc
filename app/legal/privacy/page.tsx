@@ -2,20 +2,18 @@
 export default function PrivacyPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 pt-8 pb-16">
-      <h1 className="text-4xl font-bold text-white mb-4">
-        Privacy Policy - Realdealkickzsc
-      </h1>
+      <h1 className="mb-4 text-4xl font-bold text-white">Privacy Policy - solesneakers</h1>
 
       <div className="prose prose-invert max-w-none">
         <div className="text-zinc-400 space-y-6">
           <p className="text-sm">Last updated: December 30, 2025</p>
 
           <p>
-            This Privacy Policy describes how Realdealkickzsc (&quot;we,&quot;
-            &quot;us,&quot; or &quot;our&quot;) collects, uses, and discloses personal
-            information when you visit, use our services, create an account, or make a
-            purchase through realdealkickzsc.com (the &quot;Site&quot;) or otherwise
-            interact with us (collectively, the &quot;Services&quot;).
+            This Privacy Policy describes how solesneakers (&quot;we,&quot; &quot;us,&quot;
+            or &quot;our&quot;) collects, uses, and discloses personal information when
+            you visit, use our services, create an account, or make a purchase through
+            our site (the &quot;Site&quot;) or otherwise interact with us (collectively,
+            the &quot;Services&quot;).
           </p>
 
           <section>
@@ -154,8 +152,8 @@ export default function PrivacyPage() {
             <p>
               Depending on your location, you may have rights to access, correct, delete,
               or obtain a copy of your personal information. To request action on your
-              information, contact us at realdealholyspill@gmail.com. We may verify your
-              identity before responding.
+              information, contact us at null@gmail.com. We may verify your identity
+              before responding.
             </p>
           </section>
 
@@ -171,7 +169,7 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="text-2xl font-bold text-white mt-8 mb-4">10) Contact</h2>
-            <p>Email: realdealholyspill@gmail.com</p>
+            <p>Email: null@gmail.com</p>
             <p>Location: Simpsonville, South Carolina, USA</p>
           </section>
         </div>

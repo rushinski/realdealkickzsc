@@ -65,6 +65,7 @@ E2E configuration flags:
 See `package.json` and `tests/` for test entry points and coverage areas.
 
 The active checkout flow is provider-neutral. Historical provider-specific references may still exist in archived migrations or planning notes.
+Vitest is the active unit and in-process integration runner. Historical Jest references may still appear in archived plans.
 
 ## Documentation
 - `docs/PROJECT_OVERVIEW.md` (full system overview for rebuild planning)

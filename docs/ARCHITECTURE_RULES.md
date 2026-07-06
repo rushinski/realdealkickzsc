@@ -153,3 +153,10 @@ An architecture migration step is complete when:
 2. Imports follow the rules above.
 3. Runtime behavior is unchanged unless intentionally modified.
 4. Tests and type checks covering the touched surface pass.
+
+## Testing Boundaries
+
+1. Behavior tests should target module-owned exports before route files.
+2. `tests/architecture/**` is reserved for thin structural and boundary assertions.
+3. Module tests should live beside the owning capability under `tests/unit/modules/**` when practical.
+4. Browser journeys and async server-component flows belong in Playwright, not in architecture smoke tests.

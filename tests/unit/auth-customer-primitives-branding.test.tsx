@@ -1,6 +1,8 @@
-jest.mock("next/navigation", () => ({
+import { vi } from "vitest";
+
+vi.mock("next/navigation", () => ({
   useRouter: () => ({
-    push: jest.fn(),
+    push: vi.fn(),
   }),
   useSearchParams: () => ({
     get: () => null,

@@ -80,6 +80,10 @@ See `docs/PROXY_PIPELINE.md` for the detailed proxy sequence and enforcement rul
 Non-trivial constants are centralized under `src/config/constants/**`.
 
 ## Testing
+- Vitest covers unit and in-process integration tests.
+- Playwright covers browser and async server-component flows.
+- Architecture smoke tests live under `tests/architecture` and stay intentionally narrow.
+- Tests should be grouped by module ownership where possible, with route-shape checks kept separate from behavior coverage.
 - Unit and integration tests are in `tests/unit` and `tests/integration`.
 - RLS tests are in `tests/rls`.
 - Playwright E2E tests are in `tests/e2e`.

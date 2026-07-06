@@ -100,9 +100,9 @@ describe("buildTransactionDetailViewModel", () => {
         },
       ],
       getOrderItemFinancials: (item) => ({
-        quantity: item.quantity,
+        quantity: item.quantity ?? 0,
         unitCost: item.id === "item-1" ? 60 : 15,
-        unitPrice: item.unit_price,
+        unitPrice: item.unit_price ?? 0,
         unitProfit: item.id === "item-1" ? 40 : 10,
       }),
     });
