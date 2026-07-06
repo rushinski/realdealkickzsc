@@ -1,1 +1,1 @@
-export { FilterPanel as StorefrontFilterPanel } from "@/components/store/FilterPanel";
+export { FilterPanel as StorefrontFilterPanel } from "@/modules/storefront/presentation/components/catalog/FilterPanel";

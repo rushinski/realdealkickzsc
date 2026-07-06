@@ -11,16 +11,18 @@ describe("frontend structure standards", () => {
     expect(shippingPage).not.toMatch(/\.\.\/\.\.\/\.\.\/src\//);
   });
 
-  it("keeps storefront wrappers from re-exporting legacy store components", () => {
-    const catalogGrid = fs.readFileSync(
+  it("keeps storefront page content pointed at module-owned presentation components", () => {
+    const catalogPageContent = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/components/storefront/catalog/StorefrontProductGrid.tsx",
+        "src/modules/storefront/presentation/catalog/StoreCatalogPageContent.tsx",
       ),
       "utf8",
     );
 
-    expect(catalogGrid).not.toContain("CatalogProductGrid");
-    expect(catalogGrid).toContain("StorefrontProductGrid");
+    expect(catalogPageContent).toContain(
+      "@/modules/storefront/presentation/components/catalog/ProductGrid",
+    );
+    expect(catalogPageContent).not.toContain("@/components/storefront/");
   });
 });

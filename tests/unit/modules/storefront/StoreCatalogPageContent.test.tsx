@@ -5,17 +5,17 @@ vi.mock("@/modules/storefront/application/storefront-catalog", () => ({
   getStoreCatalogPageData: vi.fn(),
 }));
 
-vi.mock("@/components/storefront/catalog/CatalogFilterBar", () => ({
+vi.mock("@/modules/storefront/presentation/components/catalog/CatalogFilterBar", () => ({
   CatalogFilterBar: () => "<catalog-filter-bar />",
 }));
 
-vi.mock("@/components/storefront/catalog/CatalogToolbar", () => ({
+vi.mock("@/modules/storefront/presentation/components/catalog/CatalogToolbar", () => ({
   CatalogToolbar: ({ browseLabel, total }: { browseLabel: string; total: number }) =>
     `<catalog-toolbar label="${browseLabel}" total="${total}" />`,
 }));
 
-vi.mock("@/components/storefront/catalog/StorefrontControls", () => ({
-  StorefrontControls: ({
+vi.mock("@/modules/storefront/presentation/components/catalog/StoreControls", () => ({
+  StoreControls: ({
     total,
     page,
     pageCount,
@@ -27,12 +27,12 @@ vi.mock("@/components/storefront/catalog/StorefrontControls", () => ({
     `<storefront-controls total="${total}" page="${page}" pageCount="${pageCount}" />`,
 }));
 
-vi.mock("@/components/storefront/catalog/StorefrontFilterPanel", () => ({
-  StorefrontFilterPanel: () => "<storefront-filter-panel />",
+vi.mock("@/modules/storefront/presentation/components/catalog/FilterPanel", () => ({
+  FilterPanel: () => "<storefront-filter-panel />",
 }));
 
-vi.mock("@/components/storefront/catalog/StorefrontProductGrid", () => ({
-  StorefrontProductGrid: ({ storeHref }: { storeHref: string }) =>
+vi.mock("@/modules/storefront/presentation/components/catalog/ProductGrid", () => ({
+  ProductGrid: ({ storeHref }: { storeHref: string }) =>
     `<storefront-product-grid href="${storeHref}" />`,
 }));
 

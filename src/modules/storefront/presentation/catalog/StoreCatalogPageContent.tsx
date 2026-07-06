@@ -1,8 +1,8 @@
-import { CatalogFilterBar } from "@/components/storefront/catalog/CatalogFilterBar";
-import { CatalogToolbar } from "@/components/storefront/catalog/CatalogToolbar";
-import { StorefrontControls } from "@/components/storefront/catalog/StorefrontControls";
-import { StorefrontFilterPanel } from "@/components/storefront/catalog/StorefrontFilterPanel";
-import { StorefrontProductGrid } from "@/components/storefront/catalog/StorefrontProductGrid";
+import { CatalogFilterBar } from "@/modules/storefront/presentation/components/catalog/CatalogFilterBar";
+import { CatalogToolbar } from "@/modules/storefront/presentation/components/catalog/CatalogToolbar";
+import { FilterPanel } from "@/modules/storefront/presentation/components/catalog/FilterPanel";
+import { ProductGrid } from "@/modules/storefront/presentation/components/catalog/ProductGrid";
+import { StoreControls } from "@/modules/storefront/presentation/components/catalog/StoreControls";
 import {
   getStoreCatalogPageData,
   type StoreSearchParams,
@@ -37,7 +37,7 @@ export async function StoreCatalogPageContent({
       </div>
 
       <div className="mx-auto max-w-brand px-6 py-8 md:px-12 lg:px-16">
-        <StorefrontControls
+        <StoreControls
           total={productsResult.total}
           page={productsResult.page}
           pageCount={pageCount}
@@ -52,7 +52,7 @@ export async function StoreCatalogPageContent({
               className="sticky transition-[top] duration-300"
               style={{ top: "var(--rdk-header-offset, 0px)" }}
             >
-              <StorefrontFilterPanel
+              <FilterPanel
                 selectedCategories={selectedCategories}
                 selectedBrands={selectedBrands}
                 selectedModels={selectedModels}
@@ -72,15 +72,12 @@ export async function StoreCatalogPageContent({
           </div>
 
           <div className="lg:col-span-3">
-            <StorefrontProductGrid
-              products={productsResult.products}
-              storeHref={storeHref}
-            />
+            <ProductGrid products={productsResult.products} storeHref={storeHref} />
           </div>
         </div>
 
         <div className="lg:hidden">
-          <StorefrontFilterPanel
+          <FilterPanel
             selectedCategories={selectedCategories}
             selectedBrands={selectedBrands}
             selectedModels={selectedModels}
@@ -99,7 +96,7 @@ export async function StoreCatalogPageContent({
         </div>
 
         <div className="mt-10">
-          <StorefrontControls
+          <StoreControls
             total={productsResult.total}
             page={productsResult.page}
             pageCount={pageCount}

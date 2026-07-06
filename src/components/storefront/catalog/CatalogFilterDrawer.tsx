@@ -1,3 +1,1 @@
-export function CatalogFilterDrawer() {
-  return null;
-}
+export { CatalogFilterDrawer } from "@/modules/storefront/presentation/components/catalog/CatalogFilterDrawer";

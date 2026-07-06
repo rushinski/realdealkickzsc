@@ -1,1 +1,1 @@
-export { ProductGrid as StorefrontProductGrid } from "@/components/store/ProductGrid";
+export { ProductGrid as StorefrontProductGrid } from "@/modules/storefront/presentation/components/catalog/ProductGrid";

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
-import { BackToStoreLink } from "@/components/store/BackToStoreLink";
-import { ProductDetail } from "@/components/store/ProductDetail";
+import { BackToStoreLink } from "@/modules/storefront/presentation/components/product/BackToStoreLink";
+import { ProductDetail } from "@/modules/storefront/presentation/components/product/ProductDetail";
 import { getCachedStoreProduct } from "@/modules/storefront/infrastructure/storefront-data";
 import { isStoreProductId } from "@/modules/storefront/application/storefront-product";
 

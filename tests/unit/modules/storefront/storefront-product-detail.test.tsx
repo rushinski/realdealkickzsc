@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { ProductDetail } from "@/components/store/ProductDetail";
+import { ProductDetail } from "@/modules/storefront/presentation/components/product/ProductDetail";
 
 vi.mock("@/components/cart/CartProvider", () => ({
   useCart: () => ({

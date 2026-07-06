@@ -1,5 +1,5 @@
-import { BrandShowcaseSection } from "@/components/storefront/home/BrandShowcaseSection";
-import { HomeHero } from "@/components/storefront/home/HomeHero";
+import { BrandShowcaseSection } from "@/modules/storefront/presentation/components/home/BrandShowcaseSection";
+import { HomeHero } from "@/modules/storefront/presentation/components/home/HomeHero";
 import { storefrontHomeShowcaseSections } from "@/modules/storefront/application/storefront-home";
 
 export function HomePageContent() {

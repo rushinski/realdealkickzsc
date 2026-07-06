@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 
 import { AdminSidebar } from "@/modules/shared/presentation/admin/shell/AdminSidebar";
 import type { ProfileRole } from "@/config/constants/roles";
-import { StorefrontCartDrawer } from "@/components/storefront/cart/StorefrontCartDrawer";
-import { StorefrontFooter } from "@/components/storefront/shell/StorefrontFooter";
-import { StorefrontSearchOverlay } from "@/components/storefront/search/StorefrontSearchOverlay";
+import { StorefrontCartDrawer } from "@/modules/storefront/presentation/components/cart/StorefrontCartDrawer";
+import { StorefrontFooter } from "@/modules/storefront/presentation/components/shell/StorefrontFooter";
+import { StorefrontSearchOverlay } from "@/modules/storefront/presentation/components/search/StorefrontSearchOverlay";
 
 export function ClientShell({
   children,

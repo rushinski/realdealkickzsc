@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { StorefrontHeader } from "@/components/storefront/shell/StorefrontHeader";
+import { StorefrontHeader } from "@/modules/storefront/presentation/components/shell/StorefrontHeader";
 
 describe("StorefrontHeader", () => {
   it("renders the solesneakers shell links", () => {

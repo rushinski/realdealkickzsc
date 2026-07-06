@@ -1,1 +1,1 @@
-export { StoreControls as StorefrontControls } from "@/components/store/StoreControls";
+export { StoreControls as StorefrontControls } from "@/modules/storefront/presentation/components/catalog/StoreControls";
