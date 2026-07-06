@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import { ProductDetail } from "@/modules/storefront/presentation/components/product/ProductDetail";
 
-vi.mock("@/components/cart/CartProvider", () => ({
+vi.mock("@/shared/cart/CartProvider", () => ({
   useCart: () => ({
     addItem: vi.fn(),
     items: [],

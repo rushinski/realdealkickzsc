@@ -4,7 +4,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { CheckCircle, Loader2, Mail } from "lucide-react";
 
-import { useCart } from "@/components/cart/CartProvider";
+import { useCart } from "@/shared/cart/CartProvider";
 import {
   calculateCheckoutDisplayTotals,
   PROCESSING_FEE_LABEL,

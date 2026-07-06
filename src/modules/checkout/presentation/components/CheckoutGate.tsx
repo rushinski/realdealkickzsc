@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { clientEnv } from "@/config/client-env";
-import { useCart } from "@/components/cart/CartProvider";
+import { useCart } from "@/shared/cart/CartProvider";
 import { CartSnapshotService } from "@/services/cart-snapshot-service";
 
 const guestEnabled = clientEnv.NEXT_PUBLIC_GUEST_CHECKOUT_ENABLED === "true";

@@ -4,9 +4,9 @@ import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 
 import { buttonStyles } from "@/components/ui/buttonStyles";
-import { useCart } from "@/components/cart/CartProvider";
 import { RdkSelect, type RdkSelectOption } from "@/components/ui/Select";
 import { Toast } from "@/components/ui/Toast";
+import { useCart } from "@/shared/cart/CartProvider";
 import type { ProductWithDetails } from "@/types/domain/product";
 
 export function ProductPurchasePanel({ product }: { product: ProductWithDetails }) {

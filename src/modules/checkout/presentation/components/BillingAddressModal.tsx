@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { CreditCard, X } from "lucide-react";
 
-import { AddressInput } from "@/components/shared/AddressInput";
+import { AddressInput } from "@/shared/ui/address/AddressInput";
 import { normalizeUsStateCode } from "@/lib/address/codes";
 
 import type { BillingAddress } from "./BillingAddressForm";

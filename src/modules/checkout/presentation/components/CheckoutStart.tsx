@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 
-import { useCart } from "@/components/cart/CartProvider";
+import { useCart } from "@/shared/cart/CartProvider";
 import type { CartItem } from "@/types/domain/cart";
 import {
   clearIdempotencyKeyFromStorage,

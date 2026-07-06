@@ -1,4 +1,3 @@
-// src/components/cart/CartProvider.tsx
 "use client";
 
 import type { ReactNode } from "react";
@@ -77,7 +76,6 @@ export function CartProvider({
     }
   }, [cart]);
 
-  // OPTIMIZATION: Use session from context instead of fetching independently
   useEffect(() => {
     setResolvedUserId(userId ?? user?.id ?? null);
   }, [userId, user?.id]);

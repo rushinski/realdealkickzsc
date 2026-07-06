@@ -1,12 +1,11 @@
-// src/components/shell/ScrollHeader.tsx
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
-import { useCart } from "@/components/cart/CartProvider";
 import type { ProfileRole } from "@/config/constants/roles";
 import { StorefrontHeader } from "@/modules/storefront/presentation/components/shell/StorefrontHeader";
+import { useCart } from "@/shared/cart/CartProvider";
 
 interface ScrollHeaderProps {
   isAuthenticated?: boolean;

@@ -6,7 +6,7 @@ import { Minus, Plus, Trash2, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import { buttonStyles } from "@/components/ui/buttonStyles";
-import { useCart } from "@/components/cart/CartProvider";
+import { useCart } from "@/shared/cart/CartProvider";
 
 export function StorefrontCartDrawer({
   isOpen,

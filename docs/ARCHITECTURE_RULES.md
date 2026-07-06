@@ -28,6 +28,7 @@ src/
       index.ts
   shared/
     config/
+    cart/
     lib/
     types/
     ui/
@@ -65,11 +66,14 @@ src/
 
 - React components, hooks, view models, client-side state helpers, and screen composition.
 - Presentation code may depend on application-facing module exports, but not on another module's infrastructure internals.
+- Route shell components belong to the owning module presentation tree, for example `src/modules/app-shell/presentation/components/**`.
 
 ### `src/shared/**`
 
 - Cross-cutting code used by multiple modules.
-- Allowed categories: config, generic utilities, shared UI primitives, shared types, validation helpers.
+- Allowed categories: config, generic utilities, shared UI primitives, shared providers and state helpers, shared types, validation helpers.
+- Shared UI belongs under `src/shared/ui/**`.
+- Shared cross-module providers should live in a named capability folder such as `src/shared/cart/**` instead of generic component buckets.
 - Shared code must stay generic. If logic is domain-specific, it belongs in a module.
 
 ## Import Rules
@@ -93,7 +97,7 @@ The current primary modules are:
 - `customers`
 - `nexus`
 - `storefront`
-- `admin-shell`
+- `app-shell`
 
 Additional modules may be introduced when they represent durable business capabilities with clear ownership.
 
@@ -129,7 +133,7 @@ Use ports and adapters where it reduces coupling. Do not add ceremony without a 
 ## Migration Rules For Existing Code
 
 1. New features should be added under `src/modules/**` unless a strong reason exists not to.
-2. When touching large files under `src/services/**`, `src/repositories/**`, or `src/components/**`, prefer extraction into a module-owned file instead of growing the shared layer.
+2. When touching large files under `src/services/**`, `src/repositories/**`, or legacy shared component buckets, prefer extraction into a module-owned file or clearly named `src/shared/**` capability boundary instead of growing a generic layer.
 3. Keep compatibility shims when needed during migration, but treat them as temporary.
 4. Do not perform broad repo-wide moves without a clear module target and verification.
 5. Each migration step must leave the application in a working, testable state.

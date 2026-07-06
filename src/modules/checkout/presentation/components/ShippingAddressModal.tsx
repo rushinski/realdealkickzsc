@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { MapPin, X } from "lucide-react";
 
-import { AddressInput } from "@/components/shared/AddressInput";
-import { AddressSuggestionModal } from "@/components/shared/AddressSuggestionModal";
-import type { AddressSuggestion } from "@/components/shared/AddressSuggestionModal";
+import { AddressInput } from "@/shared/ui/address/AddressInput";
+import {
+  AddressSuggestionModal,
+  type AddressSuggestion,
+} from "@/shared/ui/address/AddressSuggestionModal";
 import { normalizeCountryCode, normalizeUsStateCode } from "@/lib/address/codes";
 
 import type { ShippingAddress } from "./CheckoutForm";

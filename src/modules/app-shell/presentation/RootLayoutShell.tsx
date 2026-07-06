@@ -4,9 +4,9 @@ import { Inter } from "next/font/google";
 import { isAdminRole } from "@/config/constants/roles";
 import { SessionProvider } from "@/contexts/SessionContext";
 import { getServerSession } from "@/lib/auth/session";
-import { CartProvider } from "@/components/cart/CartProvider";
-import { ClientShell } from "@/components/shell/ClientShell";
-import { ScrollHeader } from "@/components/shell/ScrollHeader";
+import { ClientShell } from "@/modules/app-shell/presentation/components/ClientShell";
+import { ScrollHeader } from "@/modules/app-shell/presentation/components/ScrollHeader";
+import { CartProvider } from "@/shared/cart/CartProvider";
 import "@/styles/global.css";
 
 const inter = Inter({

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
 
-import { useCart } from "@/components/cart/CartProvider";
+import { useCart } from "@/shared/cart/CartProvider";
 
 export function CartPageContent() {
   const router = useRouter();
