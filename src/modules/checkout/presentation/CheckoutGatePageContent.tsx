@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation";
 
-import { CheckoutGate } from "@/components/checkout/CheckoutGate";
-import { CheckoutLockedNotice } from "@/components/checkout/CheckoutLockedNotice";
 import { getServerSession } from "@/lib/auth/session";
 import { getStoreAccessSettings } from "@/lib/store-access/get-store-access-settings";
+import { CheckoutGate } from "@/modules/checkout/presentation/components/CheckoutGate";
+import { CheckoutLockedNotice } from "@/modules/checkout/presentation/components/CheckoutLockedNotice";
 
 export async function CheckoutGatePageContent() {
   const storeAccess = await getStoreAccessSettings();

@@ -18,11 +18,11 @@ vi.mock("@/lib/auth/session", () => ({
   getServerSession: vi.fn(),
 }));
 
-vi.mock("@/components/checkout/CheckoutLockedNotice", () => ({
+vi.mock("@/modules/checkout/presentation/components/CheckoutLockedNotice", () => ({
   CheckoutLockedNotice: ({ message }: { message: string }) => `locked:${message}`,
 }));
 
-vi.mock("@/components/checkout/CheckoutGate", () => ({
+vi.mock("@/modules/checkout/presentation/components/CheckoutGate", () => ({
   CheckoutGate: () => "checkout-gate",
 }));
 

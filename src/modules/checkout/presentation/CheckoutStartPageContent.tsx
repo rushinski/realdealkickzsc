@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { Loader2 } from "lucide-react";
 
-import { CheckoutLockedNotice } from "@/components/checkout/CheckoutLockedNotice";
-import { CheckoutStart } from "@/components/checkout/CheckoutStart";
 import { getStoreAccessSettings } from "@/lib/store-access/get-store-access-settings";
+import { CheckoutLockedNotice } from "@/modules/checkout/presentation/components/CheckoutLockedNotice";
+import { CheckoutStart } from "@/modules/checkout/presentation/components/CheckoutStart";
 
 function CheckoutStartFallback() {
   return (

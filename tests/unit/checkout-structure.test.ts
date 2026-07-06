@@ -4,7 +4,10 @@ import path from "node:path";
 describe("checkout structure", () => {
   it("delegates fulfillment selection to a focused checkout fulfillment section", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/components/checkout/CheckoutForm.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/checkout/presentation/components/CheckoutForm.tsx",
+      ),
       "utf8",
     );
 
@@ -14,7 +17,10 @@ describe("checkout structure", () => {
 
   it("delegates guest contact collection to a focused checkout guest contact section", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/components/checkout/CheckoutForm.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/checkout/presentation/components/CheckoutForm.tsx",
+      ),
       "utf8",
     );
 
@@ -24,7 +30,10 @@ describe("checkout structure", () => {
 
   it("delegates checkout submission feedback and legal copy to a focused footer section", () => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/components/checkout/CheckoutForm.tsx"),
+      path.join(
+        process.cwd(),
+        "src/modules/checkout/presentation/components/CheckoutForm.tsx",
+      ),
       "utf8",
     );
 

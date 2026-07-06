@@ -1,7 +1,7 @@
 import { vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { CheckoutForm } from "@/components/checkout/CheckoutForm";
+import { CheckoutForm } from "@/modules/checkout/presentation/components/CheckoutForm";
 
 vi.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -9,7 +9,7 @@ vi.mock("next/navigation", () => ({
   }),
 }));
 
-vi.mock("@/components/checkout/SavedAddresses", () => ({
+vi.mock("@/modules/checkout/presentation/components/SavedAddresses", () => ({
   SavedAddresses: () => "saved-addresses",
 }));
 

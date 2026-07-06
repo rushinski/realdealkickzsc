@@ -5,11 +5,11 @@ vi.mock("@/lib/store-access/get-store-access-settings", () => ({
   getStoreAccessSettings: vi.fn(),
 }));
 
-vi.mock("@/components/checkout/CheckoutLockedNotice", () => ({
+vi.mock("@/modules/checkout/presentation/components/CheckoutLockedNotice", () => ({
   CheckoutLockedNotice: ({ message }: { message: string }) => `locked:${message}`,
 }));
 
-vi.mock("@/components/checkout/CheckoutStart", () => ({
+vi.mock("@/modules/checkout/presentation/components/CheckoutStart", () => ({
   CheckoutStart: () => "checkout-start",
 }));
 
