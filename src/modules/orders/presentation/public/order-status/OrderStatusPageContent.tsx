@@ -5,12 +5,12 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 
 import type { OrderStatusResponse } from "@/types/domain/checkout";
-import { OrderStatusView } from "@/components/orders/OrderStatusView";
+import { OrderStatusView } from "@/modules/orders/presentation/public/order-status/components/OrderStatusView";
 
 function OrderStatusLoadingState() {
   return (
-    <div className="max-w-2xl mx-auto px-4 py-20 text-center">
-      <Loader2 className="w-16 h-16 text-red-600 mx-auto animate-spin" />
+    <div className="mx-auto max-w-2xl px-4 py-20 text-center">
+      <Loader2 className="mx-auto h-16 w-16 animate-spin text-brand-text" />
     </div>
   );
 }
@@ -61,15 +61,18 @@ function OrderStatusContent() {
 
   if (error) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-20 text-center">
-        <div className="bg-red-900/20 border border-red-500 text-red-400 p-6 rounded">
-          <p className="text-lg font-semibold mb-2">Order status unavailable</p>
+      <div className="mx-auto max-w-2xl px-4 py-20 text-center">
+        <div className="border border-brand-border bg-brand-surface p-6">
+          <p className="mb-2 text-lg font-semibold uppercase tracking-[0.08em] text-brand-text">
+            Order status unavailable
+          </p>
           <p>{error}</p>
           <button
+            type="button"
             onClick={() => router.push("/")}
-            className="mt-4 px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded transition"
+            className="mt-4 border border-brand-text bg-brand-text px-6 py-2 text-sm font-semibold uppercase tracking-[0.08em] text-brand-surface transition-colors hover:bg-neutral-800"
           >
-            Back to Home
+            Back to home
           </button>
         </div>
       </div>
