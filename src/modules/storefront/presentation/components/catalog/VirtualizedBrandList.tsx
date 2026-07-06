@@ -1,5 +1,3 @@
-// src/components/store/VirtualizedBrandList.tsx
-// FIXED VERSION - Truly consistent spacing, all brands aligned
 "use client";
 
 import { useMemo, useCallback, memo } from "react";

@@ -1,4 +1,3 @@
-// src/components/auth/register/PasswordRequirements.tsx
 "use client";
 
 import { Check, X } from "lucide-react";

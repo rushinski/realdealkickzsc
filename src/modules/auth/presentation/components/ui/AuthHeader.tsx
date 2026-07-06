@@ -1,4 +1,3 @@
-// src/components/auth/ui/AuthHeader.tsx
 "use client";
 
 export function AuthHeader({

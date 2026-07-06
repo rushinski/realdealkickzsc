@@ -1,5 +1,3 @@
-// src/components/store/FilterPanel.tsx
-// FIXED VERSION - Smaller size text, consistent spacing
 "use client";
 
 import { useMemo, useState, useCallback } from "react";
@@ -526,7 +524,6 @@ export function FilterPanel({
           </div>
         )}
 
-        {/* Shoe Sizes - FIXED: Smaller text */}
         {showShoeFilter && (
           <div className="w-full min-w-0 border-b border-brand-border pb-4">
             <button
@@ -645,7 +642,6 @@ export function FilterPanel({
           </div>
         )}
 
-        {/* Clothing Sizes - FIXED: Smaller text */}
         {showClothingFilter && hasClothingSizes && (
           <div className="pb-4 w-full min-w-0">
             <button

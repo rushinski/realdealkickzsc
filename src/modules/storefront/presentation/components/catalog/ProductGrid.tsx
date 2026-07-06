@@ -1,5 +1,3 @@
-// src/components/store/ProductGrid.tsx
-// OPTIMIZED VERSION - Priority loading for visible products
 import type { ProductWithDetails } from "@/types/domain/product";
 
 import { ProductCard } from "./ProductCard";
@@ -9,7 +7,6 @@ interface ProductGridProps {
   storeHref?: string;
 }
 
-// OPTIMIZATION: Mark first 8 products as priority for LCP
 const PRIORITY_CARDS_COUNT = 8;
 
 export function ProductGrid({ products, storeHref }: ProductGridProps) {

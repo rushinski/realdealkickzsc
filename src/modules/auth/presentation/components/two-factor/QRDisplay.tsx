@@ -1,4 +1,3 @@
-// src/components/auth/2fa/QRDisplay.tsx
 export function QRDisplay({
   qrCode,
   onQrError,

@@ -1,5 +1,3 @@
-// src/components/store/StoreControls.tsx
-// OPTIMIZED VERSION - Pagination + Sort controls
 "use client";
 
 import { useMemo, useCallback, useTransition } from "react";
@@ -40,10 +38,8 @@ export function StoreControls({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // OPTIMIZATION: Use useTransition for smoother page transitions
   const [isPending, startTransition] = useTransition();
 
-  // OPTIMIZATION: Memoize calculations
   const showingStart = useMemo(
     () => (total === 0 ? 0 : (page - 1) * limit + 1),
     [total, page, limit],
@@ -74,7 +70,6 @@ export function StoreControls({
     return pages;
   }, [page, pageCount]);
 
-  // OPTIMIZATION: Memoize page size options
   const pageSizeOptions = useMemo(
     () =>
       PAGE_SIZE_OPTIONS.map((size) => ({
@@ -84,7 +79,6 @@ export function StoreControls({
     [],
   );
 
-  // OPTIMIZATION: Use useCallback for event handlers
   const updateParams = useCallback(
     (updates: Partial<{ page: number; limit: number; sort: string }>) => {
       const params = new URLSearchParams(searchParams.toString());
@@ -228,7 +222,6 @@ export function StoreControls({
         </div>
       )}
 
-      {/* OPTIMIZATION: Show loading indicator */}
       {isPending && (
         <div className="text-center text-xs text-brand-muted">Loading...</div>
       )}

@@ -1,4 +1,3 @@
-// src/components/auth/register/RegisterForm.tsx
 "use client";
 
 import { useReducer } from "react";

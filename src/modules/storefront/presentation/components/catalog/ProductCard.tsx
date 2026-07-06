@@ -1,6 +1,3 @@
-// src/components/store/ProductCard.tsx
-// OPTIMIZED VERSION - Better image loading and performance
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,7 +6,7 @@ import type { ProductWithDetails } from "@/types/domain/product";
 interface ProductCardProps {
   product: ProductWithDetails;
   storeHref?: string;
-  priority?: boolean; // For above-the-fold images
+  priority?: boolean;
 }
 
 export function ProductCard({ product, storeHref, priority = false }: ProductCardProps) {
@@ -53,7 +50,6 @@ export function ProductCard({ product, storeHref, priority = false }: ProductCar
       className="group block h-full"
       data-testid="product-card"
       data-product-id={product.id}
-      // OPTIMIZATION 1: Add prefetch only for visible cards
       prefetch={priority}
     >
       <div className="flex h-full flex-col">
@@ -64,13 +60,10 @@ export function ProductCard({ product, storeHref, priority = false }: ProductCar
               alt={product.name}
               fill
               sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
-              // OPTIMIZATION 2: Priority for first 8 cards, lazy for rest
               loading={priority ? "eager" : "lazy"}
               priority={priority}
               className="object-contain transition-transform duration-300 group-hover:scale-105"
-              // OPTIMIZATION 3: Lower quality for thumbnails
               quality={75}
-              // OPTIMIZATION 4: Use placeholder for better LCP
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+F9PQAI8wNPvd7POQAAAABJRU5ErkJggg=="
             />

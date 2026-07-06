@@ -1,4 +1,3 @@
-// src/components/store/BackToStoreLink.tsx
 "use client";
 
 import { useMemo, type MouseEventHandler } from "react";

@@ -1,4 +1,3 @@
-// src/components/auth/2fa/EnrollmentForm.tsx
 "use client";
 
 import Link from "next/link";

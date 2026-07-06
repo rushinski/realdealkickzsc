@@ -1,4 +1,3 @@
-// src/components/auth/login/PasswordLoginForm.tsx
 "use client";
 
 import { useReducer } from "react";

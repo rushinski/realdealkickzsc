@@ -1,4 +1,3 @@
-// src/components/auth/login/ForgotPasswordForm.tsx
 "use client";
 
 import { useEffect, useReducer } from "react";

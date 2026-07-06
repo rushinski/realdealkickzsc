@@ -190,7 +190,7 @@ Reason:
 
 Expected location:
 
-- `src/components/admin/ui/*`
+- `src/modules/shared/presentation/admin/ui/*`
 
 Expected kinds of files:
 
@@ -210,9 +210,9 @@ This does not require those exact names, but the implementation should keep resp
 Keep and extend the current shell:
 
 - `app/admin/layout.tsx`
-- `src/components/admin/AdminSidebar.tsx`
-- `src/components/admin/AdminTopbar.tsx`
-- `src/components/admin/shell/*`
+- `src/modules/shared/presentation/admin/shell/AdminSidebar.tsx`
+- `src/modules/shared/presentation/admin/shell/AdminTopbar.tsx`
+- `src/modules/shared/presentation/admin/shell/*`
 
 These should remain the entry shell for all admin routes.
 
@@ -220,11 +220,9 @@ These should remain the entry shell for all admin routes.
 
 Normalize or reskin shared operational components that admin pages depend on:
 
-- `src/components/admin/AdminNotificationCenter.tsx`
-- `src/components/admin/AdminNotificationsDrawer.tsx`
 - `src/components/ui/ConfirmDialog.tsx`
 - inventory subcomponents in `src/components/inventory/*`
-- order display components in `src/components/orders/*`
+- order display components in `src/modules/orders/presentation/**`
 
 ## Error Handling
 
@@ -311,4 +309,3 @@ The admin redesign is complete when:
 - the shared admin UI layer is reused across sections
 - admin routes preserve existing behavior
 - targeted tests and typecheck pass
-

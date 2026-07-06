@@ -1,4 +1,3 @@
-// src/components/auth/login/SplitCodeInputWithResend.tsx
 "use client";
 
 import type { ComponentPropsWithoutRef } from "react";

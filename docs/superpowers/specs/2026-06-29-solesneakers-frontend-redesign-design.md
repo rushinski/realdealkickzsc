@@ -166,15 +166,15 @@ The rewrite should produce a more logical and standards-aligned frontend structu
 
 The exact final structure can adapt to the existing codebase, but it should move toward:
 
-- `src/components/storefront/shell`
-- `src/components/storefront/home`
-- `src/components/storefront/catalog`
-- `src/components/storefront/product`
-- `src/components/storefront/cart`
-- `src/components/storefront/search`
-- `src/components/auth`
-- `src/components/admin/shell`
-- `src/components/admin/forms`
+- `src/modules/storefront/presentation/components/shell`
+- `src/modules/storefront/presentation/components/home`
+- `src/modules/storefront/presentation/components/catalog`
+- `src/modules/storefront/presentation/components/product`
+- `src/modules/storefront/presentation/components/cart`
+- `src/modules/storefront/presentation/components/search`
+- `src/modules/auth/presentation/components`
+- `src/modules/shared/presentation/admin/shell`
+- `src/modules/shared/presentation/admin/ui`
 - `src/components/ui`
 
 Supporting non-visual frontend utilities may also need clearer grouping if touched during the rewrite, but backend/service folders are out of scope unless a frontend dependency boundary requires a small supporting move.

@@ -1,4 +1,3 @@
-// src/components/orders/OrderStatusView.tsx
 "use client";
 
 import type { OrderStatusResponse } from "@/types/domain/checkout";
@@ -131,8 +130,8 @@ export function OrderStatusView({ status }: { status: OrderStatusResponse }) {
               <span>Tax</span>
               <span>${status.tax.toFixed(2)}</span>
             </div>
-            <div className="border-t border-zinc-800/70 pt-2 mt-2">
-              <div className="flex justify-between text-white font-semibold">
+            <div className="mt-2 border-t border-brand-border pt-2">
+              <div className="flex justify-between font-semibold text-brand-text">
                 <span>Total</span>
                 <span>${status.total.toFixed(2)}</span>
               </div>

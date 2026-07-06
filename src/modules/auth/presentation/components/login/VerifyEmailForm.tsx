@@ -1,4 +1,3 @@
-// src/components/auth/login/VerifyEmailForm.tsx
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";

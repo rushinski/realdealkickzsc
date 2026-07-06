@@ -1,4 +1,3 @@
-// src/components/auth/ui/SixDigitCodeField.tsx
 "use client";
 
 import type { ComponentPropsWithoutRef } from "react";

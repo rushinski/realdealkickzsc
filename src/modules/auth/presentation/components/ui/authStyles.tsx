@@ -1,4 +1,3 @@
-// src/components/auth/ui/AuthStyles.ts
 export const authStyles = {
   input:
     "h-11 w-full border border-brand-border bg-brand-surface px-4 text-sm text-brand-text placeholder:text-brand-muted outline-none transition-colors focus:border-brand-text disabled:cursor-not-allowed disabled:opacity-50",
