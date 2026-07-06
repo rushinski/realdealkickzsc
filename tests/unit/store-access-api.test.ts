@@ -1,17 +1,19 @@
-jest.mock("@/lib/auth/session", () => ({
-  requireAdminApi: jest.fn(),
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+vi.mock("@/lib/auth/session", () => ({
+  requireAdminApi: vi.fn(),
 }));
 
-jest.mock("@/lib/supabase/server", () => ({
-  createSupabaseServerClient: jest.fn(),
+vi.mock("@/lib/supabase/server", () => ({
+  createSupabaseServerClient: vi.fn(),
 }));
 
-jest.mock("@/lib/auth/tenant", () => ({
-  ensureTenantId: jest.fn(),
+vi.mock("@/lib/auth/tenant", () => ({
+  ensureTenantId: vi.fn(),
 }));
 
-jest.mock("@/services/store-access-settings-service", () => ({
-  StoreAccessSettingsService: jest.fn(),
+vi.mock("@/services/store-access-settings-service", () => ({
+  StoreAccessSettingsService: vi.fn(),
 }));
 
 import { storeAccessSettingsSchema } from "@/lib/validation/admin";
@@ -22,10 +24,10 @@ import { StoreAccessSettingsService } from "@/services/store-access-settings-ser
 
 import { GET, POST } from "../../app/api/admin/store-access/route";
 
-const mockRequireAdminApi = jest.mocked(requireAdminApi);
-const mockCreateSupabaseServerClient = jest.mocked(createSupabaseServerClient);
-const mockEnsureTenantId = jest.mocked(ensureTenantId);
-const mockStoreAccessSettingsService = jest.mocked(StoreAccessSettingsService);
+const mockRequireAdminApi = vi.mocked(requireAdminApi);
+const mockCreateSupabaseServerClient = vi.mocked(createSupabaseServerClient);
+const mockEnsureTenantId = vi.mocked(ensureTenantId);
+const mockStoreAccessSettingsService = vi.mocked(StoreAccessSettingsService);
 
 describe("storeAccessSettingsSchema", () => {
   it("accepts a valid payload", () => {
@@ -42,24 +44,25 @@ describe("storeAccessSettingsSchema", () => {
 });
 
 describe("/api/admin/store-access", () => {
-  const mockGetSettings = jest.fn();
-  const mockSaveSettings = jest.fn();
+  const mockGetSettings = vi.fn();
+  const mockSaveSettings = vi.fn();
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     mockRequireAdminApi.mockResolvedValue({
       user: { id: "user-1", email: "admin@example.com" },
       profile: null,
       role: "admin",
     } as never);
-    mockCreateSupabaseServerClient.mockResolvedValue({ from: jest.fn() } as never);
+    mockCreateSupabaseServerClient.mockResolvedValue({ from: vi.fn() } as never);
     mockEnsureTenantId.mockResolvedValue("tenant-1");
     mockStoreAccessSettingsService.mockImplementation(
-      () =>
-        ({
+      function mockStoreAccessSettingsServiceConstructor() {
+        return {
           getSettings: mockGetSettings,
           saveSettings: mockSaveSettings,
-        }) as never,
+        } as never;
+      },
     );
   });
 

@@ -1,13 +1,15 @@
-jest.mock("@/lib/supabase/server", () => ({
-  createSupabaseServerClient: jest.fn(),
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+vi.mock("@/lib/supabase/server", () => ({
+  createSupabaseServerClient: vi.fn(),
 }));
 
-jest.mock("@/repositories/profile-repo", () => ({
-  ProfileRepository: jest.fn(),
+vi.mock("@/repositories/profile-repo", () => ({
+  ProfileRepository: vi.fn(),
 }));
 
-jest.mock("@/lib/utils/log", () => ({
-  logError: jest.fn(),
+vi.mock("@/lib/utils/log", () => ({
+  logError: vi.fn(),
 }));
 
 import { DynamicServerError } from "next/dist/client/components/hooks-server-context";
@@ -17,13 +19,13 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logError } from "@/lib/utils/log";
 import { ProfileRepository } from "@/repositories/profile-repo";
 
-const mockCreateSupabaseServerClient = jest.mocked(createSupabaseServerClient);
-const mockProfileRepository = jest.mocked(ProfileRepository);
-const mockLogError = jest.mocked(logError);
+const mockCreateSupabaseServerClient = vi.mocked(createSupabaseServerClient);
+const mockProfileRepository = vi.mocked(ProfileRepository);
+const mockLogError = vi.mocked(logError);
 
 describe("getServerSession", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it("returns null when supabase auth lookup throws", async () => {
@@ -45,7 +47,7 @@ describe("getServerSession", () => {
   });
 
   it("returns session data when auth lookup succeeds", async () => {
-    const mockGetUser = jest.fn().mockResolvedValue({
+    const mockGetUser = vi.fn().mockResolvedValue({
       data: {
         user: {
           id: "user-1",
@@ -54,7 +56,7 @@ describe("getServerSession", () => {
       },
       error: null,
     });
-    const mockGetByUserId = jest.fn().mockResolvedValue({
+    const mockGetByUserId = vi.fn().mockResolvedValue({
       id: "user-1",
       email: "user@example.com",
       role: "admin",
@@ -68,10 +70,11 @@ describe("getServerSession", () => {
       },
     } as never);
     mockProfileRepository.mockImplementation(
-      () =>
-        ({
+      function mockProfileRepositoryConstructor() {
+        return {
           getByUserId: mockGetByUserId,
-        }) as never,
+        } as never;
+      },
     );
 
     await expect(getServerSession()).resolves.toEqual({

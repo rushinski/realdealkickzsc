@@ -1,3 +1,5 @@
+import { describe, expect, it, vi, type Mock } from "vitest";
+
 import {
   StoreAccessSettingsRepository,
 } from "@/repositories/store-access-settings-repo";
@@ -5,16 +7,16 @@ import { DEFAULT_CHECKOUT_LOCK_MESSAGE } from "@/modules/settings/shared/storeAc
 import { StoreAccessSettingsService } from "@/services/store-access-settings-service";
 
 type SelectChain = {
-  select: jest.Mock<SelectChain, [string]>;
-  eq: jest.Mock<SelectChain, [string, string]>;
-  maybeSingle: jest.Mock<Promise<{ data: unknown; error: unknown }>, []>;
+  select: Mock<(value: string) => SelectChain>;
+  eq: Mock<(column: string, value: string) => SelectChain>;
+  maybeSingle: Mock<() => Promise<{ data: unknown; error: unknown }>>;
 };
 
 function createSupabaseMock(result: { data: unknown; error: unknown }) {
   const chain: SelectChain = {
-    select: jest.fn(),
-    eq: jest.fn(),
-    maybeSingle: jest.fn(),
+    select: vi.fn(),
+    eq: vi.fn(),
+    maybeSingle: vi.fn(),
   };
 
   chain.select.mockReturnValue(chain);
@@ -22,7 +24,7 @@ function createSupabaseMock(result: { data: unknown; error: unknown }) {
   chain.maybeSingle.mockResolvedValue(result);
 
   return {
-    from: jest.fn(() => chain),
+    from: vi.fn(() => chain),
   };
 }
 
