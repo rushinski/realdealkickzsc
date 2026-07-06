@@ -8,8 +8,7 @@ describe("storefront route structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/components/storefront/catalog/StorefrontFilterPanel");
-    expect(source).toContain("@/components/storefront/catalog/StorefrontControls");
-    expect(source).toContain("@/components/storefront/catalog/StorefrontProductGrid");
+    expect(source).toContain('@/modules/storefront');
+    expect(source).toContain("<StoreCatalogPageContent");
   });
 });

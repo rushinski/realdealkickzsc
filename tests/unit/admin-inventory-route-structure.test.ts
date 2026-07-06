@@ -9,6 +9,6 @@ describe("admin inventory route structure", () => {
     );
 
     expect(source).toContain("@/modules/catalog/presentation/admin/inventory");
-    expect(source).toContain("<InventoryClient");
+    expect(source).toContain("<InventoryPageContent");
   });
 });

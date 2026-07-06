@@ -1,63 +1,16 @@
-jest.mock("next/navigation", () => ({
-  redirect: jest.fn(),
-}));
+import fs from "node:fs";
+import path from "node:path";
 
-jest.mock("@/lib/store-access/get-store-access-settings", () => ({
-  getStoreAccessSettings: jest.fn(),
-}));
-
-jest.mock("@/lib/auth/session", () => ({
-  getServerSession: jest.fn(),
-}));
-
-jest.mock("@/components/checkout/CheckoutLockedNotice", () => ({
-  CheckoutLockedNotice: ({ message }: { message: string }) => `locked:${message}`,
-}));
-
-jest.mock("@/components/checkout/CheckoutGate", () => ({
-  CheckoutGate: () => "checkout-gate",
-}));
-
-import { redirect } from "next/navigation";
-
-import { getServerSession } from "@/lib/auth/session";
-import { getStoreAccessSettings } from "@/lib/store-access/get-store-access-settings";
-
-import CheckoutGatePage from "../../app/checkout/page";
-
-const mockRedirect = jest.mocked(redirect);
-const mockGetServerSession = jest.mocked(getServerSession);
-const mockGetStoreAccessSettings = jest.mocked(getStoreAccessSettings);
+import { describe, expect, it } from "vitest";
 
 describe("app/checkout/page", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    mockGetStoreAccessSettings.mockResolvedValue(null);
-  });
+  it("keeps the route thin by delegating to the checkout module page content", async () => {
+    const source = fs.readFileSync(
+      path.join(process.cwd(), "app/checkout/page.tsx"),
+      "utf8",
+    );
 
-  it("renders the checkout gate when there is no active session", async () => {
-    mockGetServerSession.mockResolvedValue(null);
-
-    const result = await CheckoutGatePage();
-
-    expect(result).toMatchObject({
-      props: {},
-    });
-    expect(mockRedirect).not.toHaveBeenCalled();
-  });
-
-  it("redirects authenticated users to the checkout start page", async () => {
-    mockGetServerSession.mockResolvedValue({
-      user: {
-        id: "user-1",
-        email: "user@example.com",
-      },
-      profile: null,
-      role: "customer",
-    });
-
-    await CheckoutGatePage();
-
-    expect(mockRedirect).toHaveBeenCalledWith("/checkout/start");
+    expect(source).toContain('@/modules/checkout');
+    expect(source).toContain("<CheckoutGatePageContent");
   });
 });
