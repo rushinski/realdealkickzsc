@@ -28,6 +28,9 @@
       {
         "name": "next"
       }
+    ],
+    "types": [
+      "vitest/globals"
     ]
   },
   "include": [

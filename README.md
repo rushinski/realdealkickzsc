@@ -52,7 +52,8 @@ This serves Next.js at `https://localhost:8444` and Supabase at `https://localho
 ## Tests
 - Lint: `npm run lint`
 - Typecheck: `npm run typecheck`
-- Unit + integration: `npm run test:jest`
+- Unit tests: `npm run test:unit`
+- Integration tests: `npm run test:integration`
 - E2E: `npm run test:e2e`
 
 E2E configuration flags:
