@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { AccountProfile } from "@/components/account/AccountProfile";
 import { requireUser } from "@/lib/auth/session";
+import { AccountProfile } from "@/modules/account/presentation/components/AccountProfile";
 
 export async function AccountPageContent() {
   let session;
