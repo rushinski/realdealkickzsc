@@ -7,11 +7,11 @@ const read = (relativePath: string) =>
 describe("inventory toolbar module migration structure", () => {
   it("makes the inventory toolbar and pagination stack module-owned", () => {
     const modulePaths = [
-      "src/modules/catalog/presentation/admin/inventory/InventoryToolbar.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryFilterControls.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryBulkActionsBar.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryStockStatusTabs.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryPagination.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryToolbar.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryFilterControls.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryBulkActionsBar.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryStockStatusTabs.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryPagination.tsx",
     ];
 
     for (const modulePath of modulePaths) {

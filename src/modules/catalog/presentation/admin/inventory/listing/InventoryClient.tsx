@@ -3,9 +3,9 @@
 import { AdminPageHeader } from "@/modules/shared/presentation/admin/ui/AdminPageHeader";
 import { InventoryClientContent } from "@/modules/catalog/presentation/admin/inventory/listing/InventoryClientContent";
 import { InventoryClientHeaderActions } from "@/modules/catalog/presentation/admin/inventory/listing/InventoryClientHeaderActions";
-import { InventoryDialogs } from "@/modules/catalog/presentation/admin/inventory/InventoryDialogs";
-import { InventoryPagination } from "@/modules/catalog/presentation/admin/inventory/InventoryPagination";
-import { InventoryToolbar } from "@/modules/catalog/presentation/admin/inventory/InventoryToolbar";
+import { InventoryDialogs } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryDialogs";
+import { InventoryPagination } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryPagination";
+import { InventoryToolbar } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryToolbar";
 import type { InventoryFilters } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 import { useInventoryClientController } from "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController";
 import type { ProductWithDetails } from "@/types/domain/product";

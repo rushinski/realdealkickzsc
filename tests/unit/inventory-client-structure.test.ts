@@ -12,7 +12,7 @@ describe("inventory client structure", () => {
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryToolbar",
+      "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryToolbar",
     );
     expect(source).toContain("<InventoryToolbar");
   });
@@ -27,7 +27,7 @@ describe("inventory client structure", () => {
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryPagination",
+      "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryPagination",
     );
     expect(source).toContain("<InventoryPagination");
   });
@@ -42,7 +42,7 @@ describe("inventory client structure", () => {
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryDialogs",
+      "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryDialogs",
     );
     expect(source).toContain("<InventoryDialogs");
   });

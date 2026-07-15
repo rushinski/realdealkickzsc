@@ -7,10 +7,10 @@ const read = (relativePath: string) =>
 describe("inventory dialogs module migration structure", () => {
   it("makes the inventory dialogs and product-details stack module-owned", () => {
     const modulePaths = [
-      "src/modules/catalog/presentation/admin/inventory/InventoryDialogs.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryDeleteDialogs.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryArchiveDialog.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryRestoreDialog.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryDialogs.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryDeleteDialogs.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryArchiveDialog.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryRestoreDialog.tsx",
       "src/modules/catalog/presentation/admin/inventory/InventoryProductDetailsModal.tsx",
       "src/modules/catalog/presentation/admin/inventory/inventoryProductDetailsView.ts",
       "src/modules/catalog/presentation/admin/inventory/InventoryProductImageGallery.tsx",

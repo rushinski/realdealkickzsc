@@ -6,7 +6,7 @@ describe("inventory client contracts structure", () => {
     const toolbarSource = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryToolbar.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryToolbar.tsx",
       ),
       "utf8",
     );
@@ -20,7 +20,7 @@ describe("inventory client contracts structure", () => {
     const dialogsSource = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryDialogs.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryDialogs.tsx",
       ),
       "utf8",
     );

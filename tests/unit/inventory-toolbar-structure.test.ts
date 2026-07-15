@@ -6,13 +6,13 @@ describe("inventory toolbar structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryToolbar.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryToolbar.tsx",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryBulkActionsBar",
+      "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryBulkActionsBar",
     );
     expect(source).toContain("<InventoryBulkActionsBar");
   });

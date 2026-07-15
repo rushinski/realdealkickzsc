@@ -4,9 +4,9 @@ import type {
   InventoryToolbarSelection,
   InventoryToolbarSummary,
 } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
-import { InventoryBulkActionsBar } from "@/modules/catalog/presentation/admin/inventory/InventoryBulkActionsBar";
-import { InventoryFilterControls } from "@/modules/catalog/presentation/admin/inventory/InventoryFilterControls";
-import { InventoryStockStatusTabs } from "@/modules/catalog/presentation/admin/inventory/InventoryStockStatusTabs";
+import { InventoryBulkActionsBar } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryBulkActionsBar";
+import { InventoryFilterControls } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryFilterControls";
+import { InventoryStockStatusTabs } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryStockStatusTabs";
 
 type InventoryToolbarProps = InventoryToolbarSummary &
   InventoryToolbarFilters &

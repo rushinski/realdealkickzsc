@@ -6,19 +6,19 @@ describe("inventory dialogs structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryDialogs.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryDialogs.tsx",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryArchiveDialog",
+      "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryArchiveDialog",
     );
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryDeleteDialogs",
+      "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryDeleteDialogs",
     );
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryRestoreDialog",
+      "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryRestoreDialog",
     );
     expect(source).toContain("<InventoryArchiveDialog");
     expect(source).toContain("<InventoryDeleteDialogs");

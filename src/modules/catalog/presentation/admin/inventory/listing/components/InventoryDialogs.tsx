@@ -4,10 +4,10 @@ import type {
   InventoryDialogsActions,
   InventoryDialogsState,
 } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
-import { InventoryArchiveDialog } from "@/modules/catalog/presentation/admin/inventory/InventoryArchiveDialog";
-import { InventoryDeleteDialogs } from "@/modules/catalog/presentation/admin/inventory/InventoryDeleteDialogs";
+import { InventoryArchiveDialog } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryArchiveDialog";
+import { InventoryDeleteDialogs } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryDeleteDialogs";
 import { InventoryProductDetailsModal } from "@/modules/catalog/presentation/admin/inventory/InventoryProductDetailsModal";
-import { InventoryRestoreDialog } from "@/modules/catalog/presentation/admin/inventory/InventoryRestoreDialog";
+import { InventoryRestoreDialog } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryRestoreDialog";
 import { Toast } from "@/components/ui/Toast";
 
 type InventoryDialogsProps = InventoryDialogsState & InventoryDialogsActions;
