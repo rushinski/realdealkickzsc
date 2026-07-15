@@ -12,9 +12,15 @@ describe("app shell route structure", () => {
       "utf8",
     );
 
-    expect(rootLayoutSource).toContain("@/modules/app-shell/presentation");
+    expect(rootLayoutSource).toContain(
+      "@/modules/app-shell/presentation/RootLayoutShell",
+    );
+    expect(rootLayoutSource).not.toContain('from "@/modules/app-shell/presentation";');
     expect(rootLayoutSource).toContain("<RootLayoutShell>");
-    expect(adminLayoutSource).toContain("@/modules/app-shell/presentation");
+    expect(adminLayoutSource).toContain(
+      "@/modules/app-shell/presentation/AdminLayoutShell",
+    );
+    expect(adminLayoutSource).not.toContain('from "@/modules/app-shell/presentation";');
     expect(adminLayoutSource).toContain("<AdminLayoutShell>");
   });
 
@@ -40,7 +46,10 @@ describe("app shell route structure", () => {
     expect(adminErrorSource).not.toContain('from "@/modules/app-shell/presentation";');
     expect(adminErrorSource).toContain('"use client"');
     expect(adminErrorSource).toContain("<AdminErrorPageContent");
-    expect(notFoundSource).toContain("@/modules/app-shell/presentation");
+    expect(notFoundSource).toContain(
+      "@/modules/app-shell/presentation/NotFoundPageContent",
+    );
+    expect(notFoundSource).not.toContain('from "@/modules/app-shell/presentation";');
     expect(notFoundSource).toContain("<NotFoundPageContent />");
   });
 });

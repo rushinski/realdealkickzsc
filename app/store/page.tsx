@@ -1,4 +1,4 @@
-import { StoreCatalogPageContent } from "@/modules/storefront";
+import { StoreCatalogPageContent } from "@/modules/storefront/presentation/catalog/StoreCatalogPageContent";
 
 export const revalidate = 60;
 

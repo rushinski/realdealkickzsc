@@ -8,7 +8,10 @@ describe("order status route structure", () => {
       "utf8",
     );
 
-    expect(source).toContain("@/modules/orders");
+    expect(source).toContain(
+      "@/modules/orders/presentation/public/order-status/OrderStatusPageContent",
+    );
+    expect(source).not.toContain('from "@/modules/orders"');
     expect(source).toContain("<OrderStatusPageContent />");
   });
 });

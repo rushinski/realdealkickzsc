@@ -1,10 +1,8 @@
 // app/store/[productId]/page.tsx
 import type { Metadata } from "next";
 
-import {
-  StoreProductDetailPageContent,
-  buildStoreProductMetadata,
-} from "@/modules/storefront";
+import { buildStoreProductMetadata } from "@/modules/storefront/application/storefront-product";
+import { StoreProductDetailPageContent } from "@/modules/storefront/presentation/product/StoreProductDetailPageContent";
 
 export const revalidate = 60;
 

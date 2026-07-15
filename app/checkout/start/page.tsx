@@ -1,4 +1,4 @@
-import { CheckoutStartPageContent } from "@/modules/checkout";
+import { CheckoutStartPageContent } from "@/modules/checkout/presentation/CheckoutStartPageContent";
 
 export const dynamic = "force-dynamic";
 
