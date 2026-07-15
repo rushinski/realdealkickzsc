@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import { formatInventoryVariantMoney } from "@/modules/catalog/presentation/admin/inventory/inventoryProductListView";
+import { formatInventoryVariantMoney } from "@/modules/catalog/presentation/admin/inventory/listing/products/inventoryProductListView";
 import type { ProductVariantRow, ProductWithDetails } from "@/types/domain/product";
 
 type InventoryProductVariantPanelsProps = {

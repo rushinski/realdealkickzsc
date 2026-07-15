@@ -6,13 +6,13 @@ describe("inventory product table structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryProductTable.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductTable.tsx",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryProductTableRow",
+      "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductTableRow",
     );
     expect(source).toContain("<InventoryProductTableRow");
   });

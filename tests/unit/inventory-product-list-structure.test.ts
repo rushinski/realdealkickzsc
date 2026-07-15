@@ -6,16 +6,16 @@ describe("inventory product list structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryProductList.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductList.tsx",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryProductTable",
+      "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductTable",
     );
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryProductMobileCards",
+      "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductMobileCards",
     );
   });
 
@@ -23,41 +23,41 @@ describe("inventory product list structure", () => {
     const tableSource = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryProductTable.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductTable.tsx",
       ),
       "utf8",
     );
     const mobileSource = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryProductMobileCards.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductMobileCards.tsx",
       ),
       "utf8",
     );
     const panelSource = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryProductVariantPanels.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductVariantPanels.tsx",
       ),
       "utf8",
     );
     const rowSource = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryProductTableRow.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductTableRow.tsx",
       ),
       "utf8",
     );
 
     expect(tableSource).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryProductTableRow",
+      "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductTableRow",
     );
     expect(rowSource).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryProductVariantPanels",
+      "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductVariantPanels",
     );
     expect(rowSource).toContain("buildInventoryProductCardModel(");
     expect(mobileSource).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryProductVariantPanels",
+      "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductVariantPanels",
     );
     expect(mobileSource).toContain("buildInventoryProductCardModel(");
     expect(panelSource).toContain("formatInventoryVariantMoney(");
@@ -67,20 +67,20 @@ describe("inventory product list structure", () => {
     const listSource = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryProductList.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductList.tsx",
       ),
       "utf8",
     );
     const typesSource = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/inventoryProductListTypes.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/products/inventoryProductListTypes.ts",
       ),
       "utf8",
     );
 
     expect(listSource).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryProductListTypes",
+      "@/modules/catalog/presentation/admin/inventory/listing/products/inventoryProductListTypes",
     );
     expect(typesSource).toContain("export type InventoryProductListProps = {");
   });

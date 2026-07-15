@@ -6,7 +6,7 @@ import type {
 } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 import { InventoryArchiveDialog } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryArchiveDialog";
 import { InventoryDeleteDialogs } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryDeleteDialogs";
-import { InventoryProductDetailsModal } from "@/modules/catalog/presentation/admin/inventory/InventoryProductDetailsModal";
+import { InventoryProductDetailsModal } from "@/modules/catalog/presentation/admin/inventory/listing/details/InventoryProductDetailsModal";
 import { InventoryRestoreDialog } from "@/modules/catalog/presentation/admin/inventory/listing/components/InventoryRestoreDialog";
 import { Toast } from "@/components/ui/Toast";
 

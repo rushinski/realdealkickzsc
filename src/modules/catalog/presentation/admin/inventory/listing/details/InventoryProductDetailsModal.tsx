@@ -3,13 +3,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { X } from "lucide-react";
 
-import { InventoryProductImageGallery } from "@/modules/catalog/presentation/admin/inventory/InventoryProductImageGallery";
-import { InventoryProductMetadataPanel } from "@/modules/catalog/presentation/admin/inventory/InventoryProductMetadataPanel";
+import { InventoryProductImageGallery } from "@/modules/catalog/presentation/admin/inventory/listing/details/InventoryProductImageGallery";
+import { InventoryProductMetadataPanel } from "@/modules/catalog/presentation/admin/inventory/listing/details/InventoryProductMetadataPanel";
 import {
   formatInventoryDetailsDateTime,
   getInventoryDetailsImages,
   getInventoryProductDetailSummary,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryProductDetailsView";
+} from "@/modules/catalog/presentation/admin/inventory/listing/details/inventoryProductDetailsView";
 import { ModalPortal } from "@/components/ui/ModalPortal";
 import type { ProductWithDetails, ProductVariantRow } from "@/types/domain/product";
 

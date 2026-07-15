@@ -6,7 +6,7 @@ import type {
 } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 import { AdminEmptyState } from "@/modules/shared/presentation/admin/ui/AdminEmptyState";
 import { AdminSectionCard } from "@/modules/shared/presentation/admin/ui/AdminSectionCard";
-import { InventoryProductList } from "@/modules/catalog/presentation/admin/inventory/InventoryProductList";
+import { InventoryProductList } from "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductList";
 
 type InventoryClientContentProps = InventoryClientContentState &
   Omit<InventoryProductListContractProps, "products">;

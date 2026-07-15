@@ -1,7 +1,7 @@
 "use client";
 
-import { InventoryProductTableRow } from "@/modules/catalog/presentation/admin/inventory/InventoryProductTableRow";
-import type { InventoryProductListProps } from "@/modules/catalog/presentation/admin/inventory/inventoryProductListTypes";
+import { InventoryProductTableRow } from "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductTableRow";
+import type { InventoryProductListProps } from "@/modules/catalog/presentation/admin/inventory/listing/products/inventoryProductListTypes";
 
 type InventoryProductTableProps = Pick<
   InventoryProductListProps,

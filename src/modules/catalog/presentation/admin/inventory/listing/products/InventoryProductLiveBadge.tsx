@@ -1,4 +1,4 @@
-import type { InventoryLiveState } from "@/modules/catalog/presentation/admin/inventory/inventoryProductListView";
+import type { InventoryLiveState } from "@/modules/catalog/presentation/admin/inventory/listing/products/inventoryProductListView";
 
 type InventoryProductLiveBadgeProps = {
   liveState: InventoryLiveState;

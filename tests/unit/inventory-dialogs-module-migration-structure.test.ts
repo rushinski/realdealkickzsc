@@ -11,10 +11,10 @@ describe("inventory dialogs module migration structure", () => {
       "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryDeleteDialogs.tsx",
       "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryArchiveDialog.tsx",
       "src/modules/catalog/presentation/admin/inventory/listing/components/InventoryRestoreDialog.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryProductDetailsModal.tsx",
-      "src/modules/catalog/presentation/admin/inventory/inventoryProductDetailsView.ts",
-      "src/modules/catalog/presentation/admin/inventory/InventoryProductImageGallery.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryProductMetadataPanel.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/details/InventoryProductDetailsModal.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/details/inventoryProductDetailsView.ts",
+      "src/modules/catalog/presentation/admin/inventory/listing/details/InventoryProductImageGallery.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/details/InventoryProductMetadataPanel.tsx",
     ];
 
     for (const modulePath of modulePaths) {

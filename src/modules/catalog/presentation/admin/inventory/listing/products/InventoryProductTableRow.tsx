@@ -3,11 +3,11 @@
 import { Fragment } from "react";
 import { ChevronDown } from "lucide-react";
 
-import { InventoryProductActionMenu } from "@/modules/catalog/presentation/admin/inventory/InventoryProductActionMenu";
-import { InventoryProductLiveBadge } from "@/modules/catalog/presentation/admin/inventory/InventoryProductLiveBadge";
-import { InventoryProductVariantPanels } from "@/modules/catalog/presentation/admin/inventory/InventoryProductVariantPanels";
-import type { InventoryProductListProps } from "@/modules/catalog/presentation/admin/inventory/inventoryProductListTypes";
-import { buildInventoryProductCardModel } from "@/modules/catalog/presentation/admin/inventory/inventoryProductListView";
+import { InventoryProductActionMenu } from "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductActionMenu";
+import { InventoryProductLiveBadge } from "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductLiveBadge";
+import { InventoryProductVariantPanels } from "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductVariantPanels";
+import type { InventoryProductListProps } from "@/modules/catalog/presentation/admin/inventory/listing/products/inventoryProductListTypes";
+import { buildInventoryProductCardModel } from "@/modules/catalog/presentation/admin/inventory/listing/products/inventoryProductListView";
 import type { ProductWithDetails } from "@/types/domain/product";
 
 type InventoryProductTableRowProps = Pick<

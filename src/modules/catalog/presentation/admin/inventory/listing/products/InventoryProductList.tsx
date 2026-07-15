@@ -1,8 +1,8 @@
 "use client";
 
-import { InventoryProductMobileCards } from "@/modules/catalog/presentation/admin/inventory/InventoryProductMobileCards";
-import { InventoryProductTable } from "@/modules/catalog/presentation/admin/inventory/InventoryProductTable";
-import type { InventoryProductListProps } from "@/modules/catalog/presentation/admin/inventory/inventoryProductListTypes";
+import { InventoryProductMobileCards } from "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductMobileCards";
+import { InventoryProductTable } from "@/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductTable";
+import type { InventoryProductListProps } from "@/modules/catalog/presentation/admin/inventory/listing/products/inventoryProductListTypes";
 
 export function InventoryProductList({
   products,

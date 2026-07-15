@@ -7,13 +7,13 @@ const read = (relativePath: string) =>
 describe("inventory product list module migration structure", () => {
   it("makes the inventory product list stack module-owned", () => {
     const modulePaths = [
-      "src/modules/catalog/presentation/admin/inventory/InventoryProductList.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryProductTable.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryProductTableRow.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryProductMobileCards.tsx",
-      "src/modules/catalog/presentation/admin/inventory/InventoryProductVariantPanels.tsx",
-      "src/modules/catalog/presentation/admin/inventory/inventoryProductListTypes.ts",
-      "src/modules/catalog/presentation/admin/inventory/inventoryProductListView.ts",
+      "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductList.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductTable.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductTableRow.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductMobileCards.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/products/InventoryProductVariantPanels.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/products/inventoryProductListTypes.ts",
+      "src/modules/catalog/presentation/admin/inventory/listing/products/inventoryProductListView.ts",
     ];
 
     for (const modulePath of modulePaths) {
