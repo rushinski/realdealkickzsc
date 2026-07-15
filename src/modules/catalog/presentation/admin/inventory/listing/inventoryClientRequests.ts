@@ -3,7 +3,7 @@ import {
   buildInventoryExportSearchParams,
   buildInventoryFetchSearchParams,
   type InventoryFilters,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 
 export function buildInventoryProductsUrl({
   pageSize,

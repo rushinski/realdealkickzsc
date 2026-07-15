@@ -4,7 +4,7 @@ import {
   getInventorySelectionState,
   toggleInventoryCurrentPageSelection,
   toggleInventorySelection,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientSelection";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientSelection";
 
 describe("inventoryClientSelection", () => {
   it("derives current page and aggregate selection state", () => {

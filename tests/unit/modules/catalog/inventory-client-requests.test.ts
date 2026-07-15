@@ -4,7 +4,7 @@ import {
   buildInventoryBulkSelectionArgs,
   buildInventoryItemActionUrl,
   buildInventoryItemRequestInit,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientMutations";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientMutations";
 
 describe("inventory client request helpers", () => {
   it("builds item action urls for default and named actions", () => {

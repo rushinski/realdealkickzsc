@@ -3,7 +3,7 @@
 import type {
   InventoryDialogsActions,
   InventoryDialogsState,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 import { InventoryArchiveDialog } from "@/modules/catalog/presentation/admin/inventory/InventoryArchiveDialog";
 import { InventoryDeleteDialogs } from "@/modules/catalog/presentation/admin/inventory/InventoryDeleteDialogs";
 import { InventoryProductDetailsModal } from "@/modules/catalog/presentation/admin/inventory/InventoryProductDetailsModal";

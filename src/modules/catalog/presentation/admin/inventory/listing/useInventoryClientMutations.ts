@@ -10,24 +10,24 @@ import {
   createInventoryArchiveRequest,
   createInventoryDeleteRequest,
   createInventoryRestoreRequest,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientActions";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientActions";
 import type {
   InventoryFilters,
   StockStatus,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 import {
   buildInventoryBulkSelectionArgs,
   getInventoryMutationErrorMessage,
   getInventoryRestoreSuccessMessage,
   summarizeInventoryArchiveOutcome,
   summarizeInventoryDeleteOutcome,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientMutations";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientMutations";
 import type {
   InventoryArchiveRequestState,
   InventoryDeleteRequestState,
   InventoryRestoreRequestState,
   InventoryToastState,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 import {
   confirmInventoryArchiveFlow,
   confirmInventoryDeleteFlow,
@@ -45,7 +45,7 @@ import {
   restoreInventoryItemRequest,
   restoreInventorySelectionRequest,
 } from "@/modules/catalog/presentation/admin/inventory/inventoryMutationRequests";
-import { clearInventorySelection } from "@/modules/catalog/presentation/admin/inventory/inventoryClientSelection";
+import { clearInventorySelection } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientSelection";
 import type { Category, Condition, ProductWithDetails } from "@/types/domain/product";
 
 type UseInventoryClientMutationsArgs = {

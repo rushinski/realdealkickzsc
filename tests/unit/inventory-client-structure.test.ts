@@ -6,7 +6,7 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryClient.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/InventoryClient.tsx",
       ),
       "utf8",
     );
@@ -21,7 +21,7 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryClient.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/InventoryClient.tsx",
       ),
       "utf8",
     );
@@ -36,7 +36,7 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryClient.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/InventoryClient.tsx",
       ),
       "utf8",
     );
@@ -51,13 +51,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientController.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientData",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData",
     );
   });
 
@@ -65,13 +65,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientController.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientSelection",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientSelection",
     );
   });
 
@@ -79,13 +79,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientMutations.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientMutations.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientMutations",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientMutations",
     );
   });
 
@@ -93,13 +93,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientMutations.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientMutations.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientActions",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientActions",
     );
   });
 
@@ -107,13 +107,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientController.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientView",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientView",
     );
   });
 
@@ -121,13 +121,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientData.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientData.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientRequests",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientRequests",
     );
   });
 
@@ -135,13 +135,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientController.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientDerivedState",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientDerivedState",
     );
   });
 
@@ -149,13 +149,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientEffects.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientEffects.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientLifecycle",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientLifecycle",
     );
   });
 
@@ -163,13 +163,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientEffects.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientEffects.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientRealtime",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientRealtime",
     );
   });
 
@@ -177,13 +177,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientHandlers.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientHandlers.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientUiState",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientUiState",
     );
   });
 
@@ -191,13 +191,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryClient.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/InventoryClient.tsx",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryClientHeaderActions",
+      "@/modules/catalog/presentation/admin/inventory/listing/InventoryClientHeaderActions",
     );
     expect(source).toContain("<InventoryClientHeaderActions");
   });
@@ -206,13 +206,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryClient.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/InventoryClient.tsx",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/InventoryClientContent",
+      "@/modules/catalog/presentation/admin/inventory/listing/InventoryClientContent",
     );
     expect(source).toContain("<InventoryClientContent");
   });
@@ -221,13 +221,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientController.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/useInventoryClientEffects",
+      "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientEffects",
     );
     expect(source).toContain("useInventoryClientEffects({");
   });
@@ -236,13 +236,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientController.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/useInventoryClientMutations",
+      "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientMutations",
     );
     expect(source).toContain("useInventoryClientMutations({");
   });
@@ -251,13 +251,13 @@ describe("inventory client structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientController.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/useInventoryClientData",
+      "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientData",
     );
     expect(source).toContain("useInventoryClientData({");
   });

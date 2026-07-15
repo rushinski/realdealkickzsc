@@ -6,7 +6,7 @@ describe("inventory mutation requests structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientMutations.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientMutations.ts",
       ),
       "utf8",
     );

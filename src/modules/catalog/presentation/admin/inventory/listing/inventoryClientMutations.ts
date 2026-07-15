@@ -2,7 +2,7 @@ import {
   buildInventoryBulkActionRequest,
   type InventoryFilters,
   type StockStatus,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 
 type MutationPayload = Record<string, unknown> | null;
 type MutationAction = "archive" | "delete" | "restore";

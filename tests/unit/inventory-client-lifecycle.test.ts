@@ -4,7 +4,7 @@ import {
   getInventoryRealtimeRefreshDelayMs,
   getNextInventoryPage,
   shouldCloseInventoryMenu,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientLifecycle";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientLifecycle";
 
 describe("inventoryClientLifecycle", () => {
   it("resets selection and expanded state together", () => {

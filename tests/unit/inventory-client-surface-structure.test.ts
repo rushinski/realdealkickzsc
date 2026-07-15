@@ -6,13 +6,13 @@ describe("inventory client surface structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientController.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientSurface",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientSurface",
     );
     expect(source).toContain("buildInventoryToolbarProps(");
     expect(source).toContain("buildInventoryContentProps(");

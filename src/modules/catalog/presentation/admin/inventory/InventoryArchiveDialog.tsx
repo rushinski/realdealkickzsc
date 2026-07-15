@@ -1,6 +1,6 @@
 "use client";
 
-import type { InventoryArchiveRequestState } from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
+import type { InventoryArchiveRequestState } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 
 type InventoryArchiveDialogProps = {

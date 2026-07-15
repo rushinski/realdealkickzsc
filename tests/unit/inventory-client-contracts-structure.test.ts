@@ -13,7 +13,7 @@ describe("inventory client contracts structure", () => {
     const contentSource = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryClientContent.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/InventoryClientContent.tsx",
       ),
       "utf8",
     );
@@ -26,13 +26,13 @@ describe("inventory client contracts structure", () => {
     );
 
     expect(toolbarSource).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts",
     );
     expect(contentSource).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts",
     );
     expect(dialogsSource).toContain(
-      "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts",
+      "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts",
     );
   });
 });

@@ -4,7 +4,7 @@ import {
   buildInventoryBulkMutationRequest,
   buildInventoryItemActionUrl,
   buildInventoryItemRequestInit,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientMutations";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientMutations";
 
 export type InventoryBulkSelectionArgs = Parameters<
   typeof buildInventoryBulkMutationRequest

@@ -7,11 +7,11 @@ const read = (relativePath: string) =>
 describe("inventory client top-level module migration structure", () => {
   it("makes the inventory client shell and controller layer module-owned", () => {
     const modulePaths = [
-      "src/modules/catalog/presentation/admin/inventory/InventoryClient.tsx",
-      "src/modules/catalog/presentation/admin/inventory/useInventoryClientController.ts",
-      "src/modules/catalog/presentation/admin/inventory/InventoryClientContent.tsx",
-      "src/modules/catalog/presentation/admin/inventory/inventoryClientSurface.ts",
-      "src/modules/catalog/presentation/admin/inventory/inventoryClientView.ts",
+      "src/modules/catalog/presentation/admin/inventory/listing/InventoryClient.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController.ts",
+      "src/modules/catalog/presentation/admin/inventory/listing/InventoryClientContent.tsx",
+      "src/modules/catalog/presentation/admin/inventory/listing/inventoryClientSurface.ts",
+      "src/modules/catalog/presentation/admin/inventory/listing/inventoryClientView.ts",
     ];
 
     for (const modulePath of modulePaths) {

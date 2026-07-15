@@ -1,4 +1,4 @@
-import type { StockStatus } from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+import type { StockStatus } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 import type { ProductWithDetails } from "@/types/domain/product";
 
 export function createInventoryDeleteRequest(product: ProductWithDetails, label: string) {

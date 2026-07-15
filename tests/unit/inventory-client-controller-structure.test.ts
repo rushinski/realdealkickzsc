@@ -6,13 +6,13 @@ describe("inventory client controller structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/InventoryClient.tsx",
+        "src/modules/catalog/presentation/admin/inventory/listing/InventoryClient.tsx",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/useInventoryClientController",
+      "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController",
     );
     expect(source).toContain("useInventoryClientController({");
   });
@@ -21,25 +21,25 @@ describe("inventory client controller structure", () => {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        "src/modules/catalog/presentation/admin/inventory/useInventoryClientController.ts",
+        "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientController.ts",
       ),
       "utf8",
     );
 
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/useInventoryClientState",
+      "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientState",
     );
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/useInventoryClientData",
+      "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientData",
     );
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/useInventoryClientEffects",
+      "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientEffects",
     );
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/useInventoryClientHandlers",
+      "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientHandlers",
     );
     expect(source).toContain(
-      "@/modules/catalog/presentation/admin/inventory/useInventoryClientMutations",
+      "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientMutations",
     );
   });
 });

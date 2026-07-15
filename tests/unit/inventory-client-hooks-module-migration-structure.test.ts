@@ -7,11 +7,11 @@ const read = (relativePath: string) =>
 describe("inventory client hooks module migration structure", () => {
   it("makes the inventory controller-adjacent hooks module-owned", () => {
     const modulePaths = [
-      "src/modules/catalog/presentation/admin/inventory/useInventoryClientData.ts",
-      "src/modules/catalog/presentation/admin/inventory/useInventoryClientEffects.ts",
-      "src/modules/catalog/presentation/admin/inventory/useInventoryClientHandlers.ts",
-      "src/modules/catalog/presentation/admin/inventory/useInventoryClientMutations.ts",
-      "src/modules/catalog/presentation/admin/inventory/useInventoryClientState.ts",
+      "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientData.ts",
+      "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientEffects.ts",
+      "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientHandlers.ts",
+      "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientMutations.ts",
+      "src/modules/catalog/presentation/admin/inventory/listing/useInventoryClientState.ts",
     ];
 
     for (const modulePath of modulePaths) {

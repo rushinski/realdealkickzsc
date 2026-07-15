@@ -7,7 +7,7 @@ import {
   getPrimaryImageUrl,
   getProductRawTitle,
   getProductTotalStock,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 
 describe("inventoryClientData", () => {
   it("builds inventory fetch params from active filters", () => {

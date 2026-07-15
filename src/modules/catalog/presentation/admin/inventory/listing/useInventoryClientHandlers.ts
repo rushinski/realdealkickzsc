@@ -6,17 +6,17 @@ import {
   createInventoryDetailsSelection,
   toggleInventoryExpandedVariantState,
   toggleInventoryOpenMenuId,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientUiState";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientUiState";
 import {
   getProductLiveState as deriveProductLiveState,
   getProductRawTitle,
   getProductTotalStock,
   getPrimaryImageUrl,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 import {
   toggleInventoryCurrentPageSelection,
   toggleInventorySelection,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientSelection";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientSelection";
 import type { ProductVariantRow, ProductWithDetails } from "@/types/domain/product";
 
 type UseInventoryClientHandlersArgs = {

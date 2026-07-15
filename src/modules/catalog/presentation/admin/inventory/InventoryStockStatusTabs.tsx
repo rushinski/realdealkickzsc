@@ -1,4 +1,4 @@
-import type { StockStatus } from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+import type { StockStatus } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 
 type InventoryStockStatusTabsProps = {
   stockStatusFilter: StockStatus;

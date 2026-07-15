@@ -1,7 +1,7 @@
 import type {
   InventoryFilters,
   StockStatus,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 import type { InventoryProductListProps } from "@/modules/catalog/presentation/admin/inventory/inventoryProductListTypes";
 import type {
   Category,

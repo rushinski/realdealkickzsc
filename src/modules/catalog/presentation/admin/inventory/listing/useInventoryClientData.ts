@@ -11,14 +11,14 @@ import { useRouter } from "next/navigation";
 import {
   buildInventoryPageSearchParams,
   type InventoryFilters,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
-import type { InventoryToastState } from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
+import type { InventoryToastState } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 import {
   buildInventoryExportUrl,
   buildInventoryProductsUrl,
   normalizeInventoryProductsResponse,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientRequests";
-import { getInventoryExportFileName } from "@/modules/catalog/presentation/admin/inventory/inventoryClientView";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientRequests";
+import { getInventoryExportFileName } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientView";
 import type { ProductWithDetails } from "@/types/domain/product";
 import { logError } from "@/lib/utils/log";
 

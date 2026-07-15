@@ -2,7 +2,7 @@ import type { Category, Condition } from "@/types/domain/product";
 import type {
   InventoryFilters,
   StockStatus,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 
 export function getInventoryDerivedState({
   pageSize,

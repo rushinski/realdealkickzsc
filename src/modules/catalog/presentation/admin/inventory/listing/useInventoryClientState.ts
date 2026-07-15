@@ -8,11 +8,11 @@ import type {
   InventoryDetailsSelection,
   InventoryRestoreRequestState,
   InventoryToastState,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 import type {
   InventoryFilters,
   StockStatus,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 import type { Category, Condition, ProductWithDetails } from "@/types/domain/product";
 
 type UseInventoryClientStateArgs = {

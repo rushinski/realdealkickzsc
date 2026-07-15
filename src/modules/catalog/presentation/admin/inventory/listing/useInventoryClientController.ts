@@ -5,19 +5,19 @@ import {
   buildInventoryDialogsProps,
   buildInventoryPaginationProps,
   buildInventoryToolbarProps,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientSurface";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientSurface";
 import {
   getProductRawTitle,
   type InventoryFilters,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
-import { getInventorySelectionState } from "@/modules/catalog/presentation/admin/inventory/inventoryClientSelection";
-import { getInventoryHeaderDescription } from "@/modules/catalog/presentation/admin/inventory/inventoryClientView";
-import { getInventoryDerivedState } from "@/modules/catalog/presentation/admin/inventory/inventoryClientDerivedState";
-import { useInventoryClientData } from "@/modules/catalog/presentation/admin/inventory/useInventoryClientData";
-import { useInventoryClientEffects } from "@/modules/catalog/presentation/admin/inventory/useInventoryClientEffects";
-import { useInventoryClientHandlers } from "@/modules/catalog/presentation/admin/inventory/useInventoryClientHandlers";
-import { useInventoryClientMutations } from "@/modules/catalog/presentation/admin/inventory/useInventoryClientMutations";
-import { useInventoryClientState } from "@/modules/catalog/presentation/admin/inventory/useInventoryClientState";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
+import { getInventorySelectionState } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientSelection";
+import { getInventoryHeaderDescription } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientView";
+import { getInventoryDerivedState } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientDerivedState";
+import { useInventoryClientData } from "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientData";
+import { useInventoryClientEffects } from "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientEffects";
+import { useInventoryClientHandlers } from "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientHandlers";
+import { useInventoryClientMutations } from "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientMutations";
+import { useInventoryClientState } from "@/modules/catalog/presentation/admin/inventory/listing/useInventoryClientState";
 import type { ProductWithDetails } from "@/types/domain/product";
 
 const PAGE_SIZE = 100;

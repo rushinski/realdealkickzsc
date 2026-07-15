@@ -5,8 +5,8 @@ import type {
   InventoryToolbarFilters,
   InventoryToolbarSelection,
   InventoryToolbarSummary,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
-import type { InventoryProductListContractProps } from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
+import type { InventoryProductListContractProps } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 
 type BuildInventoryToolbarPropsArgs = InventoryToolbarSummary &
   InventoryToolbarFilters &

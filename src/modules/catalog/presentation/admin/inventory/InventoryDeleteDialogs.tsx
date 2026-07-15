@@ -1,6 +1,6 @@
 "use client";
 
-import type { InventoryDeleteRequestState } from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
+import type { InventoryDeleteRequestState } from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 
 type InventoryDeleteDialogsProps = {

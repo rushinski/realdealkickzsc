@@ -3,7 +3,7 @@ import {
   buildInventoryExportUrl,
   buildInventoryProductsUrl,
   normalizeInventoryProductsResponse,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientRequests";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientRequests";
 
 describe("inventoryClientRequests", () => {
   it("builds the inventory products url with filters", () => {

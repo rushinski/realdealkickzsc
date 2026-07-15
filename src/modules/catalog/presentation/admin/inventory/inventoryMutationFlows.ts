@@ -4,11 +4,11 @@ import type {
   InventoryArchiveRequestState,
   InventoryDeleteRequestState,
   InventoryRestoreRequestState,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 import type {
   InventoryFilters,
   StockStatus,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 import type { InventoryBulkSelectionArgs } from "@/modules/catalog/presentation/admin/inventory/inventoryMutationRequests";
 
 type MutationTone = "success" | "error" | "info";

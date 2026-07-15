@@ -3,7 +3,7 @@
 import type {
   InventoryClientContentState,
   InventoryProductListContractProps,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 import { AdminEmptyState } from "@/modules/shared/presentation/admin/ui/AdminEmptyState";
 import { AdminSectionCard } from "@/modules/shared/presentation/admin/ui/AdminSectionCard";
 import { InventoryProductList } from "@/modules/catalog/presentation/admin/inventory/InventoryProductList";

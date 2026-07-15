@@ -1,4 +1,4 @@
-export { InventoryClient } from "@/modules/catalog/presentation/admin/inventory/InventoryClient";
+export { InventoryClient } from "@/modules/catalog/presentation/admin/inventory/listing/InventoryClient";
 export { InventoryPageContent } from "@/modules/catalog/presentation/admin/inventory/InventoryPageContent";
 export { CreateProductClient } from "@/modules/catalog/presentation/admin/inventory/CreateProductClient";
 export { CreateProductPageContent } from "@/modules/catalog/presentation/admin/inventory/CreateProductPageContent";

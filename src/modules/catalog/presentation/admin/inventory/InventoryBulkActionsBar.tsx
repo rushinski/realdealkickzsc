@@ -5,7 +5,7 @@ import type {
   InventoryToolbarFilters,
   InventoryToolbarSelection,
   InventoryToolbarSummary,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientContracts";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientContracts";
 import { adminButtonStyles } from "@/modules/shared/presentation/admin/ui/adminButtonStyles";
 
 type InventoryBulkActionsBarProps = Pick<

@@ -13,16 +13,16 @@ import {
   getInventoryRealtimeRefreshDelayMs,
   getNextInventoryPage,
   shouldCloseInventoryMenu,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientLifecycle";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientLifecycle";
 import {
   getInventoryRealtimeChannelName,
   getInventoryRealtimeTables,
   shouldClearInventoryRefreshTimer,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientRealtime";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientRealtime";
 import type {
   InventoryFilters,
   StockStatus,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientData";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientData";
 import type { Category, Condition } from "@/types/domain/product";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 

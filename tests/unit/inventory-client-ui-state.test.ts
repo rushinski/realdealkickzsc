@@ -4,7 +4,7 @@ import {
   filterInventorySelectionAfterRestore,
   toggleInventoryExpandedVariantState,
   toggleInventoryOpenMenuId,
-} from "@/modules/catalog/presentation/admin/inventory/inventoryClientUiState";
+} from "@/modules/catalog/presentation/admin/inventory/listing/inventoryClientUiState";
 
 describe("inventoryClientUiState", () => {
   it("creates a details selection payload", () => {
