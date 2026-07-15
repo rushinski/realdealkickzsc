@@ -1,5 +1,5 @@
 // app/checkout/page.tsx
-import { CheckoutGatePageContent } from "@/modules/checkout";
+import { CheckoutGatePageContent } from "@/modules/checkout/presentation/CheckoutGatePageContent";
 
 export const dynamic = "force-dynamic";
 

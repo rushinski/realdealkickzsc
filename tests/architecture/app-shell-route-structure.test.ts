@@ -33,8 +33,12 @@ describe("app shell route structure", () => {
     );
 
     expect(errorSource).toContain("@/modules/app-shell/presentation");
+    expect(errorSource).not.toContain('from "@/modules/app-shell/presentation";');
+    expect(errorSource).toContain('"use client"');
     expect(errorSource).toContain("<SystemErrorPageContent");
     expect(adminErrorSource).toContain("@/modules/app-shell/presentation");
+    expect(adminErrorSource).not.toContain('from "@/modules/app-shell/presentation";');
+    expect(adminErrorSource).toContain('"use client"');
     expect(adminErrorSource).toContain("<AdminErrorPageContent");
     expect(notFoundSource).toContain("@/modules/app-shell/presentation");
     expect(notFoundSource).toContain("<NotFoundPageContent />");

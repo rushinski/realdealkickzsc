@@ -1,4 +1,6 @@
-import { AdminErrorPageContent } from "@/modules/app-shell/presentation";
+"use client";
+
+import { AdminErrorPageContent } from "@/modules/app-shell/presentation/AdminErrorPageContent";
 
 export default function Error({
   error,

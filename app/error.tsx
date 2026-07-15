@@ -1,4 +1,6 @@
-import { SystemErrorPageContent } from "@/modules/app-shell/presentation";
+"use client";
+
+import { SystemErrorPageContent } from "@/modules/app-shell/presentation/SystemErrorPageContent";
 
 export default function ErrorPage({
   error,
