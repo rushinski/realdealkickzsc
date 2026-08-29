@@ -41,7 +41,7 @@ The prior code did not fail because of one conversion bug. It lacked a stable co
 |---|---|---|
 | Remote DTOs | One large optional object mixed API 1.0 webhook data, several REST versions, CSV rows, and internal fields | Use strict endpoint-specific wire schemas and convert immediately to canonical types |
 | Identity | SKU was used as both bootstrap identity and permanent identity; family creation also relied on response ordering | Store product-family and product IDs; use normalized SKU only for approved initial linking |
-| Product create | The implementation expected an extra family ID and could shift parent/variant mappings | Supply explicit IDs, refetch the family, and match products by ID plus expected SKU/attributes |
+| Product create | The implementation expected an extra family ID and could shift parent/variant mappings | Use the returned family ID, refetch, and match generated product IDs by unique code plus ordered attributes |
 | Product edit | Price/cost changes, variant addition/removal, and collection-replacement semantics were incomplete | Issue endpoint-specific family and product patches and preserve unmanaged collections |
 | Delete | Remote family deletion was incomplete and irreversible behavior was not modeled | Archive products on both sides and retain a tombstone |
 | Inventory | Outlet quantities were sometimes summed and sometimes overwritten; zero and failed fetches were conflated | Track one configured outlet, distinguish unknown from zero, and consume versioned inventory events |
@@ -85,7 +85,7 @@ The prior code did not fail because of one conversion bug. It lacked a stable co
 
 The implementation must encode these Lightspeed constraints rather than relying on developer memory:
 
-1. Product webhooks are form-encoded API 1.0 trigger payloads, not authoritative product snapshots. The receiver has roughly five seconds to acknowledge, delivery is not guaranteed, and recovery polling is required. See [Webhooks](https://x-series-api.lightspeedhq.com/v2026.04/docs/webhooks) and [example payloads](https://x-series-api.lightspeedhq.com/docs/webhooks_example_payloads).
+1. Product webhooks are form-encoded API 1.0 trigger payloads, not authoritative product snapshots. The JSON object is inside the form field named payload. OAuth application deliveries use X-Signature with HMAC-SHA256 over the exact request body and the application client_secret. The receiver has roughly five seconds to acknowledge, delivery is not guaranteed, and recovery polling is required. See [Webhooks](https://x-series-api.lightspeedhq.com/v2026.04/docs/webhooks) and [example payloads](https://x-series-api.lightspeedhq.com/docs/webhooks_example_payloads).
 2. The 2026-10 product model makes product families explicit and separates family and product mutations. Creation, family updates, product updates, adding products, and irreversible deletes have different contracts. See the [2026-10 migration guide](https://x-series-api.lightspeedhq.com/v1.0/docs/2026_10_products_migration_guide) and [updating variant families](https://x-series-api.lightspeedhq.com/v1.0/docs/product_families_updating_variant_families).
 3. Stock adjustments are delta operations scoped to an outlet and product. They are not an absolute inventory setter, and versioned inventory updates must be applied in order. See [Create stock adjustments](https://x-series-api.lightspeedhq.com/reference/createstockadjustments) and [Inventory updates](https://x-series-api.lightspeedhq.com/v1.0/docs/inventory_updates).
 4. Sale creation supports a caller-provided UUID and requires source, state, line items, and payment data. See [Create a sale](https://x-series-api.lightspeedhq.com/reference/createsale).
@@ -392,35 +392,37 @@ The local transaction emits canonical intent. Website-only fields such as shippi
 
 The locally supplied unit cost is also retained locally unless the authenticated Lightspeed contract explicitly allows cost writes and reads. Without that capability, cost is outside the shared comparison contract rather than silently emitted, overwritten, or changed to zero.
 
-The adapter allocates explicit UUIDs and builds a family request similar to:
+The adapter resolves the Lightspeed Size variant-attribute ID and the IDs of the managed Lightspeed tags, then builds a family request similar to:
 
 ~~~json
 {
-  "id": "5f2d8f8d-9ee4-4ed5-89f5-9ace2de13a4e",
   "name": "Air Jordan 1 Retro High OG",
   "description": "Black and red high-top sneaker.",
+  "classification": "VARIANT",
   "brand_id": "mapped-lightspeed-brand-uuid",
   "category_id": "mapped-lightspeed-category-uuid",
-  "active": {
-    "in_store": true,
-    "ecwid": true
-  },
-  "tags": [
-    "rdk:condition:new",
-    "rdk:model:air-jordan-1"
+  "track_inventory": true,
+  "variant_attribute_ids": [
+    "mapped-lightspeed-size-attribute-uuid"
+  ],
+  "tag_ids": [
+    "mapped-rdk-condition-tag-uuid",
+    "mapped-rdk-model-tag-uuid"
   ],
   "products": [
     {
-      "id": "f451a2a2-7ac8-48c6-9032-199d91dfb1ce",
-      "name": "Air Jordan 1 Retro High OG / 10",
-      "sku": "RDK-AJ1-BRED-10",
-      "variant_definition": [
+      "variant_attributes": [
+        "10"
+      ],
+      "codes": [
         {
-          "name": "Size",
-          "value": "10"
+          "type": "CUSTOM",
+          "code": "RDK-AJ1-BRED-10"
         }
       ],
-      "price_including_tax": "189.99",
+      "prices": {
+        "price_including_tax": "189.99"
+      },
       "active": {
         "in_store": true,
         "ecwid": true
@@ -430,9 +432,22 @@ The adapter allocates explicit UUIDs and builds a family request similar to:
 }
 ~~~
 
-The request is sent to POST /api/2026-10/product_families. Price field selection depends on the retailer's tax configuration and the released contract; the example assumes a tax-inclusive configuration. Channel-active values come from connection configuration rather than being hard-coded.
+The request is sent to POST /api/2026-10/product_families. A VARIANT family requires one to three ordered variant_attribute_ids, and every product supplies the same number of ordered variant_attributes. Every product also requires at least one unique code. Price field selection depends on the retailer's tax configuration and the released contract; the example assumes a tax-inclusive configuration. Channel-active values come from connection configuration rather than being hard-coded.
 
-The worker then refetches the family. It verifies the supplied family ID and maps each variant by its supplied product ID, with normalized SKU and variant definition as consistency checks. It never assumes that response array position zero is a parent or that response order matches request order.
+Creation returns generated IDs rather than the created resources:
+
+~~~json
+{
+  "data": {
+    "product_family_id": "5f2d8f8d-9ee4-4ed5-89f5-9ace2de13a4e",
+    "product_ids": [
+      "f451a2a2-7ac8-48c6-9032-199d91dfb1ce"
+    ]
+  }
+}
+~~~
+
+The worker refetches that family and maps each generated product ID to the unique expected CUSTOM code plus its ordered variant attributes. It never assumes that response array position identifies the corresponding website variant. Family images are synchronized after creation through POST /api/2026-10/product_families/{family_id}/images; image removal uses the dedicated image DELETE endpoint rather than a family patch.
 
 Initial quantity is a separate delta adjustment after family creation and verification. The worker first fetches the new product's designated-outlet quantity and version, then calculates desired quantity minus observed quantity. The following example assumes the observed quantity is zero:
 
@@ -454,49 +469,68 @@ The operation targets POST /api/2026-07/stock_adjustments. Before retrying after
 
 ### 12.2 Lightspeed creates a product family
 
-The webhook trigger may decode from its form body to fields such as:
+The webhook form body contains a payload field whose decoded JSON resembles:
 
 ~~~text
-type=product.update&id=legacy-product-resource-id&domain_prefix=retailer
+payload={"type":"product.update","id":"legacy-product-resource-id"}&domain_prefix=retailer
 ~~~
 
 or inside the documented envelope. The receiver stores the exact body and content type. The ID belongs to the legacy webhook resource contract and must not be assumed to be a 2026-10 family ID. The inbox worker resolves the trigger product/resource to its current family, then fetches that complete authoritative family and inventory. A representative normalized fetch result is:
 
 ~~~json
 {
-  "family": {
+  "data": {
     "id": "5f2d8f8d-9ee4-4ed5-89f5-9ace2de13a4e",
     "name": "Air Jordan 1 Retro High OG",
     "description": "Black and red high-top sneaker.",
+    "classification": "VARIANT",
     "brand_id": "mapped-lightspeed-brand-uuid",
     "category_id": "mapped-lightspeed-category-uuid",
-    "active": {
-      "in_store": true,
-      "ecwid": true
-    },
-    "tags": [
-      "rdk:condition:new",
-      "rdk:model:air-jordan-1",
-      "lightspeed-managed-tag"
+    "track_inventory": true,
+    "variant_attribute_ids": [
+      "mapped-lightspeed-size-attribute-uuid"
+    ],
+    "tag_ids": [
+      "mapped-rdk-condition-tag-uuid",
+      "mapped-rdk-model-tag-uuid",
+      "unmanaged-lightspeed-tag-uuid"
+    ],
+    "images": [
+      {
+        "id": "lightspeed-image-uuid",
+        "url": "https://cdn.example.com/aj1-bred-front.jpg"
+      }
+    ],
+    "products": [
+      {
+        "id": "f451a2a2-7ac8-48c6-9032-199d91dfb1ce",
+        "family_id": "5f2d8f8d-9ee4-4ed5-89f5-9ace2de13a4e",
+        "variant_name": "10",
+        "sku": "RDK-AJ1-BRED-10",
+        "variant_attributes": [
+          "10"
+        ],
+        "prices": {
+          "price_excluding_tax": null,
+          "price_including_tax": "189.99",
+          "tax": null,
+          "loyalty_amount": null
+        },
+        "active": {
+          "in_store": true,
+          "ecwid": true
+        },
+        "codes": [
+          {
+            "type": "CUSTOM",
+            "code": "RDK-AJ1-BRED-10"
+          }
+        ],
+        "version": 27561014304,
+        "deleted_at": null
+      }
     ]
   },
-  "products": [
-    {
-      "id": "f451a2a2-7ac8-48c6-9032-199d91dfb1ce",
-      "sku": "RDK-AJ1-BRED-10",
-      "variant_definition": [
-        {
-          "name": "Size",
-          "value": "10"
-        }
-      ],
-      "price_including_tax": "189.99",
-      "active": {
-        "in_store": true,
-        "ecwid": true
-      }
-    }
-  ],
   "inventory": [
     {
       "outlet_id": "configured-ecommerce-outlet-uuid",
@@ -571,16 +605,18 @@ The worker first refetches the current remote family. If the three-way merge per
   "family_patch": {
     "name": "Air Jordan 1 Retro High OG Bred",
     "description": "Updated description.",
-    "tags": [
-      "lightspeed-managed-tag",
-      "rdk:condition:new",
-      "rdk:model:air-jordan-1"
+    "tag_ids": [
+      "unmanaged-lightspeed-tag-uuid",
+      "mapped-rdk-condition-tag-uuid",
+      "mapped-rdk-model-tag-uuid"
     ]
   },
   "product_patches": [
     {
       "id": "f451a2a2-7ac8-48c6-9032-199d91dfb1ce",
-      "price_including_tax": "194.99"
+      "prices": {
+        "price_including_tax": "194.99"
+      }
     }
   ]
 }
@@ -600,7 +636,7 @@ Adding a website variant emits:
   "payload": {
     "sync_variant_id": "sv_105",
     "sku": "RDK-AJ1-BRED-10.5",
-    "variant_definition": [
+    "attribute_values": [
       {
         "name": "Size",
         "value": "10.5"
@@ -612,7 +648,32 @@ Adding a website variant emits:
 }
 ~~~
 
-The worker allocates a product UUID and uses the released 2026-10 add-product-to-family endpoint, expected to be POST /api/2026-10/product_families/{family_id}/products. The contract gate verifies the final path and body. It verifies the returned/fetched product by UUID and expected attributes, stores the link, then applies initial stock as a separate guarded delta. A SKU collision with any active local or remote product stops the operation before writing.
+The adapter converts that intent into this product array:
+
+~~~json
+[
+  {
+    "variant_attributes": [
+      "10.5"
+    ],
+    "codes": [
+      {
+        "type": "CUSTOM",
+        "code": "RDK-AJ1-BRED-10.5"
+      }
+    ],
+    "prices": {
+      "price_including_tax": "194.99"
+    },
+    "active": {
+      "in_store": true,
+      "ecwid": true
+    }
+  }
+]
+~~~
+
+The worker sends the array to POST /api/2026-10/product_families/{family_id}/products. The response contains generated product_ids only. It refetches the family, matches the new product by unique CUSTOM code plus attributes, stores the generated ID link, then applies initial stock as a separate guarded delta. A SKU/code collision with any active local or remote product stops the operation before writing.
 
 Removing a variant does not call the irreversible DELETE operation. It patches that product's configured channel-active flags to false, archives the website variant, and retains its link/tombstone. Reactivation is a new explicit intent that verifies the old remote product still exists before clearing the tombstone.
 
