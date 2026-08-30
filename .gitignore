@@ -73,3 +73,6 @@ docker-storage/
 *.tgz
 
 .vercel
+
+# Local Git worktrees
+.worktrees/
