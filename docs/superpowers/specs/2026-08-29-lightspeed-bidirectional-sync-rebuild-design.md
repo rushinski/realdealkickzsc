@@ -46,8 +46,11 @@ The prior code did not fail because of one conversion bug. It lacked a stable co
 | Delete | Remote family deletion was incomplete and irreversible behavior was not modeled | Archive products on both sides and retain a tombstone |
 | Inventory | Outlet quantities were sometimes summed and sometimes overwritten; zero and failed fetches were conflated | Track one configured outlet, distinguish unknown from zero, and consume versioned inventory events |
 | Reconciliation | Partial pages and failed hydration could appear to be missing products; unsynchronized fields caused false positives | Stage a complete scan, compare only managed fields, and never archive from incomplete evidence |
-| Delivery | Webhook work ran after the response without durable ownership; polling recovery was absent | Persist an inbox before acknowledging and run scheduled recovery polling |
-| Transactions | Local rollback attempted to compensate for remote success; checkout could fail after a captured payment | Use local transactions plus an outbox; remote work is asynchronous and idempotent |
+| Delivery | Webhook work ran after the response without durable ownership; polling recovery was absent | Verify the exact body, persist a PII-safe trigger envelope before acknowledging, and run scheduled recovery polling |
+| Webhook privacy | `sale.update` can contain the API 1.0 sale/customer object; storing the raw body would retain customer and payment data that processing does not need | Store the body SHA-256 plus only type, resource ID/version, outlet, and retailer identifiers; fetch authoritative data by ID |
+| Checkout transaction | The current paid-order RPC can transition an order to paid even when only a subset of variant decrements succeeded; reconciliation can then fall back to marking paid without decrementing anything | Lock/aggregate variants, require the affected-row count to match exactly, roll back local order/inventory/outbox on mismatch, and leave an externally captured payment in processing/alerted state rather than bypass inventory |
+| Refund transaction | The current refund route performs payment, order, item, and restock writes sequentially and treats some failures as nonfatal | Record one immutable refund ledger and its outbox intent through one idempotent database transaction |
+| Remote transactions | Local rollback attempted to compensate for remote success; checkout could fail after a captured payment | Use local transactions plus an outbox; remote work is asynchronous and idempotent |
 | Data loss | Category/model were guessed, tags/images were rebuilt destructively, and cost could silently become zero | Preserve unknowns, use explicit mappings, and make capability-gated fields nullable |
 
 ## 4. Goals and non-goals
@@ -85,10 +88,10 @@ The prior code did not fail because of one conversion bug. It lacked a stable co
 
 The implementation must encode these Lightspeed constraints rather than relying on developer memory:
 
-1. Product webhooks are form-encoded API 1.0 trigger payloads, not authoritative product snapshots. The JSON object is inside the form field named payload. OAuth application deliveries use X-Signature with HMAC-SHA256 over the exact request body and the application client_secret. The receiver has roughly five seconds to acknowledge, delivery is not guaranteed, and recovery polling is required. See [Webhooks](https://x-series-api.lightspeedhq.com/v2026.04/docs/webhooks) and [example payloads](https://x-series-api.lightspeedhq.com/docs/webhooks_example_payloads).
+1. Product webhooks are form-encoded API 1.0 trigger payloads, not authoritative product snapshots. The entity JSON is inside the form field named `payload`; trigger type and retailer/domain data, when delivered, are separate form fields rather than members invented inside that entity. OAuth application deliveries use X-Signature with HMAC-SHA256 over the exact request body and the application client_secret. Because `domain_prefix` is not guaranteed, each configured subscription uses a connection-bound callback route. The receiver has roughly five seconds to acknowledge, delivery is not guaranteed, and recovery polling is required. See [Webhooks](https://x-series-api.lightspeedhq.com/v2026.04/docs/webhooks), [example payloads](https://x-series-api.lightspeedhq.com/docs/webhooks_example_payloads), and the [2026-07 webhook API](https://x-series-api.lightspeedhq.com/reference/get-webhooks).
 2. The 2026-10 product model makes product families explicit and separates family and product mutations. Creation, family updates, product updates, adding products, and irreversible deletes have different contracts. See the [2026-10 migration guide](https://x-series-api.lightspeedhq.com/v1.0/docs/2026_10_products_migration_guide) and [updating variant families](https://x-series-api.lightspeedhq.com/v1.0/docs/product_families_updating_variant_families).
 3. Stock adjustments are delta operations scoped to an outlet and product. They are not an absolute inventory setter, and versioned inventory updates must be applied in order. See [Create stock adjustments](https://x-series-api.lightspeedhq.com/reference/createstockadjustments) and [Inventory updates](https://x-series-api.lightspeedhq.com/v1.0/docs/inventory_updates).
-4. Sale creation supports a caller-provided UUID and requires source, state, line items, and payment data. See [Create a sale](https://x-series-api.lightspeedhq.com/reference/createsale).
+4. Sale creation generates the Lightspeed sale ID. The request can carry the website identity in `source.id` and `source.type`; recovery after an ambiguous create uses a deterministic, searchable `invoice_number`, then stores the generated Lightspeed ID. See [Create a sale](https://x-series-api.lightspeedhq.com/reference/createsale) and [Search](https://x-series-api.lightspeedhq.com/reference/search-1).
 5. Public product scopes may not expose cost. Cost synchronization is therefore capability-gated, nullable, and never defaulted to zero. See [Scopes](https://x-series-api.lightspeedhq.com/v2026.04/docs/scopes).
 
 The migration guide describes monetary wire values as quoted decimal strings, while another 2026-10 update example uses numeric values. Internally all money is integer cents. The adapter's exact wire encoding remains provisional until recorded requests against the released API pass contract tests.
@@ -102,7 +105,7 @@ The migration guide describes monetary wire values as quoted decimal strings, wh
 | Website domain | Own local product editing, checkout, publishing, and local-only metadata |
 | Sync intent service | Validate a local change, update local state, and append an outbox event in one transaction |
 | Outbox worker | Serialize work per family, call Lightspeed, refetch authoritative state, and update links/revisions |
-| Webhook receiver | Verify authenticity, store the raw trigger in the inbox, and acknowledge without doing remote work |
+| Webhook receiver | Verify authenticity, store a body hash plus minimal sanitized trigger identity in the inbox, and acknowledge without doing remote work |
 | Inbox worker | Deduplicate triggers, fetch authoritative remote data, normalize it, and apply a canonical change |
 | Lightspeed adapters | Validate endpoint-specific requests/responses and isolate API version details |
 | Canonical comparator | Compare only managed fields, calculate conflicts, and generate explicit operations |
@@ -121,7 +124,7 @@ The website transaction never waits for Lightspeed. A failed remote request leav
 
 ### 7.3 Lightspeed-to-local flow
 
-1. The receiver verifies the request, stores the raw form payload plus headers, and returns success within five seconds.
+1. The receiver verifies the exact raw request in memory, stores its SHA-256 plus sanitized trigger identifiers and selected headers, and returns success within five seconds.
 2. The inbox worker extracts the trigger resource ID and event type; it does not trust the trigger as full state.
 3. It fetches the complete 2026-10 product family and designated-outlet inventory.
 4. It converts those responses into the canonical model and compares them to the last common snapshot.
@@ -129,11 +132,12 @@ The website transaction never waits for Lightspeed. A failed remote request leav
 
 ### 7.4 Sales flow
 
-1. Checkout completes local payment and atomically commits the website order, its local stock reservation/decrement, and a Lightspeed-sale outbox intent.
-2. The sale worker creates the Lightspeed sale using a UUID deterministically derived from the website order.
-3. Lightspeed's sale decrements inventory at the configured fulfillment outlet.
-4. The resulting inventory event or recovery poll updates the website quantity.
-5. A timeout after the remote commit is resolved by looking up/retrying the same sale UUID, never by creating a second sale.
+1. Checkout completes local payment and atomically commits the website order, every required local stock decrement, and a Lightspeed-sale outbox intent; any missing/insufficient variant row aborts the entire transaction.
+2. Before the first request, the sale worker stores a deterministic external source ID and searchable invoice number for the website order.
+3. It creates the Lightspeed sale and stores the generated `data.id` plus generated line IDs.
+4. Lightspeed's sale decrements inventory at the configured register/outlet.
+5. The resulting inventory event or recovery poll updates the website quantity.
+6. A timeout after the request may have been sent is resolved by invoice search plus exact source/line/total verification; absence from an eventually consistent search is not proof of non-creation and never authorizes an automatic second POST.
 
 ## 8. Canonical model
 
@@ -216,6 +220,8 @@ The canonical model is the only shape used by conflict detection, reconciliation
 
 Category and model mapping must be explicit, persisted, and reversible. Unknown remote values produce a mapping-required state; they are never guessed from product names. A failed or unauthorized cost read produces null and exclusion from comparison, never zero.
 
+Snapshot equality/hashing uses deterministic canonical JSON: object keys are sorted; set-semantics fields such as managed tags are sorted; linked variants are ordered by stable sync identity (normalized SKU only before linking); and images are ordered by explicit position/key because their order is meaningful. Raw database row order, API response order, locale formatting, and wire DTOs never enter a base hash. This removes formatting-only false drift.
+
 ## 9. Field ownership and conflict resolution
 
 Ownership does not prevent an ordinary edit from either system. It resolves a true concurrent conflict.
@@ -282,14 +288,24 @@ Names are conceptual and may be adapted to the project's database conventions. T
 | last_common_snapshot | Canonical managed variant JSON |
 | tombstoned_at | Retained on archive |
 
-Database constraints must prevent two website records from linking to one remote ID and prevent one website record from holding multiple active remote links. Null behavior must be handled with partial unique indexes or an equivalent database-specific constraint.
+**sync_image_links**
+
+| Column | Requirement |
+|---|---|
+| sync_family_id | Required parent |
+| local_image_key | Stable normalized content/URL hash, unique within family |
+| lightspeed_image_id | Generated/adopted remote ID, unique within connection |
+| management_origin | website_created, remote_created after linking, or explicitly initial_adopted |
+| state / tombstoned_at | Retains image ownership after removal |
+
+Database constraints must prevent two website records from linking to one remote ID and prevent one website record from holding multiple active remote links. Image deletion may target only an ID present in the managed image-link table; URL similarity alone is never delete authority. Null behavior must be handled with partial unique indexes or an equivalent database-specific constraint.
 
 ### 10.2 Delivery tables
 
 | Table | Required contents |
 |---|---|
 | sync_outbox | Event ID, aggregate ID, intent type, canonical payload, local revision, operation key, state, attempts, next attempt, error class |
-| sync_inbox | Delivery ID/hash, raw body, selected headers, trigger type/resource ID, received time, state, attempts |
+| sync_inbox | Delivery/dedupe key, body SHA-256, sanitized trigger identifiers, selected headers, received time, state, attempts |
 | sync_operations | Deterministic operation key, endpoint/action, request fingerprint, remote result/reference, terminal state |
 | sync_conflicts | Field path, B/L/R values, authority, resolution, related events, resolved time |
 | sync_scan_runs | Cursor/checkpoint, expected/completed counts, completeness proof, staged result, activation status |
@@ -453,13 +469,12 @@ Initial quantity is a separate delta adjustment after family creation and verifi
 
 ~~~json
 {
-  "adjustments": [
+  "stock_adjustments": [
     {
       "outlet_id": "configured-ecommerce-outlet-uuid",
       "product_id": "f451a2a2-7ac8-48c6-9032-199d91dfb1ce",
       "quantity": "1",
-      "reason": "count",
-      "note": "RDK initial stock; operation op_01..."
+      "reason": "STOCK_FOUND"
     }
   ]
 }
@@ -469,13 +484,31 @@ The operation targets POST /api/2026-07/stock_adjustments. Before retrying after
 
 ### 12.2 Lightspeed creates a product family
 
-The webhook form body contains a payload field whose decoded JSON resembles:
+The webhook request is `application/x-www-form-urlencoded`. A decoded diagnostic view resembles:
 
 ~~~text
-payload={"type":"product.update","id":"legacy-product-resource-id"}&domain_prefix=retailer
+type=product.update&domain_prefix=retailer&payload={"id":"legacy-product-resource-id","version":5303657190,...}
 ~~~
 
-or inside the documented envelope. The receiver stores the exact body and content type. The ID belongs to the legacy webhook resource contract and must not be assumed to be a 2026-10 family ID. The inbox worker resolves the trigger product/resource to its current family, then fetches that complete authoritative family and inventory. A representative normalized fetch result is:
+`payload` is the API 1.0 entity object; it does not gain an invented `type` member. The callback URL already identifies the configured connection and trigger type, because optional form fields such as `domain_prefix` cannot be the routing key. When `type`, `domain_prefix`, or `retailer_id` is present, it must agree with that route and stored connection.
+
+The receiver verifies the exact encoded body, then stores only its SHA-256 and sanitized fields such as resource ID, version, retailer ID, product ID, and outlet ID. It never persists the raw `sale.update` body because that entity may contain customer/payment data. The legacy resource ID must not be assumed to be a 2026-10 family ID. The stored inbox evidence is:
+
+~~~json
+{
+  "trigger_type": "product.update",
+  "resource_id": "legacy-product-resource-id",
+  "resource_version": 5303657190,
+  "body_sha256": "64-lowercase-hex-characters",
+  "sanitized_trigger": {
+    "retailer_id": "configured-retailer-uuid",
+    "product_id": "legacy-product-resource-id",
+    "outlet_id": null
+  }
+}
+~~~
+
+The inbox worker resolves the trigger product/resource to its current family, then fetches that complete family and inventory. This authoritative fetch, not the trigger envelope, supplies product fields. A representative normalized fetch result is:
 
 ~~~json
 {
@@ -745,14 +778,17 @@ A remote hard deletion also maps to a local archive only after a direct not-foun
 
 ### 12.7 Website sale
 
-After payment succeeds, the website transaction commits the order, its local inventory reservation/decrement, and this outbox intent:
+Before payment, checkout classifies the cart against the active sync scope. A wholly local-only cart remains outside Lightspeed; a wholly synchronized cart is eligible; a mixed cart is rejected because one payment cannot safely become a partial remote sale. During the catalog-only pilot, synchronized carts are blocked until sale export passes its gates.
+
+After payment succeeds for an eligible cart, the website transaction commits the order, every local inventory decrement, and an outbox row containing only the immutable website order ID. The outbox row's existence is immutable proof that every product was in scope at commit time. When the row is claimed, the worker loads the order/item/payment snapshots and produces this canonical sale intent:
 
 ~~~json
 {
   "event_type": "sale.completed",
   "payload": {
-    "website_order_id": "order_1042",
-    "sale_uuid": "deterministic-uuid-for-order-1042",
+    "website_order_id": "550e8400-e29b-41d4-a716-446655440000",
+    "external_sale_id": "rdk-order:550e8400-e29b-41d4-a716-446655440000",
+    "invoice_number": "RDK-JBSWY3DPEHPK3PXP6K5S",
     "completed_at": "2026-08-29T17:20:00Z",
     "currency": "USD",
     "shipping_cents": 0,
@@ -780,36 +816,48 @@ The adapter resolves remote product, outlet, register, source author, tax, and p
 
 ~~~json
 {
-  "id": "deterministic-uuid-for-order-1042",
   "source": {
-    "name": "RDK Website",
-    "version": "sync-schema-1",
-    "author_id": "configured-source-author-uuid"
+    "register_id": "configured-register-uuid",
+    "author_id": "configured-source-author-uuid",
+    "id": "rdk-order:550e8400-e29b-41d4-a716-446655440000",
+    "type": "RDK Website"
   },
-  "state": "CLOSED",
-  "sale_date": "2026-08-29T17:20:00Z",
-  "outlet_id": "configured-ecommerce-outlet-uuid",
-  "register_id": "configured-register-uuid",
+  "date": "2026-08-29T17:20:00Z",
+  "state": "closed",
+  "invoice_number": "RDK-JBSWY3DPEHPK3PXP6K5S",
+  "note": "Website order 550e8400-e29b-41d4-a716-446655440000",
   "line_items": [
     {
-      "product_id": "f451a2a2-7ac8-48c6-9032-199d91dfb1ce",
+      "product": {
+        "id": "f451a2a2-7ac8-48c6-9032-199d91dfb1ce"
+      },
       "quantity": 1,
-      "price_including_tax": "206.69",
-      "tax": "11.70",
-      "discount_total": "0.00"
+      "pricing": {
+        "price": "194.99",
+        "discount": "0.00"
+      },
+      "tax": {
+        "id": "mapped-sales-tax-uuid",
+        "amount": "11.70"
+      },
+      "status": "CONFIRMED"
     }
   ],
   "payments": [
     {
-      "payment_type_id": "mapped-card-payment-type-uuid",
-      "amount": "206.69",
-      "payment_date": "2026-08-29T17:20:00Z"
+      "type": {
+        "config_id": "mapped-card-payment-type-uuid"
+      },
+      "date": "2026-08-29T17:20:00Z",
+      "amount": "206.69"
     }
   ]
 }
 ~~~
 
-The request targets POST /api/2026-07/sales. The example illustrates the semantic mapping; the contract suite determines the exact tax-inclusive/exclusive fields and totals required for the retailer's tax mode.
+The request targets POST /api/2026-07/sales. `pricing.price` and `tax.amount` are unit, tax-exclusive amounts in this example. A nonzero shipping charge is represented by a configured non-inventory Lightspeed shipping product line with its own tax mapping; it is never folded into a merchandise unit price. The contract suite verifies the retailer's tax mode and the full request/response shape.
+
+Lightspeed generates the sale `data.id`; the worker stores it in the vendor-specific sale link for that website order before acknowledging the outbox event. If the POST times out, the worker searches for the deterministic `invoice_number`, verifies `source.id`, source type, totals, and line identities, and adopts exactly one match. No match after the visibility window remains recovery_pending/needs_attention because search absence is not proof that the create failed. Multiple or non-identical matches also enter needs_attention. A second POST is automatic only when the transport can prove the first request body was never sent.
 
 There is no stock adjustment for this order. The local checkout decrement represents the website side of the sale; Lightspeed's sale represents the remote side. When the authoritative inventory update returns, the website sets/confirms that outlet quantity and does not subtract the sale a second time. The website order remains paid and successful if Lightspeed is temporarily unavailable; its sync state becomes pending or needs_attention without asking the customer to pay again.
 
@@ -817,15 +865,62 @@ Every sale line must have an active Lightspeed product link. If a newly created 
 
 ### 12.8 Refund and cancellation
 
-A refund creates a separate sale.refund.requested intent keyed to the original order, original Lightspeed sale, refund ID, returned quantities, money movement, and restock choice. The released Lightspeed return/refund contract determines whether the adapter creates a return sale or uses a dedicated operation.
+A refund transaction always stores its local immutable ledger. It stores a separate `sale.refund.requested` outbox row containing only the website order/refund IDs when the original order has a Lightspeed sale intent/link; a wholly local-only order creates no Lightspeed refund work. The worker loads an eligible ledger into a canonical intent keyed to the original order, stored Lightspeed sale ID, website refund ID, returned quantities, money movement, restock choice, and—when not restocking—an explicit negative inventory-disposition reason.
+
+The documented date-versioned workflow is a three-step saga:
+
+1. fetch the original closed sale and store its current `return.return_sale_ids` as the baseline;
+2. POST /api/2026-07/sales/{sale_id}/actions/return with no body, then store the generated parked return `data.id`; and
+3. GET that parked return, retain only the requested negative line quantities, add a negative payment using the mapped `type.config_id`, and PUT the complete sale to /api/2026-07/sales/{return_sale_id} with `state` set to `closed`.
+
+The final PUT preserves every retained line and its server-generated line `id`; omitting an existing line deletes it, while omitting an existing line/payment `id` appends a duplicate. A representative minimal change to the fetched parked-return body is:
+
+~~~json
+{
+  "state": "closed",
+  "payments": [
+    {
+      "type": {
+        "config_id": "mapped-card-payment-type-uuid"
+      },
+      "date": "2026-08-30T14:10:00Z",
+      "amount": "-206.69"
+    }
+  ],
+  "line_items": [
+    {
+      "id": "server-generated-return-line-id",
+      "product": {
+        "id": "f451a2a2-7ac8-48c6-9032-199d91dfb1ce"
+      },
+      "quantity": -1,
+      "pricing": {
+        "price": "194.99",
+        "discount": "0.00"
+      },
+      "tax": {
+        "id": "mapped-sales-tax-uuid",
+        "amount": "11.70"
+      },
+      "status": "SAVED"
+    }
+  ]
+}
+~~~
+
+The actual PUT is built from the complete validated GET response, not only the excerpt above. A partial refund adjusts negative line quantities and the negative payment to the exact website refund.
+
+If initiating the return times out, the worker refetches the original sale and compares its new `return_sale_ids` against the stored baseline. It adopts exactly one new parked candidate only after its original-sale reference and lines match; zero or multiple candidates after the visibility window enter needs_attention unless the transport proves the request was never sent. An ambiguous final PUT is resolved by fetching the return and comparing its state, retained line IDs/quantities, and payment IDs/amounts. It is never repeated merely because one fetch still looks parked; stale reads could otherwise append a second negative payment.
+
+Closing product return lines is expected to restore their inventory. A `restock: false` refund therefore creates an inventory hold, closes the matching return, and then sends a compensating negative stock adjustment using the operator-selected mapped disposition reason. While the hold is active, intermediate remote observations are audited but not applied to website availability. The refund saga remains processing until the authoritative inventory fetch confirms the final quantity and releases the hold. This behavior must be proved in the retailer sandbox contract suite; until it is, automated refunds remain disabled.
 
 The following invariants are non-negotiable:
 
-1. one website refund maps to one deterministic remote refund identity;
-2. a payment refund and an inventory restock are represented separately when the API separates them;
-3. only a refund explicitly marked restock may increase the designated outlet;
+1. one website refund stores exactly one generated Lightspeed return ID;
+2. the negative payment and any compensating non-restock adjustment have independent durable operation records;
+3. only a refund explicitly marked restock may leave the designated outlet quantity increased;
 4. retrying after a timeout may not duplicate money or stock movement; and
-5. a refund cannot enter the production sales pilot until its contract tests pass.
+5. a refund cannot enter the production sales pilot until create, partial, non-restock, timeout-recovery, and duplicate-prevention contract tests pass.
 
 ### 12.9 Lightspeed/POS sale
 
@@ -859,11 +954,11 @@ The sync_operations unique constraint prevents two workers from issuing the same
 
 ## 14. Error policy
 
-Transient retries occur after 5 seconds, 15 seconds, 45 seconds, 2 minutes, and 5 minutes. Exhaustion moves the event to needs_attention while scheduled reconciliation continues observation.
+Safely repeatable transient operations retry after 5 seconds, 15 seconds, 45 seconds, 2 minutes, and 5 minutes. A non-idempotent operation with an unknown remote commit stays in recovery observation and is not sent again unless the transport proves no request bytes were written. Exhaustion moves the event to needs_attention while scheduled reconciliation continues observation.
 
 | Response/failure | Handling |
 |---|---|
-| Timeout/network/429/5xx | Retry with jitter; resolve ambiguous commit by deterministic ID or refetch |
+| Timeout/network/429/5xx | Resolve possible remote commit by deterministic ID/refetch; retry only repeatable operations or requests proven unsent |
 | 400/422 | Do not retry unchanged payload; record validation details and enter needs_attention |
 | 401 | Refresh once; if still unauthorized, pause that connection's writes |
 | 403 | Record missing permission/capability and pause the affected operation class |
@@ -985,7 +1080,7 @@ Recorded sanitized request/response fixtures from this gate become regression fi
 
 ### Phase 1: capture-only for 24 hours
 
-Enable webhook verification/inbox storage, remote reads, canonical normalization, and reconciliation reports. Disable every remote and local sync write. Confirm complete scans and measure proposed drift without changing either inventory.
+Create/reconcile only the three required webhook subscriptions (`product.update`, `inventory.update`, and `sale.update`), then enable verification/inbox storage, remote reads, canonical normalization, and reconciliation reports. Disable every business-data sync write. Confirm complete scans and measure proposed drift without changing either inventory; webhook subscription control-plane writes are the only Phase 1 remote mutations.
 
 ### Phase 2: controlled test set
 
@@ -993,11 +1088,11 @@ Use 20 designated test products across simple and multi-variant families, plus 1
 
 ### Phase 3: catalog pilot for 24 hours
 
-Enable catalog and inventory synchronization for an allowlist of 10 real products. Sales export remains disabled. Require zero unexplained managed drift and no irreversible action.
+Enable catalog and inventory synchronization for an allowlist of 10 real products. Sales export remains disabled, so those allowlisted products are blocked server-side from checkout during this phase; otherwise a website sale would decrement only the website and make a zero-drift pilot impossible. Require zero unexplained managed drift and no irreversible action.
 
 ### Phase 4: sales pilot for 24 hours
 
-Enable website sale/refund export for the allowlist. Confirm deterministic sale/refund identities, correct outlet movement, payment totals, and no duplicate stock adjustment.
+After every sales/returns gate passes, enable website sale/refund export and automatically release the Phase 3 checkout block for the allowlist. Confirm deterministic sale/refund identities, correct outlet movement, payment totals, and no duplicate stock adjustment.
 
 ### Phase 5: full catalog with 7-day monitoring
 
