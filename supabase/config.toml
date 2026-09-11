@@ -2,7 +2,7 @@
 # https://supabase.com/docs/guides/local-development/cli/config
 # A string used to distinguish different Supabase projects on the same host. Defaults to the
 # working directory name when running `supabase init`.
-project_id = "rdk"
+project_id = "realdealkickzsc"
 
 [api]
 enabled = true
@@ -16,13 +16,6 @@ extra_search_path = ["public", "extensions"]
 # The maximum number of rows returns from a view, table, or stored procedure. Limits payload size
 # for accidental or malicious requests.
 max_rows = 1000
-
-[api.tls]
-# Enable HTTPS endpoints locally using a self-signed certificate.
-enabled = false
-# Paths to self-signed certificate pair.
-# cert_path = "../certs/my-cert.pem"
-# key_path = "../certs/my-key.pem"
 
 [db]
 # Port to use for the local database URL.
@@ -88,7 +81,7 @@ enabled = true
 [studio]
 enabled = true
 # Port to use for Supabase Studio.
-port = 54323
+port = 64323
 # External URL of the API server that frontend connects to.
 api_url = "http://127.0.0.1"
 # OpenAI API Key to use for Supabase AI in the Supabase Studio.
@@ -96,10 +89,10 @@ openai_api_key = "env(OPENAI_API_KEY)"
 
 # Email testing server. Emails sent with the local dev setup are not actually sent - rather, they
 # are monitored, and you can view the emails that would have been sent from the web interface.
-[inbucket]
+[local_smtp]
 enabled = true
 # Port to use for the email testing server web interface.
-port = 54324
+port = 64324
 # Uncomment to expose additional ports for testing user applications that send emails.
 # smtp_port = 54325
 # pop3_port = 54326
@@ -130,9 +123,9 @@ max_catalogs = 2
 enabled = true
 # The base URL of your website. Used as an allow-list for redirects and for constructing URLs used
 # in emails.
-site_url = "https://localhost:8444"
+site_url = "http://localhost:3000"
 # A list of *exact* URLs that auth providers are permitted to redirect to post authentication.
-additional_redirect_urls = ["https://localhost:8444"]
+additional_redirect_urls = ["http://localhost:3000"]
 # How long tokens are valid for, in seconds. Defaults to 3600 (1 hour), maximum 604,800 (1 week).
 jwt_expiry = 3600
 # JWT issuer URL. If not set, defaults to the local API URL (http://127.0.0.1:<port>/auth/v1).
@@ -242,7 +235,6 @@ deno_version = 2
 
 [analytics]
 enabled = true
-port = 54327
+port = 64327
 # Configure one of the supported backends: `postgres`, `bigquery`.
 backend = "postgres"
-
