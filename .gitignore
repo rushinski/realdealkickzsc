@@ -19,7 +19,6 @@ dist/
 supabase/.temp/
 supabase/.branches/
 supabase/.metadata
-supabase/config.toml
 supabase/.env
 supabase/migrations/*-shadow.sql   # shadow migrations (local-only)
 
@@ -76,3 +75,7 @@ docker-storage/
 
 # Local Git worktrees
 .worktrees/
+
+# developer tools
+.superpowers/
+.codegraph/
